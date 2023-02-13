@@ -1,6 +1,9 @@
 package evaluator;
 
+import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static java.lang.Character.*;
 import static java.lang.Character.isLetter;
@@ -9,6 +12,10 @@ public class Tokenizer {
     private String src;
     private String next;
     private int pos;
+
+    private static Pattern p =Pattern.compile("([+*/%^-])|([0-9]+)|([0-9]*.[0-9]+)|(=)|([(){}])|(collect|done|down|downleft|downright|up|upleft|upright|invest|opponent|nearby|move|relocate|shoot|if|else|then|while)");
+    //operator | จำนวนเต็มอย่างน้อย1ตัว | ทศนิยมอย่างน้อย1ตัว | = | วงเล็บ (){} | reserved words
+    private Matcher matcher;
 
     public Tokenizer (String src) throws SyntaxError{
         this.src = src;
@@ -36,37 +43,12 @@ public class Tokenizer {
         return result;
     }
 
-    private void computeNext() { //Not sure about this function
-        StringBuilder s = new StringBuilder();
-
-        while (pos < src.length() && isWhitespace(src.charAt(pos))) {
-            pos++;
+    private void computeNext() {
+        if (matcher.find()){ //Attempts to find the next subsequence of the input sequence that matches the pattern.
+            next = matcher.group(); //Returns the input subsequence matched by the previous match.
+        }else{
+            next = null;
         }
-
-        if (pos == src.length()) {
-            next = null; return;
-        }
-
-        char c = src.charAt(pos);
-
-        if (isDigit(c)) {
-            s.append(c);
-            for (pos++; pos < src.length() && isDigit(src.charAt(pos)); pos++) {
-                s.append(src.charAt(pos));
-            }
-        } else if (isLetter(c)) {
-            s.append(c);
-            for (pos++; pos < src.length() && isLetter(src.charAt(pos)); pos++) {
-                s.append(src.charAt(pos));
-            }
-
-        } else if (c == '+' || c == '(' || c == ')' || c == '-' || c == '*' || c == '/' || c == '%') {
-            s.append(c);
-            pos++;
-        } else {
-            throw new LexicalError("Unknown character:" + c);
-        }
-        next = s.toString();
     }
     public boolean peek(String s){
         if(!hasNextToken())
