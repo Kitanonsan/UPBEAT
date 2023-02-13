@@ -34,7 +34,7 @@ public class Tokenizer {
         return next;
     }
 
-    public String consume(){
+    public String consume() {
         if (!hasNextToken()){
             throw new NoSuchElementException("No more tokens");
         }
@@ -50,15 +50,15 @@ public class Tokenizer {
             next = null;
         }
     }
-    public boolean peek(String s){
+    public boolean peek(String regex){
         if(!hasNextToken())
             return false;
-        return peek().equals(s);
+        return peek().matches(regex);
     }
-    public void consume(String s ) throws SyntaxError {
-        if(peek(s))
+    public void consume(String regex ) throws SyntaxError {
+        if(peek(regex))
             consume();
         else
-            throw new SyntaxError(s + " expected");
+            throw new SyntaxError(regex + " expected");
     }
 }
