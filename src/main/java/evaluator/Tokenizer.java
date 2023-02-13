@@ -45,7 +45,7 @@ public class Tokenizer {
 
     private void computeNext() {
         if (matcher.find()){ //Attempts to find the next subsequence of the input sequence that matches the pattern.
-            next = matcher.group(); //Returns the input subsequence matched by the previous match.
+            next = matcher.group(); //group returns the input subsequence matched by the previous match.
         }else{
             next = null;
         }
