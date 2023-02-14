@@ -1,2 +1,3 @@
 rootProject.name = 'UPBEAT'
+include 'test'
 
