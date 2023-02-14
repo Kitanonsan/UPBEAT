@@ -13,7 +13,7 @@ public class Tokenizer {
     private String next;
     private int pos;
 
-    private static Pattern p = Pattern.compile("([+*/%^-])|([0-9]+)|([0-9]+.[0-9]+)|(=)|([(){}])|(collect|done|down|downleft|downright|up|upleft|upright|invest|opponent|nearby|move|relocate|shoot|if|else|then|while)");
+    private static Pattern p = Pattern.compile("([+*/%^-])|([0-9]+)|([0-9]+.[0-9]+)|(=)|([({})])|(collect|done|down|downleft|downright|up|upleft|upright|invest|opponent|nearby|move|relocate|shoot|if|else|then|while)");
     //operator | จำนวนเต็มอย่างน้อย1ตัว | ทศนิยมอย่างน้อย1ตัว | = | วงเล็บ (){} | reserved words
     private Matcher matcher;
 
