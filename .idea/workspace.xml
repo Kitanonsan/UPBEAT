@@ -4,12 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc91e5d1-8450-4401-b3d0-fc5b7ea2230b" name="Changes" comment="สร้าง Tokenizer">
-      <change afterPath="$PROJECT_DIR$/src/main/java/evaluator/LexicalError.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/evaluator/SyntaxError.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/evaluator/Tokenizer.java" afterDir="false" />
+    <list default="true" id="fc91e5d1-8450-4401-b3d0-fc5b7ea2230b" name="Changes" comment="delete LexicalError.java">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/evaluator/node/AssignmentStatementNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/evaluator/node/AttackCommandNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/evaluator/node/BinaryArithExprNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/evaluator/node/BlockStatementNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/evaluator/node/IfStatementNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/evaluator/node/MoveCommandNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/evaluator/node/Node.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/evaluator/node/RegionCommandNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/evaluator/node/WhileStateNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +33,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -44,10 +55,14 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Semester 2_65/Object Oriented Programming/UPBEAT/src/test",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_opened_file_path": "C:/Semester 2_65/Object Oriented Programming/UPBEAT/src/hgflksd",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -55,11 +70,40 @@
       <recent name="evaluator" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Semester 2_65\Object Oriented Programming\UPBEAT\src\hgflksd" />
+      <recent name="C:\Semester 2_65\Object Oriented Programming\UPBEAT\back-end" />
       <recent name="C:\Semester 2_65\Object Oriented Programming\UPBEAT\src\test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Semester 2_65\Object Oriented Programming\UPBEAT\src\main" />
       <recent name="C:\Semester 2_65\Object Oriented Programming\UPBEAT\src\test" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="evaluator" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
+      <module name="UPBEAT.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -70,6 +114,77 @@
       <option name="presentableId" value="Default" />
       <updated>1675953128656</updated>
     </task>
+    <task id="LOCAL-00001" summary="สร้าง Tokenizer">
+      <created>1676111435091</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1676111435091</updated>
+    </task>
+    <task id="LOCAL-00002" summary="สร้างregex+แก้ไขcomputeNext">
+      <created>1676313136066</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1676313136066</updated>
+    </task>
+    <task id="LOCAL-00003" summary="แก้ไข boolean peek(String regex) เปลี่ยนจากใช้ equal เป็น equals">
+      <created>1676314241606</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1676314241606</updated>
+    </task>
+    <task id="LOCAL-00004" summary="แก้ไข boolean peek(String regex) เปลี่ยนจากใช้ equal เป็น matches">
+      <created>1676314550926</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1676314550926</updated>
+    </task>
+    <task id="LOCAL-00005" summary="แก้ไข boolean peek(String regex) เปลี่ยนจากใช้ equal เป็น matches">
+      <created>1676314603565</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1676314603565</updated>
+    </task>
+    <task id="LOCAL-00006" summary="initialize matcher">
+      <created>1676357980653</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1676357980653</updated>
+    </task>
+    <task id="LOCAL-00007" summary="แก้ไข regex">
+      <created>1676358215021</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1676358215021</updated>
+    </task>
+    <task id="LOCAL-00008" summary="สร้าง TokenizerTest">
+      <created>1676366625531</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1676366625531</updated>
+    </task>
+    <task id="LOCAL-00009" summary="แก้ไข regex เพิ่ม alphabet">
+      <created>1676371822733</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1676371822733</updated>
+    </task>
+    <task id="LOCAL-00010" summary="delete LexicalError.java">
+      <created>1676371995463</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1676371995463</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -85,6 +200,14 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="สร้าง Tokenizer" />
-    <option name="LAST_COMMIT_MESSAGE" value="สร้าง Tokenizer" />
+    <MESSAGE value="สร้างregex+แก้ไขcomputeNext" />
+    <MESSAGE value="แก้ไข boolean peek(String regex) เปลี่ยนจากใช้ equal เป็น equals" />
+    <MESSAGE value="แก้ไข boolean peek(String regex) เปลี่ยนจากใช้ equal เป็น matches" />
+    <MESSAGE value="initialize matcher" />
+    <MESSAGE value="แก้ไข regex" />
+    <MESSAGE value="สร้าง TokenizerTest" />
+    <MESSAGE value="แก้ไข regex เพิ่ม alphabet" />
+    <MESSAGE value="delete LexicalError.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete LexicalError.java" />
   </component>
 </project>
