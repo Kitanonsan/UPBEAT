@@ -4,29 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc91e5d1-8450-4401-b3d0-fc5b7ea2230b" name="Changes" comment="create Nodes">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/evaluator/nodes/AssignmentStatementNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/evaluator/nodes/BinaryArithExprNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/evaluator/nodes/BlockStatementNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/evaluator/nodes/IfStatementNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/evaluator/nodes/MoveCommandNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/evaluator/nodes/Node.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/evaluator/nodes/WhileStateNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="fc91e5d1-8450-4401-b3d0-fc5b7ea2230b" name="Changes" comment="implement BinaryArithExprNode.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/evaluator/SyntaxError.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/evaluator/SyntaxError.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/evaluator/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/evaluator/Tokenizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/evaluator/node/AssignmentStatementNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/evaluator/node/AttackCommandNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/evaluator/nodes/AttackCommandNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/evaluator/node/BinaryArithExprNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/evaluator/node/BlockStatementNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/evaluator/node/IfStatementNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/evaluator/node/MoveCommandNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/evaluator/node/Node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/evaluator/node/RegionCommandNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/evaluator/nodes/RegionCommandNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/evaluator/node/WhileStateNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/evaluator/nodes/BinaryArithExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/evaluator/nodes/BinaryArithExprNode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +47,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "C:/Semester 2_65/Object Oriented Programming/UPBEAT/backend",
+    "last_opened_file_path": "C:/Semester 2_65/Object Oriented Programming Lab/lab10",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
@@ -200,7 +180,21 @@
       <option name="project" value="LOCAL" />
       <updated>1676372095691</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="create module backend and edit type evaluate()">
+      <created>1676451354364</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1676451354364</updated>
+    </task>
+    <task id="LOCAL-00013" summary="delete tokenizertest">
+      <created>1676451603630</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1676451603630</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -225,6 +219,9 @@
     <MESSAGE value="แก้ไข regex เพิ่ม alphabet" />
     <MESSAGE value="delete LexicalError.java" />
     <MESSAGE value="create Nodes" />
-    <option name="LAST_COMMIT_MESSAGE" value="create Nodes" />
+    <MESSAGE value="create module backend and edit type evaluate()" />
+    <MESSAGE value="delete tokenizertest" />
+    <MESSAGE value="implement BinaryArithExprNode.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement BinaryArithExprNode.java" />
   </component>
 </project>

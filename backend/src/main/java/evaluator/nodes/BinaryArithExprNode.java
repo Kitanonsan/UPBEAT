@@ -13,6 +13,22 @@ public class BinaryArithExprNode implements Node{
     @Override
     public long evaluate() throws ArithmeticException {
         long lv = left.evaluate();
-        return 0;
+        long rv = right.evaluate();
+        if (op.equals("+")) return lv + rv;
+        if (op.equals("-")) return lv - rv;
+        if (op.equals("*")) return lv * rv;
+        if (op.equals("/")){
+            if (rv == 0){
+                throw new ArithmeticException("Cannot divide by zero");
+            }
+            return lv / rv;
+        }
+        if (op.equals("%")){
+            if (rv == 0)
+                throw new ArithmeticException("Cannot modulo by zero");
+            return lv % rv;
+        }
+        if (op.equals("^")) return (long) Math.pow(lv,rv);
+        throw new ArithmeticException("unknown op : " + op);
     }
 }
