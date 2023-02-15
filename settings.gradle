@@ -1,3 +1,4 @@
 rootProject.name = 'UPBEAT'
 include 'test'
+include 'backend'
 
