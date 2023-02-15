@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #ffe6cc;
+  background-color: #000000;
   font-family: "Kanit", sans-serif;
 }
 
@@ -101,4 +101,14 @@ body {
 [data-collapse="true"] .sidebar_name,
 [data-collapse="true"] .sidebar_logo-name {
   display: none;
+}
+
+.countdown {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: white;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 5px;
 }
