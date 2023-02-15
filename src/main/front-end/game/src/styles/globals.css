@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #000000;
+  background-color: #51508f;
   font-family: "Kanit", sans-serif;
 }
 
@@ -106,9 +106,29 @@ body {
 .countdown {
   position: fixed;
   top: 10px;
-  right: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: white;
   border: 1px solid black;
   padding: 10px;
   border-radius: 5px;
+}
+
+.done-button {
+  position: fixed;
+  width: 120px;
+  height: 120px;
+  bottom: 20px;
+  right: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: none;
+  border: 5px solid rgb(255, 255, 255);
+  border-radius: 40px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.done-button:hover {
+  background-color: #3e8e41;
 }
