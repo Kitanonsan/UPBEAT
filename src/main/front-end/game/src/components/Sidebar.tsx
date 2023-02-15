@@ -6,16 +6,38 @@ import {
   MdOutlinePersonSearch,
   MdOutlineKeyboardArrowLeft,
 } from "react-icons/md";
+import { BsList, BsArrowsMove } from "react-icons/bs";
 import { GrHomeRounded, GrContactInfo } from "react-icons/gr";
-import { GiAntiAircraftGun } from "react-icons/gi";
-import { useContext, useState } from "react";
+import { BiTimeFive, BiCoinStack } from "react-icons/bi";
+import { MdLocationPin, MdShareLocation } from "react-icons/md";
+import { RiFindReplaceLine } from "react-icons/ri";
+import { GiAntiAircraftGun, GiReceiveMoney, GiPayMoney } from "react-icons/gi";
+import { useContext, useState, useEffect } from "react";
 import { SidebarContext } from "./SidebarContext";
 
 const sidebarItem = [
   {
+    name: "Time",
+    href: "/",
+    icon: BiTimeFive,
+    time: 60,
+  },
+  {
+    name: "Gold",
+    href: "/",
+    icon: BiCoinStack,
+  },
+
+  {
     name: "Center City",
     href: "/",
     icon: GrHomeRounded,
+  },
+
+  {
+    name: "City",
+    href: "/",
+    icon: MdLocationPin,
   },
   {
     name: "Opponent",
@@ -32,6 +54,31 @@ const sidebarItem = [
     href: "/Info",
     icon: GrContactInfo,
   },
+  {
+    name: "Nearby",
+    href: "/",
+    icon: RiFindReplaceLine,
+  },
+  {
+    name: "Collect",
+    href: "/",
+    icon: GiReceiveMoney,
+  },
+  {
+    name: "Invest",
+    href: "/",
+    icon: GiPayMoney,
+  },
+  {
+    name: "Move",
+    href: "/",
+    icon: BsArrowsMove,
+  },
+  {
+    name: "Relocate",
+    href: "/",
+    icon: MdShareLocation,
+  },
 ];
 
 export default function Sidebar() {
@@ -41,7 +88,7 @@ export default function Sidebar() {
   return (
     <div className="sidebar_wrapper">
       <button className="btn" onClick={toggleSidebarCollapseHandler}>
-        <MdOutlineKeyboardArrowLeft />
+        <BsList />
       </button>
       <aside className="sidebar" data-collapse={iscollapsedSidebar}>
         <div className="sidebar_top">
