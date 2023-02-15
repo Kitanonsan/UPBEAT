@@ -8,6 +8,7 @@
 body {
   background-color: #51508f;
   font-family: "Kanit", sans-serif;
+  color: rgb(253, 253, 253);
 }
 
 .Layout {
@@ -112,6 +113,7 @@ body {
   border: 1px solid black;
   padding: 10px;
   border-radius: 5px;
+  color: black;
 }
 
 .done-button {
