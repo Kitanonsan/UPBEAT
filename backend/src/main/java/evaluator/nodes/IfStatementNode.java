@@ -11,7 +11,7 @@ public class IfStatementNode implements Node {
     }
     @Override
     public long evaluate() {
-        if (ExprNode.evaluate() == 1){
+        if (ExprNode.evaluate() != 0){
             trueStatement.evaluate();
         }else{
             falseStatement.evaluate();
