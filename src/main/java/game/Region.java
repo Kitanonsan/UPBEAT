@@ -1,17 +1,17 @@
 package game;
-import java.lan.Math;
+import java.lang.Math;
 
 public class Region {
-    private int[] position;
+    private final int[] position;
     private double deposit;
     private double r;
     private Player owner;
     private boolean isCenterCity;
 
-    public Region(int x_position , int y position, double start_deposit, double r){
+    public Region(int x_position , int y_position, double start_deposit, double r){
         this.position = new int[2];
-        position[0] = x;
-        position[1] = y;
+        position[0] = x_position;
+        position[1] = y_position;
         this.deposit = start_deposit;
         this.r = r;
         this.owner = null;
@@ -26,7 +26,7 @@ public class Region {
     }
 
     public void updateInterestRate(int turnCount , int b){
-        this.r = b*(Math.log10(deposit))*Math(turnCount);
+        this.r = b*(Math.log10(deposit))*Math.log(turnCount);
     }
 
     public void updateDeposit(){
@@ -65,6 +65,11 @@ public class Region {
         }
         else
             return;
+    }
+
+    public void showInfo(){
+        System.out.println("x : " + this.position[0] + " y : " + this.position[1]);
+        System.out.println("Current Deposit : " + this.deposit);
     }
 
 }
