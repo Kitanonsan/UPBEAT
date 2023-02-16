@@ -104,7 +104,28 @@ public class Parser {
     }
     //Term → Term * Factor | Term / Factor | Term % Factor | Factor
     public Node parseTerm() throws SyntaxError{
-
+        Node term = parseFactor();
+        while (tkz.equals("*") || tkz.equals("/") || tkz.equals("%")){
+            String op = tkz.consume();
+            if(op.equals("*")){
+                term = new BinaryArithExprNode(term, "*", parseFactor());
+            } else if (op.equals("/")) {
+                if(parseFactor().evaluate() == 0){
+                    throw new EvalError("Cannot divide by zero");
+                }else {
+                    term = new BinaryArithExprNode(term, "/", parseFactor());
+                }
+            } else if (op.equals("%")) {
+                if (parseFactor().evaluate() == 0){
+                    throw new EvalError("Cannot modulo by zero");
+                }else{
+                    term = new BinaryArithExprNode(term, "%", parseFactor());
+                }
+            }else {
+                throw new SyntaxError("parseTerm mai dai");
+            }
+        }
+        return  term;
     }
 //    Factor → Power ^ Factor | Power
     public Node parseFactor() throws SyntaxError{
