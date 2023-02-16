@@ -129,7 +129,16 @@ public class Parser {
     }
 //    Factor → Power ^ Factor | Power
     public Node parseFactor() throws SyntaxError{
-
+        Node factor = parsePower();
+        while (tkz.equals("^")){
+            String op = tkz.consume();
+            if (op.equals("^")){
+                factor = new BinaryArithExprNode(factor, "^", parsePower());
+            }else {
+                throw new SyntaxError("parseFactor mai dai");
+            }
+        }
+        return factor;
     }
 //    Power → <number> | <identifier> | ( Expression ) | InfoExpression
     public Node parsePower() throws SyntaxError{
