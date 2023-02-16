@@ -30,6 +30,36 @@ public class Parser {
 
     public Node parsePlan() throws SyntaxError{
         BlockStatementNode blockStatement = new BlockStatementNode();
+        while (tkz!=null){
+            String v = tkz.peek();
+            if(v.matches("([0-9]+)") || v.matches("([+*/%^-])") || v.matches("down|downleft|downright|up|upleft|upright") || v.matches("nearby|opponent")){
+                tkz.consume();
+                throw new SyntaxError("mai chai stater word");
+            }else if(v.matches("(collect|done|down|downleft|downright|up|upleft|upright|invest|opponent|nearby|move|relocate|shoot|if|else|then|while)")){
+                if (v.matches("if")){
+                    blockStatement.addStatement(parseIf());
+                }else if(v.matches("while")){
+                    blockStatement.addStatement(parseWhile());
+                }else if (v.matches("move")){
+                    blockStatement.addStatement(parseMove());
+                }
+            }else if(v.matches("([a-zA-Z]+[a-zA-Z0-9]*)")){
+                blockStatement.addStatement(parseAssignment());
+            }else if (v.matches("[({})]")){
+                if (v.equals("(") || v.equals(")")){
+                    throw new SyntaxError("{ ma kon");
+                } else if (v.equals("{")) {
+                    tkz.consume();
+                    blockStatement.addStatement(parsePlan());
+                    if (!tkz.equals("}")){
+                        throw new SyntaxError("missing }");
+                    }
+                } else if (v.equals("}")) {
+                    break;
+                }
+            }else throw new SyntaxError("Syntax error: " + v);
+
+        }
         return blockStatement;
     }
 
