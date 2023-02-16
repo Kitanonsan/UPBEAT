@@ -1,4 +1,4 @@
-package evaluator.nodes;
+package evaluator;
 
 public class EvalError extends Error{
     public EvalError(String msg){
