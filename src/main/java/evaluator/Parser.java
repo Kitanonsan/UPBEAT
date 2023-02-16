@@ -64,6 +64,11 @@ public class Parser {
     }
 
     public Node parseAssignment() throws SyntaxError{
+       IdentifierNode identifier = parseIdentifier();
+       Node Expr = parseExpression();
+       Node assignmentNode = new AssignmentStatementNode(identifier, Expr);
+            return assignmentNode;
+    }
 
     }
 
