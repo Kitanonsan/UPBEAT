@@ -87,9 +87,20 @@ public class Parser {
     public Node parseAttack() throws SyntaxError{
 
     }
-
-    public Node parseExpression() throws SyntaxError{
-
+    //    Expression → Expression + Term | Expression - Term | Term
+    public Node parseExpression() throws SyntaxError, EvalError {
+        Node expression = parseTerm();
+        while (tkz.peek("+") || tkz.peek("-")){
+            String op = tkz.consume();
+            if (op.equals("+")){
+                expression = new BinaryArithExprNode(expression, "+" ,parseTerm());
+            } else if (op.equals("-")) {
+                expression = new BinaryArithExprNode(expression, "-", parseTerm());
+            }else {
+                throw new SyntaxError("parse mai dai");
+            }
+        }
+        return expression;
     }
     //Term → Term * Factor | Term / Factor | Term % Factor | Factor
     public Node parseTerm() throws SyntaxError{
