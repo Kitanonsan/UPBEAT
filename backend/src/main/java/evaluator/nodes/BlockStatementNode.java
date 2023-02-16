@@ -14,6 +14,9 @@ public class BlockStatementNode implements Node {
     }
     @Override
     public long evaluate() {
+        for (Node statement : statements){
+            statement.evaluate();
+        }
         return 0;
     }
 }
