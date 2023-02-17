@@ -88,6 +88,18 @@ public class Parser {
     }
 
     public Node parseWhile() throws SyntaxError{
+        tkz.consume("while");
+        tkz.consume("(");
+        Node Expr = parseExpression();
+        tkz.consume(")");
+        Node statement = parseExpression();
+
+        Node whileStatement = new WhileStatementNode(Expr, statement);
+        return whileStatement;
+    }
+//        ActionCommand → done | relocate | MoveCommand | RegionCommand | AttackCommand
+    public Node parseDone() throws SyntaxError{
+        tkz.peek("done");
 
     }
 
@@ -153,6 +165,30 @@ public class Parser {
     }
 //    Power → <number> | <identifier> | ( Expression ) | InfoExpression
     public Node parsePower() throws SyntaxError{
+        if (tkz.peek(("[0-9]+"))){ // number
+            Node numberNode = new NumberNode(Long.parseLong(tkz.consume()));
+            tkz.consume();
+            return numberNode;
+        }else if (tkz.peek("([a-zA-Z]+[a-zA-Z0-9]*)")){ // identifier
+            IdentifierNode identifierNode = parseIdentifier();
+            return identifierNode;
+        }else if(tkz.peek("opponent") || tkz.peek("nearby")){ //info
+           Node power = parseInfoExpression();
+           return power;
+        }else if(tkz.peek().equals("(")){
+            tkz.consume();
+            Node ExprNode = parseExpression();
+            if (!tkz.peek().equals(")")){
+                throw new SyntaxError("unmatch -> ) ");
+            }
+            tkz.consume();
+            return ExprNode;
+        }else {
+            throw  new SyntaxError("unParseAble");
+        }
+    }
+    //    InfoExpression → opponent | nearby Direction
+    private Node parseInfoExpression() throws SyntaxError{
 
     }
 
