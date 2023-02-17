@@ -224,7 +224,17 @@ public class Parser {
     }
     //    InfoExpression → opponent | nearby Direction
     private Node parseInfoExpression() throws SyntaxError{
-
+        String info = tkz.consume();
+        String direction = parseDirection();
+        if (info.matches("opponent")){
+            Node infoNode = new InfoExprNode(info, direction, player);
+            return infoNode;
+        }else if(info.matches("nearby")){
+            Node infoNode = new InfoExprNode(info, direction, player);
+            return infoNode;
+        }else{
+            throw new SyntaxError("unParseAble");
+        }
     }
 
     public String parseDirection() throws SyntaxError{
