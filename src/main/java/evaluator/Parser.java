@@ -130,8 +130,12 @@ public class Parser {
         }
     }
 
-    public Node parseAttack() throws SyntaxError{
+    public Node parseAttack() throws SyntaxError{ //shoot
+        String direction = parseDirection();
+        tkz.consume("shoot");
 
+        Node attackCommand = new AttackCommandNode(direction, player);
+        return attackCommand;
     }
     //    Expression → Expression + Term | Expression - Term | Term
     public Node parseExpression() throws SyntaxError, EvalError {
