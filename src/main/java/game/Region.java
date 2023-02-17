@@ -68,8 +68,13 @@ public class Region {
     }
 
     public void showInfo(){
-        System.out.println("x : " + this.position[0] + " y : " + this.position[1]);
-        System.out.println("Current Deposit : " + this.deposit);
+        System.out.print("(" + this.position[0] + "," + this.position[1] + ")");
     }
+
+    public int getDeposit(){
+        int d = (int) this.deposit;
+        return d;
+    }
+
 
 }
