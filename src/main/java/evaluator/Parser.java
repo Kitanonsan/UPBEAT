@@ -73,7 +73,17 @@ public class Parser {
     }
 
     public Node parseIf() throws SyntaxError{
+        tkz.consume("if");
+        tkz.consume("(");
+        Node Expr = parseExpression();
+        tkz.consume(")");
+        tkz.consume("then");
+        Node trueStatement = parsePlan();
+        tkz.consume("else");
+        Node falseStatement = parsePlan();
 
+        Node ifStatement = new IfStatementNode(Expr, trueStatement, falseStatement);
+        return ifstatement;
     }
 
     public Node parseWhile() throws SyntaxError{
