@@ -1,7 +1,7 @@
 package evaluator;
 
-import evaluator.nodes.BlockStatementNode;
-import evaluator.nodes.Node;
+import evaluator.nodes.*;
+import game.Player;
 
 public class Parser {
 
@@ -28,6 +28,7 @@ public class Parser {
     public Parser(String src) throws SyntaxError {
         this.tkz = new Tokenizer(src);
     }
+    
 
     public Node parsePlan() throws SyntaxError{
         BlockStatementNode blockStatement = new BlockStatementNode();
@@ -36,8 +37,8 @@ public class Parser {
             if(v.matches("([0-9]+)") || v.matches("([+*/%^-])") || v.matches("down|downleft|downright|up|upleft|upright") || v.matches("nearby|opponent")){
                 tkz.consume();
                 throw new SyntaxError("mai chai stater word");
-            }else if(v.matches("(collect|done|down|downleft|downright|up|upleft|upright|invest|opponent|nearby|move|relocate|shoot|if|else|then|while)")){
-                if (v.matches("if")){
+            }else if(v.matches("(collect|done|down|downleft|downright|up|upleft|upright|invest|opponent|nearby|move|relocate|shoot|if|else|then|while)")){ //reserved words
+                if (v.matches("if")){ //todo -> opponent|nearby
                     blockStatement.addStatement(parseIf());
                 }else if(v.matches("while")){
                     blockStatement.addStatement(parseWhile());
@@ -52,16 +53,16 @@ public class Parser {
                 }else if (v.matches("shoot")) { // shoot
                     blockStatement.addStatement(parseAttack());
                 }
-            }else if(v.matches("([a-zA-Z]+[a-zA-Z0-9]*)")){
+            }else if(v.matches("([a-zA-Z]+[a-zA-Z0-9]*)")){ //Assign here
                 blockStatement.addStatement(parseAssignment());
-            }else if (v.matches("[({})]")){
+            }else if (v.matches("[({})]")){ // blockstatement
                 if (v.equals("(") || v.equals(")")){
-                    throw new SyntaxError("{ ma kon");
+                    throw new SyntaxError("{ <- tong ma kon");
                 } else if (v.equals("{")) {
                     tkz.consume();
                     blockStatement.addStatement(parsePlan());
                     if (!tkz.equals("}")){
-                        throw new SyntaxError("missing }");
+                        throw new SyntaxError("mai mee -> }");
                     }
                 } else if (v.equals("}")) {
                     break;
@@ -74,11 +75,11 @@ public class Parser {
 
     public Node parseAssignment() throws SyntaxError{
        IdentifierNode identifier = parseIdentifier();
+       tkz.consume("=");
        Node Expr = parseExpression();
-       Node assignmentNode = new AssignmentStatementNode(identifier, Expr);
-            return assignmentNode;
-    }
 
+       Node assignmentNode = new AssignmentStatementNode(identifier, Expr);
+       return assignmentNode;
     }
 
     public Node parseIf() throws SyntaxError{
@@ -92,7 +93,7 @@ public class Parser {
         Node falseStatement = parsePlan();
 
         Node ifStatement = new IfStatementNode(Expr, trueStatement, falseStatement);
-        return ifstatement;
+        return ifStatement;
     }
 
     public Node parseWhile() throws SyntaxError{
@@ -120,7 +121,9 @@ public class Parser {
         return moveCommand;
     }
 
-    public Node parseMoveNode() throws SyntaxError{
+    public Node parseRelocate() throws SyntaxError{
+        String direction = parseDirection();
+        tkz.peek("relocate");
 
         Node relocateCommand = new RelocateNode(direction, player);
         return relocateCommand;
@@ -152,28 +155,28 @@ public class Parser {
             String op = tkz.consume();
             if (op.equals("+")){
                 expression = new BinaryArithExprNode(expression, "+" ,parseTerm());
-            } else if (op.equals("-")) {
+            }else if (op.equals("-")) {
                 expression = new BinaryArithExprNode(expression, "-", parseTerm());
             }else {
-                throw new SyntaxError("parse mai dai");
+                throw new SyntaxError("parseExpression mai dai");
             }
         }
         return expression;
     }
     //Term → Term * Factor | Term / Factor | Term % Factor | Factor
-    public Node parseTerm() throws SyntaxError{
+    public Node parseTerm() throws SyntaxError, EvalError{
         Node term = parseFactor();
         while (tkz.equals("*") || tkz.equals("/") || tkz.equals("%")){
             String op = tkz.consume();
             if(op.equals("*")){
                 term = new BinaryArithExprNode(term, "*", parseFactor());
-            } else if (op.equals("/")) {
+            }else if (op.equals("/")) {
                 if(parseFactor().evaluate() == 0){
                     throw new EvalError("Cannot divide by zero");
                 }else {
                     term = new BinaryArithExprNode(term, "/", parseFactor());
                 }
-            } else if (op.equals("%")) {
+            }else if (op.equals("%")) {
                 if (parseFactor().evaluate() == 0){
                     throw new EvalError("Cannot modulo by zero");
                 }else{
@@ -186,7 +189,7 @@ public class Parser {
         return  term;
     }
 //    Factor → Power ^ Factor | Power
-    public Node parseFactor() throws SyntaxError{
+    public Node parseFactor() throws SyntaxError, EvalError{
         Node factor = parsePower();
         while (tkz.equals("^")){
             String op = tkz.consume();
