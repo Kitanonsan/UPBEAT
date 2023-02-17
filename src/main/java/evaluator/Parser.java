@@ -24,6 +24,7 @@ public class Parser {
 //    InfoExpression → opponent | nearby Direction
 
     protected Tokenizer tkz;
+    Player player;
     public Parser(String src) throws SyntaxError {
         this.tkz = new Tokenizer(src);
     }
