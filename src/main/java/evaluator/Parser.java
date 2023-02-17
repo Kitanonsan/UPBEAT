@@ -101,6 +101,15 @@ public class Parser {
     public Node parseDone() throws SyntaxError{
         tkz.peek("done");
 
+        Node doneCommand = new DoneNode(player);
+        return doneCommand;
+    }
+    public Node parseMove() throws SyntaxError{
+        String direction = parseDirection();
+        tkz.peek("move");
+
+        Node moveCommand =new MoveCommandNode(direction, player);
+        return moveCommand;
     }
 
     public Node parseMoveNode() throws SyntaxError{
