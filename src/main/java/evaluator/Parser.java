@@ -243,8 +243,12 @@ public class Parser {
 
         return direction;
     }
-    private IdentifierNode parseIdentifier() {
+    private IdentifierNode parseIdentifier() throws SyntaxError {
+        String identifier = tkz.peek();
+        tkz.consume("([a-zA-Z]+[a-zA-Z0-9]*)");
 
+        IdentifierNode identifierNode = new IdentifierNode(player.getValue(), identifier);
+        return identifierNode;
     }
 
 
