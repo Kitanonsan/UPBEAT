@@ -156,5 +156,15 @@ public class Parser {
 
     }
 
+    public String parseDirection() throws SyntaxError{
+        String direction = tkz.peek();
+        tkz.consume("down|downleft|downright|up|upleft|upright");
+
+        return direction;
+    }
+    private IdentifierNode parseIdentifier() {
+
+    }
+
 
 }
