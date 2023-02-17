@@ -114,6 +114,20 @@ public class Parser {
 
     public Node parseMoveNode() throws SyntaxError{
 
+        Node relocateCommand = new RelocateNode(direction, player);
+        return relocateCommand;
+    }
+    public Node parseRegion() throws SyntaxError{ //invest, collect
+        String financeMode = tkz.consume();
+        if (financeMode.matches("invest")){
+            Node RegionCommand = new RegionCommandNode(financeMode, player);
+            return RegionCommand;
+        }else if (financeMode.matches("collect")){
+            Node RegionCommand = new RegionCommandNode(financeMode, player);
+            return RegionCommand;
+        }else {
+            throw new SyntaxError("unparseable");
+        }
     }
 
     public Node parseAttack() throws SyntaxError{
