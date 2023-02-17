@@ -41,8 +41,16 @@ public class Parser {
                     blockStatement.addStatement(parseIf());
                 }else if(v.matches("while")){
                     blockStatement.addStatement(parseWhile());
-                }else if (v.matches("move")){
+                }else if (v.matches("done")){ // done
+                    blockStatement.addStatement(parseDone());
+                }else if (v.matches("relocate")) { //relocate
+                    blockStatement.addStatement(parseRelocate());
+                }else if (v.matches("move")) { //move
                     blockStatement.addStatement(parseMove());
+                }else if (v.matches("invest|collect")) { // invest collect
+                    blockStatement.addStatement(parseRegion());
+                }else if (v.matches("shoot")) { // shoot
+                    blockStatement.addStatement(parseAttack());
                 }
             }else if(v.matches("([a-zA-Z]+[a-zA-Z0-9]*)")){
                 blockStatement.addStatement(parseAssignment());
