@@ -10,9 +10,8 @@ public class MoveCommandNode implements Node {
         this.player = player;
     }
     @Override
-    public long evaluate() { //Todo implement evalutae
-//        player.move(direction);
-        throw new NotImplementYet();
-//        return 0;
+    public long evaluate() {
+        player.move(direction);
+        return 0;
     }
 }
