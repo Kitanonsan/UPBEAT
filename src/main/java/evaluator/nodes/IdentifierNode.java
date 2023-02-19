@@ -5,9 +5,10 @@ import java.util.Map;
 public class IdentifierNode implements Node{
     protected Map<String, Long> variables = null;
     protected String identifier;
-    public IdentifierNode(Map<String, Long> variables, String identifier){
-        this.variables = variables;
+
+    public IdentifierNode(String identifier, Map<String, Long> variables){
         this.identifier = identifier;
+        this.variables = variables;
     }
     @Override
     public long evaluate() {
@@ -17,7 +18,12 @@ public class IdentifierNode implements Node{
         return variables.get(identifier);
     }
 
-    public void assign(Long value){
+    @Override
+    public void print() {
+        System.out.println("Identifier");
+    }
+
+    public void assignValue(Long value){
         variables.put(identifier, value);
     }
 }
