@@ -28,7 +28,6 @@ public class Parser {
     public Parser(String src) throws SyntaxError {
         this.tkz = new Tokenizer(src);
     }
-    
 
     public Node parsePlan() throws SyntaxError{
         BlockStatementNode blockStatement = new BlockStatementNode();
@@ -66,6 +65,8 @@ public class Parser {
                     }
                 } else if (v.equals("}")) {
                     break;
+                }else if (v.matches("\n")){
+                    tkz.consume();
                 }
             }else throw new SyntaxError("Syntax error: " + v);
 
