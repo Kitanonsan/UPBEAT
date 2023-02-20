@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #51508f;
+  background-color: #405f9c;
   font-family: "Kanit", sans-serif;
   color: rgb(253, 253, 253);
 }
@@ -37,6 +37,7 @@ body {
   padding-bottom: 1rem;
   margin-bottom: 1rem;
   border-bottom: 1px solid white;
+  color: black;
 }
 
 .sidebar_logo {
@@ -104,6 +105,7 @@ body {
   display: none;
 }
 
+/*Timer--------------------------------------------------------------------------*/
 .countdown {
   position: fixed;
   top: 10px;
@@ -115,17 +117,17 @@ body {
   border-radius: 5px;
   color: black;
 }
-
+/*Done--------------------------------------------------------------------------*/
 .done-button {
   position: fixed;
   width: 120px;
   height: 120px;
   bottom: 20px;
   right: 20px;
-  background-color: #4caf50;
-  color: white;
+  background-color: #ffffff;
+  color: #4caf50;
   padding: none;
-  border: 5px solid rgb(255, 255, 255);
+  border: 5px solid #4caf50;
   border-radius: 40px;
   font-size: 16px;
   cursor: pointer;
@@ -133,4 +135,107 @@ body {
 
 .done-button:hover {
   background-color: #3e8e41;
+}
+/*Construction--------------------------------------------------------------------------*/
+.Construction-button {
+  position: fixed;
+  width: 120px;
+  height: 120px;
+  bottom: 150px; /* change the bottom position to move the button up */
+  right: 20px;
+  background-color: #ffffff;
+  color: #af904c;
+  padding: none;
+  border: 5px solid #af904c;
+  border-radius: 40px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.Construction-button:hover {
+  background-color: #8e433e;
+}
+/*Strat Game Page--------------------------------------------------------------------------*/
+.StartGame_Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.Center_startGame {
+  text-align: center;
+}
+
+.Center_startGame img {
+  width: 400px;
+  height: 400px;
+}
+.StartGame_button {
+  margin-top: 20px;
+  padding: 40px 180px;
+  font-family: "Kanit", sans-serif;
+  font-weight: bold;
+  background-color: #ffc961;
+  color: rgb(0, 0, 0);
+  font-size: 60px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+/*Construction PLan Page--------------------------------------------------------------------------*/
+.ConstructionPlan_Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.Text_ConstructionPLan {
+  font-size: 80px;
+}
+.ConstructionPlanHelp {
+  width: 1000px;
+  height: 300px;
+  background-color: #3e8e41;
+}
+
+.InputConstructionPlan {
+  margin-top: 40px;
+  width: 1200px;
+  height: 300px;
+  border-radius: 10px;
+}
+
+.Back_button_Con {
+  float: left;
+  font-family: "Kanit", sans-serif;
+  font-weight: bold;
+  margin-right: 500px;
+  margin-top: 20px;
+  padding: 20px 40px;
+  background-color: #e67979;
+  color: rgb(0, 0, 0);
+  font-size: 25px;
+  border: 2px solid white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.Go_button_Con {
+  float: right;
+  font-family: "Kanit", sans-serif;
+  font-weight: bold;
+  margin-left: 500px;
+  margin-top: 20px;
+  padding: 20px 50px;
+  background-color: #79e67d;
+  color: rgb(0, 0, 0);
+  font-size: 25px;
+  border: 2px solid white;
+  border-radius: 10px;
+  cursor: pointer;
 }

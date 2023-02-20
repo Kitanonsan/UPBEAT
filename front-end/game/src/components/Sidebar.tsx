@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
+import React from "react";
 import Link from "next/link";
 import {
   MdDashboard,
@@ -21,6 +22,7 @@ const sidebarItem = [
     href: "/",
     icon: BiTimeFive,
     time: 60,
+    text: "Hello",
   },
   {
     name: "Gold",
