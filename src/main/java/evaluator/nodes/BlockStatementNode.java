@@ -9,7 +9,7 @@ public class BlockStatementNode implements Node {
         statements = new ArrayList<>();
     }
 
-    public void add(Node statementNode){
+    public void addStatement(Node statementNode){
         statements.add(statementNode);
     }
     @Override
