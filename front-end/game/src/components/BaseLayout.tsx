@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
-import DoneButton from "./Done";
+import ConstructionButton from "./ConstructionplanButton";
+import DoneButton from "./DoneButton";
 import Sidebar from "./Sidebar";
 import Timer from "./Timer";
 
@@ -14,6 +15,7 @@ export default function BaseLayout({ children }: Props) {
       {children}
       <Timer />
       <DoneButton />
+      <ConstructionButton />
     </div>
   );
 }
