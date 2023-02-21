@@ -28,7 +28,7 @@ public class Parser {
     Player player;
     public Parser(String src) throws SyntaxError {
         this.tkz = new Tokenizer(src);
-        player = new Player();
+        this.player = player;
     }
 
     public Node parsePlan() throws SyntaxError{
@@ -253,7 +253,7 @@ public class Parser {
         String identifier = tkz.peek();
         tkz.consume(Regex.Variable);
 
-        IdentifierNode identifierNode = new IdentifierNode(identifier, player.getValue());
+        IdentifierNode identifierNode = new IdentifierNode(identifier, player.getVariable());
         return identifierNode;
     }
 

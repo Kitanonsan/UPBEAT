@@ -14,4 +14,9 @@ public class AttackCommandNode implements Node{ //shoot
         throw new NotImplementYet();
 //        return 0;
     }
+
+    @Override
+    public void print() {
+
+    }
 }

@@ -14,4 +14,9 @@ public class RelocateNode implements Node{
     public long evaluate() {
         return 0;
     }
+
+    @Override
+    public void print() {
+
+    }
 }

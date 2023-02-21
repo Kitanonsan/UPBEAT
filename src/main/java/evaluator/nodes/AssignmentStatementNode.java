@@ -10,7 +10,13 @@ public class AssignmentStatementNode implements Node {
     }
     @Override
     public long evaluate() {
-        variable.assign(ExprNode.evaluate());
+        variable.assignValue(ExprNode.evaluate());
         return 0;
     }
+
+    @Override
+    public void print() {
+
+    }
+
 }

@@ -14,4 +14,9 @@ public class WhileStatementNode implements Node {
         }
         return 0;
     }
+
+    @Override
+    public void print() {
+
+    }
 }

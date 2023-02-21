@@ -15,4 +15,9 @@ public class RegionCommandNode implements Node{ // invest, collect
         throw new NotImplementYet();
 //        return 0;
     }
+
+    @Override
+    public void print() {
+
+    }
 }
