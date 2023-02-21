@@ -145,8 +145,8 @@ public class Parser {
     }
 
     public Node parseAttack() throws SyntaxError{ //shoot
-        String direction = parseDirection();
         tkz.consume(Regex.Shoot);
+        String direction = parseDirection();
 
         Node attackCommandNode = new AttackCommandNode(direction, player);
         return attackCommandNode;
