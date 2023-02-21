@@ -117,8 +117,7 @@ public class Parser {
         return doneCommandNode;
     }
     public Node parseMove() throws SyntaxError{
-
-        tkz.peek(Regex.Move);
+        tkz.consume(Regex.Move);
         String direction = parseDirection();
 
         Node moveCommandNode =new MoveCommandNode(direction, player);
