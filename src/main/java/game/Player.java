@@ -2,13 +2,18 @@ package game;
 import java.util.Set;
 
 public class Player {
+    public String name;
     public int budget;
     public int[] position;
     public int[] city_position;
     public Set<Region> possessRegion;
     public boolean isDone;
     public boolean isLoss;
-    public Player(){}
+    public Territory map;
+    public Player(String name,Territory map){
+        this.name = name;
+        this.map = map;
+    }
 
     public void move(String direction){
         if(direction.equals("up")){
