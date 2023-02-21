@@ -1,34 +1,92 @@
 package game;
-
 import java.util.Set;
 
 public class Player {
+    public String name;
     public int budget;
-    public int[] position;
+    public int[] position; //row: postion[0] , column: postion[1]
     public int[] city_position;
     public Set<Region> possessRegion;
-    public boolean isDone;
-    public boolean isLoss;
-    public Player(){}
+    public boolean isDone = false;
+    public boolean isLoss = false;
+    public Territory map;
+    public Player(String name,Territory map){
+        position = new int[2];
+        position[0] = 0;
+        position[1] = 0;
+        this.name = name;
+        this.map = map;
+    }
 
     public void move(String direction){
         if(direction.equals("up")){
-            System.out.println("move up");
+            if(position[0]-1 >=0){
+                position[0]-=1;
+            }
+
         } else if (direction.equals("down")){
-            System.out.println("move down");
-        }
-        else if(direction.equals("upleft")){
-            System.out.println("move upleft");
+            if(position[0]+1 < map.m){
+                position[0]+=1;
+            }
         }
         else if(direction.equals("upright")){
-            System.out.println("upright");
+            if(position[0]-1 >=0 && position[1]+1 < map.n){
+                position[0]-=1;
+                position[1]+=1;
+            }
+        }
+        else if(direction.equals("upleft")){
+            if(position[0]-1 >=0 && position[1]-1 >= 0){
+                position[0]-=1;
+                position[1]-=1;
+            }
         }
         else if(direction.equals("downleft")){
-            System.out.println("downleft");
-
+            if(position[0]+1 < map.m && position[1]-1 >= 0){
+                position[0]+=1;
+                position[1]-=1;
+            }
         } else if (direction.equals("downright")){
-            System.out.println("downright");
+            if(position[0]+1 < map.m && position[1]+1 < map.n){
+                position[0]+=1;
+                position[1]+=1;
+            }
         }
     }
 
+    public void nearby(String direction){
+
+    }
+
+    public void relocate(int x , int y){
+
+    }
+
+    public void invest(int budget){
+
+    }
+
+    public void randomMove(){
+
+    }
+
+    public void shoot(String direction){
+
+    }
+
+    public void collect(){
+
+    }
+
+    public void opponent(String direction){
+
+    }
+
+    public void done(){
+        return;
+    }
+
+     public void getPosition(){
+        System.out.println("row: " + position[0] + " column: " + position[1]);
+    }
 }
