@@ -1,10 +1,14 @@
-import BaseLayout from "@/components/BaseLayout";
-import Timer from "@/components/Timer";
+import Link from "next/link";
 
-export default function Home() {
+export default function Start() {
   return (
-    <BaseLayout>
-      <div>Center City Page</div>
-    </BaseLayout>
+    <div className="StartGame_Container">
+      <div className="Center_startGame">
+        <img src="/U.png" />
+      </div>
+      <Link href="ConstructionPlanPage">
+        <button className="StartGame_button">Start Game</button>
+      </Link>
+    </div>
   );
 }

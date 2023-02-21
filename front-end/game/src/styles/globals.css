@@ -206,8 +206,15 @@ body {
 .InputConstructionPlan {
   margin-top: 40px;
   width: 1200px;
-  height: 300px;
+  height: 200px;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  font-family: "Kanit", sans-serif;
+  font-size: 25px;
 }
 
 .Back_button_Con {
@@ -233,6 +240,20 @@ body {
   margin-top: 20px;
   padding: 20px 50px;
   background-color: #79e67d;
+  color: rgb(0, 0, 0);
+  font-size: 25px;
+  border: 2px solid white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.Done_button_Con {
+  float: right;
+  font-family: "Kanit", sans-serif;
+  font-weight: bold;
+  margin-left: 500px;
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #79e6df;
   color: rgb(0, 0, 0);
   font-size: 25px;
   border: 2px solid white;
