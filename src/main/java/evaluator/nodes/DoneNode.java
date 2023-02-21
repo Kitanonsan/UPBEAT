@@ -9,7 +9,7 @@ public class DoneNode implements Node{
     }
     @Override
     public long evaluate() {
-//        player.done();
+        player.done();
         return 0;
     }
 }
