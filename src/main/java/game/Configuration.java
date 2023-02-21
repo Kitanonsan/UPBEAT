@@ -13,5 +13,6 @@ public class Configuration{
     public int max_dep;
     public int interest_pct;
 
-    public Configuration(){}
+    public Configuration(){
+    }
 }

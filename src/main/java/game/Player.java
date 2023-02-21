@@ -1,5 +1,4 @@
 package game;
-
 import java.util.Set;
 
 public class Player {
@@ -25,10 +24,36 @@ public class Player {
         }
         else if(direction.equals("downleft")){
             System.out.println("downleft");
-
         } else if (direction.equals("downright")){
             System.out.println("downright");
         }
     }
 
+    public void nearby(String direction){
+
+    }
+
+    public void relocate(int x , int y){
+
+    }
+
+    public void invest(int budget){
+
+    }
+
+    public void randomMove(){
+
+    }
+
+    public void shoot(String direction){
+
+    }
+
+    public void collect(){
+
+    }
+
+    public void opponent(String direction){
+
+    }
 }
