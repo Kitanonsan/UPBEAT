@@ -44,17 +44,5 @@ public class Configuration{
             return;
         }
 
-        System.out.println("m = " + m);
-        System.out.println("n = " + n);
-        System.out.println("init_plan_min = " + init_plan_min);
-        System.out.println("init_plan_sec = " + init_plan_sec);
-        System.out.println("init_budget = " + init_budget);
-        System.out.println("init_center_dep = " + init_center_dep);
-        System.out.println("plan_rev_min = " + plan_rev_min);
-        System.out.println("plan_rev_sec = " + plan_rev_sec);
-        System.out.println("rev_cost = " + rev_cost);
-        System.out.println("max_dep = " + max_dep);
-        System.out.println("interest_pct = " + interest_pct);
-
     }
 }
