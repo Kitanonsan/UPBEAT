@@ -23,9 +23,11 @@ public class Regex {
     public static String Done = "done";
     public static String Relocate = "relocate";
     public static String Move = "move";
+    public static String Shoot = "shoot";
+
+    public static String RegionCommand = "invest|collect";
     public static String Invest = "invest";
     public static String Collect = "collect";
-    public static String Shoot = "shoot";
 
     public static String InfoExpr = "opponent|nearby";
     public static String Opponent = "opponent";
@@ -59,9 +61,11 @@ public class Regex {
     public static Pattern p_ActionCommand = Pattern.compile(ActionCommand);
     public static Pattern p_Done = Pattern.compile(Done);
     public static Pattern p_Move = Pattern.compile(Move);
+    public static Pattern p_Shoot = Pattern.compile(Shoot);
+
+    public static Pattern p_RegionCommand = Pattern.compile(RegionCommand);
     public static Pattern p_Invest = Pattern.compile(Invest);
     public static Pattern p_Collect = Pattern.compile(Collect);
-    public static Pattern p_Shoot = Pattern.compile(Shoot);
 
     public static Pattern p_InfoExpr = Pattern.compile(InfoExpr);
     public static Pattern p_Opponent = Pattern.compile(Opponent);
