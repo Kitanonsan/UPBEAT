@@ -33,7 +33,7 @@ public class Parser {
 
     public Node parsePlan() throws SyntaxError{
         BlockStatementNode blockStatement = new BlockStatementNode();
-        while (tkz!=null){
+        while (tkz.hasNextToken()){
             String v = tkz.peek();
             if(v.matches(Regex.Number) || v.matches(Regex.Operator) || v.matches(Regex.Direction) || v.matches(Regex.InfoExpr)){
                 tkz.consume();
