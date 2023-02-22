@@ -101,9 +101,9 @@ public class Parser {
 
     public Node parseWhile() throws SyntaxError{
         tkz.consume(Regex.While);
-        tkz.consume("(");
+        tkz.consume("[(]");
         Node Expr = parseExpression();
-        tkz.consume(")");
+        tkz.consume("[)]");
         Node statement = parseExpression();
 
         Node whileStatement = new WhileStatementNode(Expr, statement);
