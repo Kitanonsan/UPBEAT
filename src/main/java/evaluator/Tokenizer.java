@@ -11,13 +11,11 @@ public class Tokenizer {
     private String next;
     private int pos;
 
-    private static Pattern p = Pattern.compile("([+*/%^-])|([0-9]+)|(=)|([({})])|(collect|done|down|downleft|downright|up|upleft|upright|invest|opponent|nearby|move|relocate|shoot|if|else|then|while)|([a-zA-Z]+[a-zA-Z0-9]*)");
-
 
     private Matcher matcher;
     public Tokenizer (String src) throws SyntaxError{
         this.src = src;
-        matcher = p.matcher(src);
+        matcher = Regex.p_Regex.matcher(src);
         pos = 0;
         computeNext();
     }
@@ -54,10 +52,10 @@ public class Tokenizer {
             return false;
         return peek().matches(regex);
     }
-    public void consume(String regex ) throws SyntaxError {
+    public void consume(String regex) throws SyntaxError {
         if(peek().matches(regex))
             consume();
         else
-            throw new SyntaxError(regex + " expected");
+            throw new SyntaxError(regex + " dose not match");
     }
 }
