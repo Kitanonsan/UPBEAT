@@ -154,7 +154,7 @@ public class Parser {
     //    Expression -> Expression + Term | Expression - Term | Term
     public Node parseExpression() throws SyntaxError, EvalError {
         Node expression = parseTerm();
-        while (tkz.peek("+") || tkz.peek("-")){
+        while (tkz.peek("\\+") || tkz.peek("\\-")){
             String op = tkz.consume();
             if (op.equals("+")){
                 expression = new BinaryArithExprNode(expression, "+" ,parseTerm());
@@ -169,7 +169,7 @@ public class Parser {
     //Term -> Term * Factor | Term / Factor | Term % Factor | Factor
     public Node parseTerm() throws SyntaxError, EvalError{
         Node term = parseFactor();
-        while (tkz.equals("*") || tkz.equals("/") || tkz.equals("%")){
+        while (tkz.peek("\\*") || tkz.peek("/") || tkz.peek("%")){
             String op = tkz.consume();
             if(op.equals("*")){
                 term = new BinaryArithExprNode(term, "*", parseFactor());
