@@ -207,7 +207,7 @@ public class Parser {
 //    Power -> <number> | <identifier> | ( Expression ) | InfoExpression
     public Node parsePower() throws SyntaxError{
         if (tkz.peek((Regex.Number))){ // number
-            Node numberNode = new NumberNode(Long.parseLong(tkz.consume()));
+            Node numberNode = new NumberNode(Long.parseLong(tkz.peek()));
             tkz.consume();
             return numberNode;
         }else if (tkz.peek(Regex.Variable)){ // identifier
