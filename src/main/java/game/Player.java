@@ -1,9 +1,11 @@
 package game;
+import java.util.Map;
 import java.util.Set;
 
 public class Player {
     public String name;
     public int budget;
+    protected Map<String, Long> variable;
     public int[] position; //row: postion[0] , column: postion[1]
     public int[] city_position;
     public Set<Region> possessRegion;
@@ -84,6 +86,10 @@ public class Player {
 
     public void done(){
         return;
+    }
+
+    public Map<String, Long> getVariable(){
+        return variable;
     }
 
      public void getPosition(){

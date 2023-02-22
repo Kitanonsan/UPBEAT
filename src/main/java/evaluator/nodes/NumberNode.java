@@ -10,4 +10,9 @@ public class NumberNode implements Node{
     public long evaluate() {
         return number;
     }
+
+    @Override
+    public void print() {
+
+    }
 }

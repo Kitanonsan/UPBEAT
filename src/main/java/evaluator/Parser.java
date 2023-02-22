@@ -28,7 +28,7 @@ public class Parser {
     Player player;
     public Parser(String src) throws SyntaxError {
         this.tkz = new Tokenizer(src);
-        player = new Player();
+        this.player = player;
     }
 
     public Node parsePlan() throws SyntaxError{
@@ -117,8 +117,7 @@ public class Parser {
         return doneCommandNode;
     }
     public Node parseMove() throws SyntaxError{
-
-        tkz.peek(Regex.Move);
+        tkz.consume(Regex.Move);
         String direction = parseDirection();
 
         Node moveCommandNode =new MoveCommandNode(direction, player);
@@ -146,8 +145,8 @@ public class Parser {
     }
 
     public Node parseAttack() throws SyntaxError{ //shoot
-        String direction = parseDirection();
         tkz.consume(Regex.Shoot);
+        String direction = parseDirection();
 
         Node attackCommandNode = new AttackCommandNode(direction, player);
         return attackCommandNode;
@@ -254,7 +253,7 @@ public class Parser {
         String identifier = tkz.peek();
         tkz.consume(Regex.Variable);
 
-        IdentifierNode identifierNode = new IdentifierNode(identifier, player.getValue());
+        IdentifierNode identifierNode = new IdentifierNode(identifier, player.getVariable());
         return identifierNode;
     }
 

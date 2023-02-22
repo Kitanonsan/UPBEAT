@@ -14,4 +14,9 @@ public class MoveCommandNode implements Node {
         player.move(direction);
         return 0;
     }
+
+    @Override
+    public void print() {
+
+    }
 }

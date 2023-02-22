@@ -18,4 +18,9 @@ public class IfStatementNode implements Node {
         }
         return 0;
     }
+
+    @Override
+    public void print() {
+
+    }
 }

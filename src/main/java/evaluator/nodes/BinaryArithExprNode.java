@@ -31,4 +31,9 @@ public class BinaryArithExprNode implements Node{
         if (op.equals("^")) return (long) Math.pow(lv,rv);
         throw new ArithmeticException("unknown op : " + op);
     }
+
+    @Override
+    public void print() {
+
+    }
 }

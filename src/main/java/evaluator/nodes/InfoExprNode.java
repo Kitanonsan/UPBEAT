@@ -17,4 +17,9 @@ public class InfoExprNode implements Node{ // opponent | nearby
 //        player.checkRegion(info, direction, player);
         return 0;
     }
+
+    @Override
+    public void print() {
+
+    }
 }
