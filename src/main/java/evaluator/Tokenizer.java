@@ -9,14 +9,11 @@ import static java.lang.Character.isLetter;
 public class Tokenizer {
     private String src;
     private String next;
-    private int pos;
-
 
     private Matcher matcher;
     public Tokenizer (String src) throws SyntaxError{
         this.src = src;
         matcher = Regex.p_Regex.matcher(src);
-        pos = 0;
         computeNext();
     }
 
@@ -26,7 +23,7 @@ public class Tokenizer {
 
     public String peek(){
         if(!hasNextToken()){
-            throw  new NoSuchElementException("No more tokens");
+            throw new NoSuchElementException("No more tokens");
         }
         return next;
     }
