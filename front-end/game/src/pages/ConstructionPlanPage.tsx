@@ -4,6 +4,7 @@ import Link from "next/link";
 
 export default function Start() {
   const [inputValue, setInputValue] = useState("");
+  const [constructionPlan, setConstructionPlan] = useState("");
 
   const handleClick = async () => {
     try {

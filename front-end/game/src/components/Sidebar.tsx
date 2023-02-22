@@ -18,13 +18,6 @@ import { SidebarContext } from "./SidebarContext";
 
 const sidebarItem = [
   {
-    name: "Time",
-    href: "/",
-    icon: BiTimeFive,
-    time: 60,
-    text: "Hello",
-  },
-  {
     name: "Gold",
     href: "/",
     icon: BiCoinStack,
@@ -42,44 +35,16 @@ const sidebarItem = [
     icon: MdLocationPin,
   },
   {
-    name: "Opponent",
-    href: "/Opponent",
-    icon: MdOutlinePersonSearch,
-  },
-  {
-    name: "Shoot",
-    href: "/Shoot",
-    icon: GiAntiAircraftGun,
-  },
-  {
-    name: "Info",
-    href: "/Info",
-    icon: GrContactInfo,
-  },
-  {
-    name: "Nearby",
+    name: "Time",
     href: "/",
-    icon: RiFindReplaceLine,
+    icon: BiTimeFive,
+    time: 60,
   },
   {
-    name: "Collect",
-    href: "/",
-    icon: GiReceiveMoney,
-  },
-  {
-    name: "Invest",
-    href: "/",
-    icon: GiPayMoney,
-  },
-  {
-    name: "Move",
-    href: "/",
-    icon: BsArrowsMove,
-  },
-  {
-    name: "Relocate",
-    href: "/",
-    icon: MdShareLocation,
+    name: "Logout",
+    href: "/ConstructionPlanPage",
+    icon: MdOutlineKeyboardArrowLeft,
+    className: "logout-button",
   },
 ];
 
