@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 export default function ConstructionButton() {
   const [isClicked, setIsClicked] = useState(false);
@@ -15,10 +16,17 @@ export default function ConstructionButton() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Do something with the constructionPlan value, e.g. submit it to a server
-    console.log("Construction plan submitted:", constructionPlan);
-    setIsClicked(false);
-    setConstructionPlan("");
+    // Send the construction plan to the server to write it to a file
+    axios
+      .post("/api/write-construction-plan", { inputValue: constructionPlan })
+      .then((response) => {
+        console.log(response.data);
+        setIsClicked(false);
+        setConstructionPlan("");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
