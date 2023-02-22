@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class Regex {
     public static String Regex = "([+*/%^\\-])|([0-9]+)|(=)\\b|([{()}])|(collect|done|down|downleft|downright|up|upleft|upright|invest|opponent|nearby|move|relocate|shoot|if|else|then|while)\\b|([a-zA-Z]+[a-zA-Z0-9]*)|([^ \\r\\n]+)";
 
-    public static String Operator = "[+*/%^-]";
+    public static String Operator = "[+*/%^\\-]";
     public static String Number = "[0-9]+";
     public static String Assign = "=";
     public static String Parenthesis = "[{()}]";
@@ -31,7 +31,7 @@ public class Regex {
 
     public static String InfoExpr = "opponent|nearby";
     public static String Opponent = "opponent";
-    public static String  Nearby = "nearby";
+    public static String Nearby = "nearby";
 
     public static String Direction = "down|downleft|downright|up|upleft|upright";
     public static String Down = "down";
