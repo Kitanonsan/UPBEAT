@@ -1,5 +1,5 @@
 import BaseLayout from "@/components/BaseLayout";
-import Timer from "@/components/Timer";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
