@@ -5,9 +5,12 @@ import game.Player;
 public class AttackCommandNode implements Node{ //shoot
     protected String direction;
     protected Player player;
-    public AttackCommandNode(String direction, Player player){
+    Node expression;
+    public AttackCommandNode(String direction, Player player, Node exp){
         this.direction = direction;
         this.player = player;
+        this.expression = exp;
+
     }
     @Override
     public long evaluate() { //Todo implement evaluate Shoot command
