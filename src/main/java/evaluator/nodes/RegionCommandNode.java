@@ -5,13 +5,15 @@ import game.Player;
 public class RegionCommandNode implements Node{ // invest, collect
     protected String financeMode;
     protected Player player;
+    protected Node Expression;
 
-    public RegionCommandNode(String financeMode, Player player){
+    public RegionCommandNode(String financeMode,Node Expression, Player player){
         this.financeMode = financeMode;
+        this.Expression = Expression;
         this.player = player;
     }
     @Override
-    public long evaluate() { //todo implement regioncommand
+    public long evaluate() { //todo implement RegionCommand
         throw new NotImplementYet();
 //        return 0;
     }

@@ -17,6 +17,6 @@ public class MoveCommandNode implements Node {
 
     @Override
     public void print() {
-
+        System.out.println("move :" + direction);
     }
 }

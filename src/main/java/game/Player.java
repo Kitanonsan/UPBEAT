@@ -12,7 +12,7 @@ public class Player {
     public boolean isDone = false;
     public boolean isLoss = false;
     public Territory map;
-    public Player(String name,Territory map){
+    public Player(String name){
         position = new int[2];
         position[0] = 0;
         position[1] = 0;

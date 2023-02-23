@@ -1,9 +1,9 @@
 package evaluator.nodes;
 
 public class NumberNode implements Node{
-    protected Long number;
+    protected int number;
 
-    public NumberNode(Long number){
+    public NumberNode(int number){
         this.number = number;
     }
     @Override

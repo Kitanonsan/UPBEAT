@@ -16,7 +16,8 @@ public class AssignmentStatementNode implements Node {
 
     @Override
     public void print() {
-
+        System.out.println("Assign :" + variable);
     }
+
 
 }

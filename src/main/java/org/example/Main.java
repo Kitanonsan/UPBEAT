@@ -1,10 +1,14 @@
 package org.example;
 
+import evaluator.Regex;
+import evaluator.SyntaxError;
+import evaluator.Tokenizer;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+    public static void main(String[] args) throws SyntaxError {
+
     }
 }
