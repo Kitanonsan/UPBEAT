@@ -296,3 +296,9 @@ body {
   border: 5px solid rgb(35, 224, 60);
   padding: 10px 20px;
 }
+
+/*Hex Pattern--------------------------------------------------------------------------*/
+.ComSize {
+  width: 500px;
+  height: 500px;
+}
