@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function Hexgrid() {
   const rows = 16;
-  const columns = 10;
+  const columns = 16;
 
   const matrix = new Array(rows);
   for (let i = 0; i < rows; i++) {
@@ -36,6 +36,15 @@ export default function Hexgrid() {
       imageIndex++;
     }
   }
+  matrix[6][4] = (
+    <Image
+      src={"/images/CT.png"}
+      alt=""
+      width={61.5}
+      height={53}
+      onError={() => console.log("Error loading CenterCity")}
+    />
+  );
 
   return (
     <div>
