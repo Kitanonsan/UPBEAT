@@ -109,7 +109,7 @@ body {
 .countdown {
   position: fixed;
   top: 10px;
-  left: 50%;
+  right: 5%;
   transform: translateX(-50%);
   background-color: white;
   border: 1px solid black;
@@ -295,4 +295,26 @@ body {
   border-radius: 10px;
   border: 5px solid rgb(35, 224, 60);
   padding: 10px 20px;
+}
+
+/*Hex Pattern--------------------------------------------------------------------------*/
+img {
+  /* display: block; */
+  margin: 0 auto;
+  padding: 0 auto;
+}
+
+/*Frame--------------------------------------------------------------------------*/
+.frame {
+  width: 1200px;
+  height: 1800px;
+  border: 1px solid black;
+}
+
+.draggable {
+  position: absolute;
+  cursor: move;
+  background-color: blue;
+  color: white;
+  padding: 8px;
 }
