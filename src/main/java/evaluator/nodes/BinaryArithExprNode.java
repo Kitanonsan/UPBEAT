@@ -32,8 +32,15 @@ public class BinaryArithExprNode implements Node{
         throw new ArithmeticException("unknown op : " + op);
     }
 
-    @Override
-    public void print() {
 
+    @Override
+    public void print(StringBuilder s) {
+        s.append("(");
+        left.print(s);
+        s.append(" ");
+        s.append(op);
+        s.append(" ");
+        right.print(s);
+        s.append(")");
     }
 }
