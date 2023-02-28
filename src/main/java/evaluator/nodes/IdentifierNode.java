@@ -3,7 +3,7 @@ package evaluator.nodes;
 import java.util.Map;
 
 public class IdentifierNode implements Node{
-    protected Map<String, Long> variables = null;
+    protected Map<String, Long> variables;
     protected String identifier;
 
     public IdentifierNode(String identifier, Map<String, Long> variables){
@@ -19,12 +19,17 @@ public class IdentifierNode implements Node{
     }
 
     @Override
-    public void print() {
-
+    public void print(StringBuilder s) {
+        s.append(identifier);
     }
-
 
     public void assignValue(Long value){
         variables.put(identifier, value);
+    }
+
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        print(builder);
+        return builder.toString();
     }
 }

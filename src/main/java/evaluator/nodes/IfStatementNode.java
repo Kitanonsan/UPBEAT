@@ -20,7 +20,20 @@ public class IfStatementNode implements Node {
     }
 
     @Override
-    public void print() {
+    public void print(StringBuilder s) {
+        s.append("if ");
+        ExprNode.print(s);
+        s.append(" then ");
+        trueStatement.print(s);
+        s.append(" else ");
+        falseStatement.print(s);
 
     }
+
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        print(builder);
+        return builder.toString();
+    }
+
 }

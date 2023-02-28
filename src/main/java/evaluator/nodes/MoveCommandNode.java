@@ -16,7 +16,14 @@ public class MoveCommandNode implements Node {
     }
 
     @Override
-    public void print() {
-        System.out.println("move :" + direction);
+    public void print(StringBuilder s) {
+        s.append("move ");
+        s.append(direction);
+    }
+
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        print(builder);
+        return builder.toString();
     }
 }

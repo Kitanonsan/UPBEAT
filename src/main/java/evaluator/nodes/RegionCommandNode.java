@@ -19,7 +19,15 @@ public class RegionCommandNode implements Node{ // invest, collect
     }
 
     @Override
-    public void print() {
-
+    public void print(StringBuilder s) {
+        s.append(financeMode);
+        s.append(" " + Expression.evaluate());
     }
+
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        print(builder);
+        return builder.toString();
+    }
+
 }

@@ -13,13 +13,21 @@ public class InfoExprNode implements Node{ // opponent | nearby
         this.player = player;
     }
     @Override
-    public long evaluate() {
+    public long evaluate() { //Todo implement info expression node
 //        player.checkRegion(info, direction, player);
         return 0;
     }
 
     @Override
-    public void print() {
-
+    public void print(StringBuilder s) {
+        s.append(info);
+        s.append(" "+ direction);
     }
+
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        print(builder);
+        return builder.toString();
+    }
+
 }

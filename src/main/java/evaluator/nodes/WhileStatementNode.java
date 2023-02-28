@@ -16,7 +16,15 @@ public class WhileStatementNode implements Node {
     }
 
     @Override
-    public void print() {
-
+    public void print(StringBuilder s) {
+        s.append("while (");
+        ExprNode.print(s);
+        s.append(") ");
+        StatementNode.print(s);
+    }
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        print(builder);
+        return builder.toString();
     }
 }

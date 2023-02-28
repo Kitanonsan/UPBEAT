@@ -14,8 +14,15 @@ public class DoneNode implements Node{
     }
 
     @Override
-    public void print() {
-
+    public void print(StringBuilder s) {
+        s.append("done");
     }
+
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        print(builder);
+        return builder.toString();
+    }
+
 
 }

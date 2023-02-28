@@ -15,9 +15,15 @@ public class AssignmentStatementNode implements Node {
     }
 
     @Override
-    public void print() {
-        System.out.println("Assign :" + variable);
+    public void print(StringBuilder s) {
+        s.append(variable);
+        s.append("=");
+        ExprNode.print(new StringBuilder("" + ExprNode.evaluate()));
     }
 
-
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        print(builder);
+        return builder.toString();
+    }
 }
