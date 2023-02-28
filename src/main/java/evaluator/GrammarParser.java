@@ -39,7 +39,7 @@ public class GrammarParser implements Parser{
         return v;
     }
 
-    private Node parsePlan() throws SyntaxError{
+    public Node parsePlan() throws SyntaxError{
         BlockStatementNode nodes = new BlockStatementNode();
         nodes.addStatement(parseStatement());
         while (tkz.hasNextToken()) {
@@ -48,7 +48,7 @@ public class GrammarParser implements Parser{
         return nodes;
     }
 
-    private Node parseStatement() throws SyntaxError{
+    public Node parseStatement() throws SyntaxError{
         if (tkz.peek(Regex.If)){
             return parseIf();
         }else if (tkz.peek(Regex.While)){
@@ -62,7 +62,7 @@ public class GrammarParser implements Parser{
         }
     }
 
-    private Node parseIf() throws SyntaxError{
+    public Node parseIf() throws SyntaxError{
         tkz.consume(Regex.If);
         tkz.consume("[(]");
         Node Expr = parseExpression();
@@ -79,7 +79,7 @@ public class GrammarParser implements Parser{
         return ifStatementNode;
     }
 
-    private Node parseWhile() throws SyntaxError{
+    public Node parseWhile() throws SyntaxError{
         tkz.consume(Regex.While);
         tkz.consume("[(]");
         Node Expr = parseExpression();
@@ -90,8 +90,8 @@ public class GrammarParser implements Parser{
         return whileStatement;
     }
 
-    private Node parseBlock() throws SyntaxError{
-        System.out.println(tkz.peek());
+    public Node parseBlock() throws SyntaxError{
+//        System.out.println(tkz.peek());
         BlockStatementNode blockStatement = new BlockStatementNode();
         tkz.consume("[{]");
         while(!tkz.peek("[}]"))
@@ -100,7 +100,7 @@ public class GrammarParser implements Parser{
         return blockStatement;
     }
 
-    private Node parseCommand() throws SyntaxError {
+    public Node parseCommand() throws SyntaxError {
         if (tkz.peek(Regex.ActionCommand)){
             return parseActionCommand();
         }else if (tkz.peek(Regex.Variable)){
@@ -109,8 +109,8 @@ public class GrammarParser implements Parser{
             throw new SyntaxError("Can not parse Command");
         }
     }
-
-    private Node parseActionCommand()throws SyntaxError { //ActionCommand = "done|relocate|move|invest|collect|shoot";
+    //ActionCommand = "done|relocate|move|invest|collect|shoot";
+    public Node parseActionCommand()throws SyntaxError {
         if (tkz.peek(Regex.Done)){
             return parseDone();
         }else if (tkz.peek(Regex.Relocate)){
@@ -127,7 +127,7 @@ public class GrammarParser implements Parser{
     }
 
 
-    private Node parseAssignment() throws SyntaxError{
+    public Node parseAssignment() throws SyntaxError{
        IdentifierNode identifier = parseIdentifier();
        tkz.consume(Regex.Assign); // =
        Node Expr = parseExpression();
@@ -137,13 +137,13 @@ public class GrammarParser implements Parser{
     }
 
 //        ActionCommand -> done | relocate | MoveCommand | RegionCommand | AttackCommand
-    private Node parseDone() throws SyntaxError{
+    public Node parseDone() throws SyntaxError{
         tkz.consume(Regex.Done);
 
         Node doneCommandNode = new DoneNode(player);
         return doneCommandNode;
     }
-    private Node parseMove() throws SyntaxError{
+    public Node parseMove() throws SyntaxError{
         tkz.consume(Regex.Move);
         String direction = parseDirection();
 
@@ -151,14 +151,13 @@ public class GrammarParser implements Parser{
         return moveCommandNode;
     }
 
-    private Node parseRelocate() throws SyntaxError{
-        String direction = parseDirection();
-        tkz.peek(Regex.Relocate);
+    public Node parseRelocate() throws SyntaxError{
+        tkz.consume(Regex.Relocate);
 
-        Node relocateCommandNode = new RelocateNode(direction, player);
+        Node relocateCommandNode = new RelocateNode(player);
         return relocateCommandNode;
     }
-    private Node parseRegion() throws SyntaxError{ //invest, collect
+    public Node parseRegion() throws SyntaxError{ //invest, collect
         String financeMode = tkz.consume();
         if (financeMode.matches(Regex.Invest)){
             Node amount = parseExpression();
@@ -173,7 +172,7 @@ public class GrammarParser implements Parser{
         }
     }
 
-    private Node parseAttack() throws SyntaxError{ //shoot
+    public Node parseAttack() throws SyntaxError{ //shoot
         tkz.consume(Regex.Shoot);
         String direction = parseDirection();
         Node expression = parseExpression();
@@ -182,7 +181,7 @@ public class GrammarParser implements Parser{
         return attackCommandNode;
     }
     //    Expression -> Expression + Term | Expression - Term | Term
-    private Node parseExpression() throws SyntaxError, EvalError {
+    public Node parseExpression() throws SyntaxError, EvalError {
         Node expression = parseTerm();
         while (tkz.peek("\\+") || tkz.peek("\\-")){
             String op = tkz.consume();
@@ -197,7 +196,7 @@ public class GrammarParser implements Parser{
         return expression;
     }
     //Term -> Term * Factor | Term / Factor | Term % Factor | Factor
-    private Node parseTerm() throws SyntaxError, EvalError{
+    public Node parseTerm() throws SyntaxError, EvalError{
         Node term = parseFactor();
         while (tkz.peek("\\*") || tkz.peek("/") || tkz.peek("%")){
             String op = tkz.consume();
@@ -224,7 +223,7 @@ public class GrammarParser implements Parser{
         return  term;
     }
 //    Factor -> Power ^ Factor | Power
-    private Node parseFactor() throws SyntaxError, EvalError{
+    public Node parseFactor() throws SyntaxError, EvalError{
         Node power = parsePower();
         if (tkz.peek("\\^")){
             tkz.consume();
@@ -234,8 +233,8 @@ public class GrammarParser implements Parser{
         return power;
     }
 //    Power -> <number> | <identifier> | ( Expression ) | InfoExpression
-    private Node parsePower() throws SyntaxError{
-        System.out.println(tkz.peek());
+    public Node parsePower() throws SyntaxError{
+//        System.out.println(tkz.peek());
         if (tkz.peek((Regex.Number))){ // number
            return new NumberNode(Integer.parseInt(tkz.consume()));
         }else if(tkz.peek(Regex.InfoExpr)){ //info
@@ -257,7 +256,7 @@ public class GrammarParser implements Parser{
         }
     }
     //    InfoExpression -> opponent | nearby Direction
-    private Node parseInfoExpression() throws SyntaxError{
+    public Node parseInfoExpression() throws SyntaxError{
         String info = tkz.consume();
         if (info.matches(Regex.Opponent)){
             Node infoNode = new InfoExprNode(info, null, player); // TODO: fix that
@@ -271,20 +270,18 @@ public class GrammarParser implements Parser{
         }
     }
 
-    private String parseDirection() throws SyntaxError{
+    public String parseDirection() throws SyntaxError{
         String direction = tkz.peek();
         tkz.consume(Regex.Direction); //"down|downleft|downright|up|upleft|upright");
 
         return direction;
     }
-    private IdentifierNode parseIdentifier() throws SyntaxError {
+    public IdentifierNode parseIdentifier() throws SyntaxError {
         String identifier = tkz.peek();
         tkz.consume(Regex.Variable);
 
         IdentifierNode identifierNode = new IdentifierNode(identifier, player.getVariable());
         return identifierNode;
     }
-
-
 
 }
