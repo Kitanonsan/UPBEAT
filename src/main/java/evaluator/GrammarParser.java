@@ -24,7 +24,7 @@ public class GrammarParser implements Parser{
 //    Power -> <number> | <identifier> | ( Expression ) | InfoExpression
 //    InfoExpression -> opponent | nearby Direction
 
-    protected Tokenizer tkz;
+    protected final Tokenizer tkz;
     Player player;
     public GrammarParser(String src) throws SyntaxError {
         this.tkz = new Tokenizer(src);
