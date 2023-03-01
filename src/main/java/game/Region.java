@@ -66,8 +66,6 @@ public class Region {
             else
                 this.deposit = this.deposit - amount;
         }
-        else
-            return;
     }
 
     public void showInfo(){
@@ -87,4 +85,7 @@ public class Region {
         return this.owner;
     }
 
+    public boolean isCenterCity() {
+        return this.isCenterCity;
+    }
 }
