@@ -34,15 +34,17 @@ export default function ConstructionButton() {
       {isClicked ? (
         <form onSubmit={handleSubmit} className="form">
           <label className="label">
-            <h3>Enter Construction Plan : </h3>
-            <input
-              type="text"
-              value={constructionPlan}
-              onChange={handleInputChange}
-              className="input"
-            />
+            <div>
+              <h3>Enter Construction Plan : </h3>
+              <input
+                type="text"
+                value={constructionPlan}
+                onChange={handleInputChange}
+                className="input"
+              />
+            </div>
           </label>
-          <button type="submit" className="button">
+          <button type="submit" className="submit-button">
             Submit
           </button>
         </form>
