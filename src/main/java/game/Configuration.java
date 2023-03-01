@@ -17,7 +17,7 @@ public class Configuration{
     public int interest_pct;
     public int start_deposit;
 
-    private static Configuration configuration;
+    private static Configuration instance;
 
     public Configuration(){
         Properties props = new Properties();
@@ -29,7 +29,6 @@ public class Configuration{
             System.err.println("Failed to read config file: " + e.getMessage());
             return;
         }
-
         try {
             m = Integer.parseInt(props.getProperty("m"));
             n = Integer.parseInt(props.getProperty("n"));
@@ -47,13 +46,12 @@ public class Configuration{
             System.err.println("Invalid number format: " + e.getMessage());
             return;
         }
-
     }
 
     public static Configuration instance(){
-        if(configuration == null){
-            Configuration configuration = new Configuration();
+        if(instance == null){
+            instance = new Configuration();
         }
-        return configuration;
+        return instance;
     }
 }
