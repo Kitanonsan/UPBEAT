@@ -103,7 +103,11 @@ public class Player {
     }
 
     public void randomMove(){
-
+        String[] direction = {"up" , "down" , "upright", "upleft" , "downleft" ,"downright"};
+        Random rand = new Random();
+        int n = rand.nextInt(direction.length);
+        move(direction[n]);
+        printPosition();
     }
 
     public void shoot(String direction){
@@ -133,9 +137,9 @@ public class Player {
                 if(i == position[0] && j == position[1]){
                     if(territory.region(i,j).getOwner() == this)
                         if(territory.region(i,j).isCenterCity())
-                            System.out.print("[P]  ");
+                            System.out.print("[P] ");
                         else
-                            System.out.print("(P)");
+                            System.out.print("(P) ");
                     else
                         System.out.print(" P  ");
                 }
@@ -153,6 +157,10 @@ public class Player {
             }
             System.out.println();
         }
+    }
+
+    public void printPlayerInfo(){
+        System.out.println("Name : " + this.name + " Budget : " + this.budget);
     }
 
     public void removeRegion(Region r){

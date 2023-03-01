@@ -71,4 +71,13 @@ public class MoveTest {
             player.move("downright");
         }
     }
+
+    @Test
+    void RandomMove(){
+        player.printPosition();
+        for(int i = 0 ; i < 30 ; i++){
+            delay(1000);
+            player.randomMove();
+        }
+    }
 }
