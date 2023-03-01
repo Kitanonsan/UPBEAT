@@ -49,38 +49,44 @@ public class Player {
     public void move(String direction){
         if(direction.equals("up")) {
             if (isOnTerritory(position[0] - 1, position[1])) {
-                System.out.println(this.name + "is moving up.");
+                System.out.println(this.name + " is moving up.");
                 position[0] -= 1;
             }
         }
         if (direction.equals("down")){
             if(isOnTerritory(position[0] +1, position[1])){
-                System.out.println(this.name + "is moving down.");
+                System.out.println(this.name + " is moving down.");
                 position[0] += 1;
             }
         }
         if(direction.equals("upright")){
             if(isOnTerritory(position[0]-1,position[1]+1)){
+                System.out.println(this.name + " is moving upright.");
                 position[0]-=1;
                 position[1]+=1;
             }
         }
-//        else if(direction.equals("upleft")){
-//            if(position[0]-1 >=0 && position[1]-1 >= 0){
-//                position[0]-=1;
-//                position[1]-=1;
-//            }
-//        }
-//        else if(direction.equals("downleft")){
-//            if(position[0]+1 < map.m && position[1]-1 >= 0){
-//                position[0]+=1;
-//                position[1]-=1;
-//            }
-//        } else if (direction.equals("downright")){
-//            if(position[0]+1 < map.m && position[1]+1 < map.n){
-//                position[0]+=1;
-//                position[1]+=1;
-//            }
+        if(direction.equals("upleft")){
+            if(isOnTerritory(position[0]-1,position[1]-1)){
+                System.out.println(this.name + " is moving upleft.");
+                position[0]-=1;
+                position[1]-=1;
+            }
+        }
+        if(direction.equals("downleft")) {
+            if (isOnTerritory(position[0] + 1,position[1] - 1)) {
+                System.out.println(this.name + " is moving downleft.");
+                position[0] += 1;
+                position[1] -= 1;
+            }
+        }
+        if (direction.equals("downright")){
+            if(isOnTerritory(position[0]+1,position[1]+1)){
+                System.out.println(this.name + " is moving downright.");
+                position[0]+=1;
+                position[1]+=1;
+            }
+        }
         this.printPosition();
     }
 
@@ -121,14 +127,28 @@ public class Player {
     }
 
      public void printPosition(){
-        System.out.println(this.name+" at "+"row: " + position[0] + " column: " + position[1]);
+        System.out.println(this.name+" at "+"Row: " + position[0] + " Column: " + position[1]);
         for(int i = 0 ; i < config.m ; i ++){
             for(int j = 0 ; j < config.n; j++){
                 if(i == position[0] && j == position[1]){
-                    System.out.print("P ");
+                    if(territory.region(i,j).getOwner() == this)
+                        if(territory.region(i,j).isCenterCity())
+                            System.out.print("[P]  ");
+                        else
+                            System.out.print("(P)");
+                    else
+                        System.out.print(" P  ");
                 }
                 else{
-                    System.out.print("* ");
+                    if(territory.Regions[i][j].getOwner() == this)
+                        if(territory.region(i,j).isCenterCity())
+                            System.out.print("[C] ");
+                        else{
+                            System.out.print("(+) ");
+                        }
+                    else{
+                        System.out.print(" -  ");
+                    }
                 }
             }
             System.out.println();
