@@ -3,29 +3,46 @@ package game;
 public class Territory {
     int m ;
     int n;
-    public Region[][] Territory;
+    public Region[][] Regions;
+    private Configuration config = Configuration.instance();
 
-    public Territory(int m , int n , double start_deposit , double r){
-        this.m = m;
-        this.n = n;
+    public Territory(){
+        this.m = config.m;
+        this.n = config.n;
         Region[][] Territory = new Region[m][n];
         for(int i = 0 ; i < m ; i++){
             for(int j = 0 ; j < n ; j++){
-                Territory[i][j] = new Region(i,j,start_deposit,r);
+                Territory[i][j] = new Region(i,j,config.start_deposit,config.interest_pct);
             }
         }
-        this.Territory = Territory;
+        this.Regions = Territory;
+    }
+    public Region region(int row, int column){
+        return Regions[row][column];
     }
 
     public void showMapInfo(){
         for (int i = 0 ; i < m; i++) {
+            System.out.println("Row " + i);
             for (int j = 0; j < n; j++) {
-                this.Territory[i][j].showInfo();
-                System.out.print("  ");
-
+                this.Regions[i][j].showInfo();
             }
-            System.out.println("");
+            System.out.println("----------------------------------------");
+        }
+    }
 
+    public void printMap(){
+        System.out.println("Territory");
+        for (int i = 0 ; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if(Regions[i][j].getOwner() != null){
+                    System.out.print("C ");
+                }
+                else{
+                    System.out.print("O ");
+                }
+            }
+            System.out.println();
         }
     }
 }
