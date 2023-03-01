@@ -11,7 +11,6 @@ public class Player {
     public int[] position = new int[2] ; //row: position[0] , column: position[1]
     public int[] city_position = new int[2];
     private Set<Region> possessRegion = new HashSet<>();
-    public boolean isDone = false;
     public boolean isLoss = false;
     private Territory territory ;
     private Configuration config = Configuration.instance();
@@ -41,11 +40,6 @@ public class Player {
         this.budget = config.init_budget;
 
     }
-
-    private boolean isOnTerritory(int row , int column){
-        return (row >= 0) && (column >=0) && (row < territory.m) && (column < territory.n);
-    }
-
     public void move(String direction){
         if(direction.equals("up")) {
             if (isOnTerritory(position[0] - 1, position[1])) {
@@ -89,19 +83,6 @@ public class Player {
         }
         this.printPosition();
     }
-
-    public void nearby(String direction){
-
-    }
-
-    public void relocate(int x , int y){
-
-    }
-
-    public void invest(int budget){
-
-    }
-
     public void randomMove(){
         String[] direction = {"up" , "down" , "upright", "upleft" , "downleft" ,"downright"};
         Random rand = new Random();
@@ -109,28 +90,47 @@ public class Player {
         move(direction[n]);
         printPosition();
     }
-
-    public void shoot(String direction){
+    public void relocate(int x , int y){
 
     }
+    public void invest(int budget){
 
+    }
     public void collect(){
 
     }
+    public void nearby(String direction){
 
+    }
     public void opponent(String direction){
 
     }
+    public void shoot(String direction){
 
+    }
     public void done(){
         return;
     }
 
+    //Check Function
+    public boolean isLoss() {
+        return territory.region(city_position[0],city_position[1]).getDeposit() == 0;
+    }
+    private boolean isOnTerritory(int row , int column){
+        return (row >= 0) && (column >=0) && (row < territory.m) && (column < territory.n);
+    }
+
+    //Parser Function
     public Map<String, Long> getVariable(){
         return variable;
     }
+    //Manage Region Function
+    public void removeRegion(Region r){
+        possessRegion.remove(r);
+    }
 
-     public void printPosition(){
+    //Print Function
+    public void printPosition(){
         System.out.println(this.name+" at "+"Row: " + position[0] + " Column: " + position[1]);
         for(int i = 0 ; i < config.m ; i ++){
             for(int j = 0 ; j < config.n; j++){
@@ -158,21 +158,14 @@ public class Player {
             System.out.println();
         }
     }
-
     public void printPlayerInfo(){
         System.out.println("Name : " + this.name + " Budget : " + this.budget);
     }
 
-    public void removeRegion(Region r){
-        possessRegion.remove(r);
-    }
-
+    //API Function
     public int[] getPosition(){
         int[] copyPosition = this.position;
         return copyPosition;
     }
 
-    public boolean isLoss() {
-        return territory.region(city_position[0],city_position[1]).getDeposit() == 0;
-    }
 }

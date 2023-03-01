@@ -8,10 +8,10 @@ public class Region {
     private Player owner;
     private boolean isCenterCity;
 
-    public Region(int x_position , int y_position, double start_deposit, double r){
+    public Region(int row_position , int column_position, double start_deposit, double r){
         this.position = new int[2];
-        position[0] = x_position;
-        position[1] = y_position;
+        position[0] = row_position;
+        position[1] = column_position;
         this.deposit = start_deposit;
         this.r = r;
         this.owner = null;
@@ -26,9 +26,8 @@ public class Region {
     }
 
     public void updateInterestRate(int base_interest , int turnCount ){
-        this.r = base_interest*(Math.log10(deposit))*Math.log(turnCount);
+        this.r = base_interest*(Math.log10(deposit*Math.log(turnCount)));
     }
-
     public void updateDeposit(){
         this.deposit = deposit+(deposit*r/100);
     }
@@ -83,6 +82,10 @@ public class Region {
 
     public Player getOwner(){
         return this.owner;
+    }
+
+    public double getInterestRate(){
+        return this.r;
     }
 
     public boolean isCenterCity() {
