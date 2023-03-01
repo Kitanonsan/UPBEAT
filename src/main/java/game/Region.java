@@ -25,8 +25,8 @@ public class Region {
         this.isCenterCity = b;
     }
 
-    public void updateInterestRate(int turnCount , int b){
-        this.r = b*(Math.log10(deposit))*Math.log(turnCount);
+    public void updateInterestRate(int base_interest , int turnCount ){
+        this.r = base_interest*(Math.log10(deposit))*Math.log(turnCount);
     }
 
     public void updateDeposit(){
@@ -58,6 +58,9 @@ public class Region {
         if(this.owner != null){
             if(this.deposit - amount < 0){
                 this.deposit = this.deposit - amount;
+                if(this.owner != null){
+                    owner.removeRegion(this);
+                }
                 this.setOwner(null);
             }
             else
@@ -69,6 +72,10 @@ public class Region {
 
     public void showInfo(){
         System.out.print("(" + this.position[0] + "," + this.position[1] + ")");
+        System.out.print(" Deposit : " + this.deposit);
+        System.out.print(" Owner : " + this.owner);
+        System.out.print(" Center city : " + (isCenterCity?this.owner:"no"));
+        System.out.println(" ");
     }
 
     public int getDeposit(){
@@ -76,5 +83,8 @@ public class Region {
         return d;
     }
 
+    public Player getOwner(){
+        return this.owner;
+    }
 
 }

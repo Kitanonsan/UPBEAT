@@ -28,7 +28,6 @@ public class GrammarParser implements Parser{
     Player player;
     public GrammarParser(String src) throws SyntaxError {
         this.tkz = new Tokenizer(src);
-        player = new Player("Name");
     }
 
     @Override

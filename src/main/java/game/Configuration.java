@@ -15,6 +15,9 @@ public class Configuration{
     public int rev_cost;
     public int max_dep;
     public int interest_pct;
+    public int start_deposit;
+
+    private static Configuration configuration;
 
     public Configuration(){
         Properties props = new Properties();
@@ -39,10 +42,18 @@ public class Configuration{
             rev_cost = Integer.parseInt(props.getProperty("rev_cost"));
             max_dep = Integer.parseInt(props.getProperty("max_dep"));
             interest_pct = Integer.parseInt(props.getProperty("interest_pct"));
+            start_deposit = Integer.parseInt(props.getProperty("start_deposit"));
         } catch (NumberFormatException e) {
             System.err.println("Invalid number format: " + e.getMessage());
             return;
         }
 
+    }
+
+    public static Configuration instance(){
+        if(configuration == null){
+            Configuration configuration = new Configuration();
+        }
+        return configuration;
     }
 }
