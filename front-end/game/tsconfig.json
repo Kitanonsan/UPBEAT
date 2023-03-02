@@ -24,7 +24,8 @@
     "**/*.ts",
     "**/*.tsx",
     "src/components/HexagonGrid.tsx",
-    "src/components/Hex.tsx"
+    "src/components/Hex.tsx",
+    "src/components/frame.jsx"
   ],
   "exclude": ["node_modules"]
 }

@@ -173,6 +173,14 @@ body {
 .Construction-button:hover {
   background-color: #8e433e;
 }
+/*Construction input--------------------------------------------------------------------------*/
+.input {
+  font-size: 16px;
+  border: 1px solid #ccc;
+  width: 100%;
+  height: 500px;
+}
+
 /*Strat Game Page--------------------------------------------------------------------------*/
 .StartGame_Container {
   display: flex;
