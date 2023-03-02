@@ -15,7 +15,7 @@ export default function Start() {
     }
   };
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
 

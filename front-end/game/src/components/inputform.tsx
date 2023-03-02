@@ -25,7 +25,7 @@ function InputForm() {
         name="userInput"
         editorProps={{ $blockScrolling: true }}
         fontSize={18}
-        style={{ height: "300px", width: "150%" }}
+        style={{ height: "300px", width: "220%" }}
       />
       <button type="submit">Submit</button>
     </form>

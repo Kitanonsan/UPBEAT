@@ -2,8 +2,12 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function Hexgrid() {
-  const rows = 16;
-  const columns = 16;
+  //-------------------------------------------------
+  const rows = 12;
+  const columns = 10;
+  const H = 82;
+  const W = 95.15;
+  //-------------------------------------------------
 
   const matrix = new Array(rows);
   for (let i = 0; i < rows; i++) {
@@ -28,8 +32,8 @@ export default function Hexgrid() {
         <Image
           src={`/images/${imageName}`}
           alt=""
-          width={61.5}
-          height={53}
+          width={W}
+          height={H}
           onError={() => console.log(`Error loading ${imageName}`)}
         />
       );
@@ -40,8 +44,8 @@ export default function Hexgrid() {
     <Image
       src={"/images/CT.png"}
       alt=""
-      width={61.5}
-      height={53}
+      width={W}
+      height={H}
       onError={() => console.log("Error loading CenterCity")}
     />
   );
@@ -49,11 +53,16 @@ export default function Hexgrid() {
   return (
     <div>
       {matrix.map((row, rowIndex) => (
-        <div key={rowIndex}>
-          {row.map((cell: JSX.Element | null, cellIndex: number) => (
-            <span key={cellIndex}>{cell} </span>
-          ))}
-        </div>
+        <span
+          className={rowIndex % 2 === 0 ? "odd" : "even"}
+          style={{ width: W - W / 4 + 3 }}
+        >
+          <div key={rowIndex}>
+            {row.map((cell: JSX.Element | null, cellIndex: number) => (
+              <div key={cellIndex}>{cell} </div>
+            ))}
+          </div>
+        </span>
       ))}
     </div>
   );
