@@ -12,7 +12,7 @@ public class Player {
     public int[] city_position = new int[2];
     private Set<Region> possessRegion = new HashSet<>();
     public boolean isLoss = false;
-    private Territory territory ;
+    private final Territory territory ;
     public Player(String name , Territory territory){
         this.name = name;
         this.territory = territory;
@@ -33,6 +33,7 @@ public class Player {
         city_position[1] = start_column;
         territory.region(start_row,start_column).setCenterCity(true);
         territory.region(start_row,start_column).setOwner(this);
+        territory.region(start_row,start_column).setCenterCityDeposit(Configuration.instance().init_center_dep);
         possessRegion.add(territory.region(city_position[0],city_position[1]));
 
         //initial start budget
@@ -101,8 +102,79 @@ public class Player {
     public void nearby(String direction){
 
     }
-    public void opponent(){
-
+    public int opponent(){
+        int smallestDistance = Integer.MAX_VALUE;
+        Region checkRegion = null;
+        //up direction
+        for(int i = 1 ; i <= 6 ;i ++){
+            if(isOnTerritory(city_position[0]-i,city_position[1])){
+                checkRegion = territory.region(city_position[0]-i,city_position[1]);
+                if(checkRegion.getOwner() != null && checkRegion.getOwner() != this){
+                    if(i <= smallestDistance){
+                        smallestDistance = i;
+                    }
+                }
+            }
+        }
+        //down direction
+        for(int i = 1 ; i <= 6 ;i ++){
+            if(isOnTerritory(city_position[0]+i,city_position[1])){
+                checkRegion = territory.region(city_position[0]+i,city_position[1]);
+                if(checkRegion.getOwner() != null && checkRegion.getOwner() != this){
+                    if(i <= smallestDistance){
+                        smallestDistance = i;
+                    }
+                }
+            }
+        }
+        //upright direction
+        for(int i = 1 ; i <= 6 ;i ++){
+            if(isOnTerritory(city_position[0]-i,city_position[1]+i)){
+                checkRegion = territory.region(city_position[0]-i,city_position[1]+i);
+                if(checkRegion.getOwner() != null && checkRegion.getOwner() != this){
+                    if(i <= smallestDistance){
+                        smallestDistance = i;
+                    }
+                }
+            }
+        }
+        //upleft direction
+        for(int i = 1 ; i <= 6 ;i ++){
+            if(isOnTerritory(city_position[0]-i,city_position[1]-i)){
+                checkRegion = territory.region(city_position[0]-i,city_position[1]-i);
+                if(checkRegion.getOwner() != null && checkRegion.getOwner() != this){
+                    if(i <= smallestDistance){
+                        smallestDistance = i;
+                    }
+                }
+            }
+        }
+        //downright direction
+        for(int i = 1 ; i <= 6 ;i ++){
+            if(isOnTerritory(city_position[0]+i,city_position[1]+i)){
+                checkRegion = territory.region(city_position[0]+i,city_position[1]+i);
+                if(checkRegion.getOwner() != null && checkRegion.getOwner() != this){
+                    if(i <= smallestDistance){
+                        smallestDistance = i;
+                    }
+                }
+            }
+        }
+        //downleft direction
+        for(int i = 1 ; i <= 6 ;i ++){
+            if(isOnTerritory(city_position[0]+i,city_position[1]-i)){
+                checkRegion = territory.region(city_position[0]+i,city_position[1]-i);
+                if(checkRegion.getOwner() != null && checkRegion.getOwner() != this){
+                    if(i <= smallestDistance){
+                        smallestDistance = i;
+                    }
+                }
+            }
+        }
+        if(smallestDistance == Integer.MAX_VALUE)
+            return 0;
+        else
+            return smallestDistance;
     }
     public void shoot(String direction){
 
@@ -128,6 +200,8 @@ public class Player {
         possessRegion.remove(r);
     }
 
+    public void addRegion(Region r){possessRegion.add(r);}
+
     //Print Function
     public void printPosition(){
         System.out.println(this.name+" at "+"Row: " + position[0] + " Column: " + position[1]);
@@ -150,7 +224,15 @@ public class Player {
                             System.out.print("(+) ");
                         }
                     else{
-                        System.out.print(" -  ");
+                        if(territory.region(i,j).getOwner() != null && territory.region(i,j).getOwner() != this){
+                            if(territory.region(i,j).isCenterCity())
+                                System.out.print("{O} ");
+                            else{
+                                System.out.print("(O) ");
+                            }
+                        }else {
+                            System.out.print(" -  ");
+                        }
                     }
                 }
             }
