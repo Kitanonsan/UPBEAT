@@ -6,7 +6,7 @@ public class RegionTest {
 
     @Test
     void updateInterestRateTest(){
-        Region r = new Region(0,0, Configuration.instance().start_deposit, Configuration.instance().interest_pct);
+        Region r = new Region(0,0);
         System.out.println(r.getInterestRate());
         for (int t = 0 ; t < 20 ; t++){
             r.updateInterestRate(t);
@@ -16,7 +16,7 @@ public class RegionTest {
 
     @Test
     void updateDepositTest(){
-        Region r = new Region(0,0, Configuration.instance().start_deposit, Configuration.instance().interest_pct);
+        Region r = new Region(0,0);
         r.showInfo();
         System.out.println(r.getDeposit());
         for(int i = 0 ; i < 10 ; i++){
