@@ -6,7 +6,8 @@ export default function Hexgrid() {
   const rows = 12;
   const columns = 10;
   const H = 82;
-  const W = 95.15;
+  const W = (246 / 212) * H;
+  //H=212   W=246
   //-------------------------------------------------
 
   const matrix = new Array(rows);
