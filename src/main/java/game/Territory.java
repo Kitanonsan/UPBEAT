@@ -10,7 +10,7 @@ public class Territory {
         Region[][] Territory = new Region[m][n];
         for(int i = 0 ; i < m ; i++){
             for(int j = 0 ; j < n ; j++){
-                Territory[i][j] = new Region(i,j,Configuration.instance().start_deposit,Configuration.instance().interest_pct);
+                Territory[i][j] = new Region(i,j);
             }
         }
         this.Regions = Territory;
@@ -32,10 +32,10 @@ public class Territory {
         for (int i = 0 ; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if(Regions[i][j].getOwner() != null){
-                    System.out.print("C ");
+                    System.out.print(" C  ");
                 }
                 else{
-                    System.out.print("O ");
+                    System.out.print(" .  ");
                 }
             }
             System.out.println();
