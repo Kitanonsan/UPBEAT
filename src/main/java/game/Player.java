@@ -102,7 +102,7 @@ public class Player {
     public void nearby(String direction){
 
     }
-    public void opponent(String direction){
+    public void opponent(){
 
     }
     public void shoot(String direction){

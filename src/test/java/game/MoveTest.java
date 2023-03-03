@@ -6,7 +6,6 @@ import game.Territory;
 import org.junit.jupiter.api.Test;
 
 public class MoveTest {
-    Configuration config = new Configuration();
     Territory territory = new Territory();
     Player player = new Player("Player1",territory);
     Player player2 = new Player("Player2",territory);
