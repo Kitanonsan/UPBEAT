@@ -5,14 +5,14 @@ import java.util.Set;
 import java.util.Random;
 
 public class Player {
-    public final String name;
-    public int budget;
+    private final String name;
+    int budget;
     protected Map<String, Long> variable;
-    public int[] position = new int[2] ; //row: position[0] , column: position[1]
+    private int[] position = new int[2] ; //row: position[0] , column: position[1]
     public int[] city_position = new int[2];
     private Set<Region> possessRegion = new HashSet<>();
     private boolean isLoss = false;
-    private boolean isDone = false;
+    private boolean isPlayerDone = false;
     private final Territory territory ;
     public Player(String name , Territory territory){
         this.name = name;
@@ -42,43 +42,43 @@ public class Player {
 
     }
     public void move(String direction){
-        if(!isDone){
+        if(!isPlayerDone){
             if(pay(1,0)){
                 if(direction.equals("up")) {
-                    if (isOnTerritory(position[0] - 1, position[1]) && !isOpponentRegion(position[0] - 1, position[1])) {
+                    if (isOnTerritory(position[0] - 1, position[1])) {
                         System.out.println(this.name + " is moving up.");
                         position[0] -= 1;
                     }
                 }
                 if (direction.equals("down")){
-                    if(isOnTerritory(position[0] +1, position[1]) && !isOpponentRegion(position[0] +1, position[1])){
+                    if(isOnTerritory(position[0] +1, position[1])){
                         System.out.println(this.name + " is moving down.");
                         position[0] += 1;
                     }
                 }
                 if(direction.equals("upright")){
-                    if(isOnTerritory(position[0]-1,position[1]+1) && !isOpponentRegion(position[0]-1,position[1]+1)){
+                    if(isOnTerritory(position[0]-1,position[1]+1)){
                         System.out.println(this.name + " is moving upright.");
                         position[0]-=1;
                         position[1]+=1;
                     }
                 }
                 if(direction.equals("upleft")){
-                    if(isOnTerritory(position[0]-1,position[1]-1) && !isOpponentRegion(position[0]-1,position[1]-1)){
+                    if(isOnTerritory(position[0]-1,position[1]-1)){
                         System.out.println(this.name + " is moving upleft.");
                         position[0]-=1;
                         position[1]-=1;
                     }
                 }
                 if(direction.equals("downleft")) {
-                    if (isOnTerritory(position[0] + 1,position[1] - 1) && !isOpponentRegion(position[0] + 1,position[1] - 1)) {
+                    if (isOnTerritory(position[0] + 1,position[1] - 1)) {
                         System.out.println(this.name + " is moving downleft.");
                         position[0] += 1;
                         position[1] -= 1;
                     }
                 }
                 if (direction.equals("downright")){
-                    if(isOnTerritory(position[0]+1,position[1]+1) && !isOpponentRegion(position[0]+1,position[1]+1)){
+                    if(isOnTerritory(position[0]+1,position[1]+1)){
                         System.out.println(this.name + " is moving downright.");
                         position[0]+=1;
                         position[1]+=1;
@@ -90,13 +90,11 @@ public class Player {
         }
     }
     public void randomMove(){
-        if(!isDone){
-            if(pay(1,0)){
-                String[] direction = {"up" , "down" , "upright", "upleft" , "downleft" ,"downright"};
-                Random rand = new Random();
-                int n = rand.nextInt(direction.length);
-                move(direction[n]);
-            }
+        if(!isPlayerDone){
+            String[] direction = {"up" , "down" , "upright", "upleft" , "downleft" ,"downright"};
+            Random rand = new Random();
+            int n = rand.nextInt(direction.length);
+            move(direction[n]);
             this.printPlayerInfo();
             printPosition();
         }
@@ -184,7 +182,7 @@ public class Player {
 
     }
     public void done(){
-        this.isDone = true;
+        isPlayerDone = true;
     }
     private boolean pay(int executionCost , int commandCost){
         if (budget - executionCost >= 0) {
@@ -194,11 +192,13 @@ public class Player {
                 return true;
             }
             else {
+                System.out.println(this.name + " don't have enough budget to execute this command.");
                 done();
                 return false;
             }
         }
         else {
+            System.out.println(this.name + " don't have enough budget to execute this command.");
             done();
             return false;
         }
@@ -233,13 +233,19 @@ public class Player {
         for(int i = 0 ; i < territory.m ; i ++){
             for(int j = 0 ; j < territory.n; j++){
                 if(i == position[0] && j == position[1]){
-                    if(territory.region(i,j).getOwner() == this)
+                    if(territory.region(i,j).getOwner() == this){
                         if(territory.region(i,j).isCenterCity())
                             System.out.print("[P] ");
                         else
                             System.out.print("(P) ");
-                    else
-                        System.out.print(" P  ");
+                    }
+                    else{
+                        if(isOpponentRegion(i,j)){
+                            System.out.print("{P} ");
+                        }
+                        else
+                            System.out.print(" P  ");
+                    }
                 }
                 else{
                     if(territory.region(i,j).getOwner() == this)
@@ -253,7 +259,7 @@ public class Player {
                             if(territory.region(i,j).isCenterCity())
                                 System.out.print("{O} ");
                             else{
-                                System.out.print("(O) ");
+                                System.out.print("{+} ");
                             }
                         }else {
                             System.out.print(" -  ");
