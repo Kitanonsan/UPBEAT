@@ -25,8 +25,8 @@ public class Region {
         this.isCenterCity = b;
     }
 
-    public void updateInterestRate(int base_interest , int turnCount){
-        this.r = base_interest*(Math.log10(deposit*Math.log(turnCount)));
+    public void updateInterestRate(int turnCount){
+        this.r = Configuration.instance().interest_pct*(Math.log10(deposit*Math.log(turnCount)));
     }
     public void updateDeposit(){
         this.deposit = deposit+(deposit*r/100);

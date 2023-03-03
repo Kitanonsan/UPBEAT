@@ -5,7 +5,7 @@ import java.util.Set;
 import java.util.Random;
 
 public class Player {
-    public String name;
+    public final String name;
     public int budget;
     protected Map<String, Long> variable;
     public int[] position = new int[2] ; //row: position[0] , column: position[1]
@@ -13,18 +13,17 @@ public class Player {
     private Set<Region> possessRegion = new HashSet<>();
     public boolean isLoss = false;
     private Territory territory ;
-    private Configuration config = Configuration.instance();
     public Player(String name , Territory territory){
         this.name = name;
         this.territory = territory;
 
         //Random start position
         Random rand = new Random();
-        int start_row = rand.nextInt(config.m);
-        int start_column = rand.nextInt(config.n);
-        while(territory.Regions[start_row][start_column].getOwner() != null){
-            start_row = rand.nextInt(config.m);
-            start_column = rand.nextInt(config.n);
+        int start_row = rand.nextInt(territory.m);
+        int start_column = rand.nextInt(territory.n);
+        while(territory.region(start_row,start_column).getOwner() != null){
+            start_row = rand.nextInt(territory.m);
+            start_column = rand.nextInt(territory.n);
         }
         position[0] = start_row;
         position[1] = start_column;
@@ -37,7 +36,7 @@ public class Player {
         possessRegion.add(territory.region(city_position[0],city_position[1]));
 
         //initial start budget
-        this.budget = config.init_budget;
+        this.budget = Configuration.instance().init_budget;
 
     }
     public void move(String direction){
@@ -132,8 +131,8 @@ public class Player {
     //Print Function
     public void printPosition(){
         System.out.println(this.name+" at "+"Row: " + position[0] + " Column: " + position[1]);
-        for(int i = 0 ; i < config.m ; i ++){
-            for(int j = 0 ; j < config.n; j++){
+        for(int i = 0 ; i < territory.m ; i ++){
+            for(int j = 0 ; j < territory.n; j++){
                 if(i == position[0] && j == position[1]){
                     if(territory.region(i,j).getOwner() == this)
                         if(territory.region(i,j).isCenterCity())
@@ -144,7 +143,7 @@ public class Player {
                         System.out.print(" P  ");
                 }
                 else{
-                    if(territory.Regions[i][j].getOwner() == this)
+                    if(territory.region(i,j).getOwner() == this)
                         if(territory.region(i,j).isCenterCity())
                             System.out.print("[C] ");
                         else{

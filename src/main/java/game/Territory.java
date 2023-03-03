@@ -1,18 +1,16 @@
 package game;
 
 public class Territory {
-    int m ;
-    int n;
-    public Region[][] Regions;
-    private Configuration config = Configuration.instance();
-
+    public final int m ;
+    public final int n;
+    private Region[][] Regions;
     public Territory(){
-        this.m = config.m;
-        this.n = config.n;
+        this.m = Configuration.instance().m;
+        this.n = Configuration.instance().n;
         Region[][] Territory = new Region[m][n];
         for(int i = 0 ; i < m ; i++){
             for(int j = 0 ; j < n ; j++){
-                Territory[i][j] = new Region(i,j,config.start_deposit,config.interest_pct);
+                Territory[i][j] = new Region(i,j,Configuration.instance().start_deposit,Configuration.instance().interest_pct);
             }
         }
         this.Regions = Territory;
@@ -20,7 +18,6 @@ public class Territory {
     public Region region(int row, int column){
         return Regions[row][column];
     }
-
     public void showMapInfo(){
         for (int i = 0 ; i < m; i++) {
             System.out.println("Row " + i);
@@ -30,7 +27,6 @@ public class Territory {
             System.out.println("----------------------------------------");
         }
     }
-
     public void printMap(){
         System.out.println("Territory");
         for (int i = 0 ; i < m; i++) {
