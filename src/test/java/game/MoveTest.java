@@ -10,9 +10,9 @@ public class MoveTest {
     Player player = new Player("Player1",territory);
     Player player2 = new Player("Player2",territory);
 
-    public void delay(long millis){
+    public void delay(){
         try {
-            Thread.sleep(millis); // Sleep for 1 second
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             return;
         }
@@ -22,7 +22,7 @@ public class MoveTest {
     void MoveUpTest(){
         player.printPosition();
         for(int i = 0 ; i < 20 ; i ++){
-            delay(1000);
+            delay();
             player.move("up");
         }
     }
@@ -31,7 +31,7 @@ public class MoveTest {
     void MoveDownTest(){
         player.printPosition();
         for(int i = 0 ; i < 20 ; i ++){
-            delay(1000);
+            delay();
             player.move("down");
         }
     }
@@ -40,7 +40,7 @@ public class MoveTest {
     void MoveUprightTest(){
         player.printPosition();
         for(int i = 0 ; i < 20 ; i++){
-            delay(1000);
+            delay();
             player.move("upright");
         }
     }
@@ -49,7 +49,7 @@ public class MoveTest {
     void MoveUpLeftTest(){
         player.printPosition();
         for(int i = 0 ; i < 20 ; i++){
-            delay(1000);
+            delay();
             player.move("upleft");
         }
     }
@@ -58,7 +58,7 @@ public class MoveTest {
     void MoveDownLeftTest(){
         player.printPosition();
         for(int i = 0 ; i < 20 ; i++){
-            delay(1000);
+            delay();
             player.move("downleft");
         }
     }
@@ -66,7 +66,7 @@ public class MoveTest {
     void MoveDownRightTest(){
         player.printPosition();
         for(int i = 0 ; i < 20 ; i++){
-            delay(1000);
+            delay();
             player.move("downright");
         }
     }
@@ -75,8 +75,65 @@ public class MoveTest {
     void RandomMove(){
         player.printPosition();
         for(int i = 0 ; i < 30 ; i++){
-            delay(1000);
+            delay();
             player.randomMove();
         }
     }
+
+    @Test
+    void MoveUpButPlayerDone(){ //can't move after player done
+        player.printPosition();
+        player.done();
+        for(int i = 0 ; i < 30 ; i++){
+            player.move("up");
+        }
+    }
+
+    @Test
+    void MoveDownButPlayerDone(){ //can't move after player done
+        player.printPosition();
+        player.done();
+        for(int i = 0 ; i < 30 ; i++){
+            player.move("down");
+        }
+    }
+
+    @Test
+    void MoveUpRightButPlayerDone(){ //can't move after player done
+        player.printPosition();
+        player.done();
+        for(int i = 0 ; i < 30 ; i++){
+            player.move("upright");
+        }
+    }
+
+    @Test
+    void MoveUpLefttButPlayerDone(){ //can't move after player done
+        player.printPosition();
+        player.done();
+        for(int i = 0 ; i < 30 ; i++){
+            player.move("upleft");
+        }
+    }
+
+    @Test
+    void MoveDownRightButPlayerDone(){ //can't move after player done
+        player.printPosition();
+        player.done();
+        for(int i = 0 ; i < 30 ; i++){
+            player.move("downright");
+        }
+    }
+
+    @Test
+    void MoveDownLeftButPlayerDone(){ //can't move after player done
+        player.printPosition();
+        player.done();
+        for(int i = 0 ; i < 30 ; i++){
+            player.move("downleft");
+        }
+    }
+
+
+
 }
