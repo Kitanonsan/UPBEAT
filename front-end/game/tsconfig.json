@@ -24,7 +24,10 @@
     "**/*.ts",
     "**/*.tsx",
     "src/components/HexagonGrid.tsx",
-    "src/components/Hex.tsx"
+    "src/components/Hex.tsx",
+    "src/components/frame.jsx",
+    "src/components/inputform.jsx",
+    "src/pages/_app.jsx"
   ],
   "exclude": ["node_modules"]
 }

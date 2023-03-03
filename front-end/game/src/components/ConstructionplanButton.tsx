@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import InputForm from "./inputform";
+import Inputform from "./inputform";
 
 export default function ConstructionButton() {
   const [isClicked, setIsClicked] = useState(false);
@@ -43,7 +43,7 @@ export default function ConstructionButton() {
                 onChange={handleInputChange}
                 className="input"
               /> */}
-              <InputForm />
+              {/* <Inputform /> */}
             </div>
           </label>
           <button type="submit" className="submit-button">

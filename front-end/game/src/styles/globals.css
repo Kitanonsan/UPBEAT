@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #405f9c;
+  background-color: #495464;
   font-family: "Kanit", sans-serif;
   color: rgb(253, 253, 253);
 }
@@ -105,6 +105,24 @@ body {
   display: none;
 }
 
+/*Game--------------------------------------------------------------------------*/
+
+.even {
+  top: 0;
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  margin-right: 0;
+  /* left: -5px; */
+}
+
+.odd {
+  top: 42px;
+  display: inline-block;
+  width: fit-content;
+  margin-right: 0;
+  position: relative;
+}
 /*Timer--------------------------------------------------------------------------*/
 .countdown {
   position: fixed;
@@ -155,6 +173,14 @@ body {
 .Construction-button:hover {
   background-color: #8e433e;
 }
+/*Construction input--------------------------------------------------------------------------*/
+.input {
+  font-size: 16px;
+  border: 1px solid #ccc;
+  width: 100%;
+  height: 500px;
+}
+
 /*Strat Game Page--------------------------------------------------------------------------*/
 .StartGame_Container {
   display: flex;
