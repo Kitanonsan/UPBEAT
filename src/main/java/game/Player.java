@@ -11,7 +11,8 @@ public class Player {
     public int[] position = new int[2] ; //row: position[0] , column: position[1]
     public int[] city_position = new int[2];
     private Set<Region> possessRegion = new HashSet<>();
-    public boolean isLoss = false;
+    private boolean isLoss = false;
+    private boolean isDone = false;
     private final Territory territory ;
     public Player(String name , Territory territory){
         this.name = name;
@@ -41,54 +42,64 @@ public class Player {
 
     }
     public void move(String direction){
-        if(direction.equals("up")) {
-            if (isOnTerritory(position[0] - 1, position[1])) {
-                System.out.println(this.name + " is moving up.");
-                position[0] -= 1;
+        if(!isDone){
+            if(pay(1,0)){
+                if(direction.equals("up")) {
+                    if (isOnTerritory(position[0] - 1, position[1]) && !isOpponentRegion(position[0] - 1, position[1])) {
+                        System.out.println(this.name + " is moving up.");
+                        position[0] -= 1;
+                    }
+                }
+                if (direction.equals("down")){
+                    if(isOnTerritory(position[0] +1, position[1]) && !isOpponentRegion(position[0] +1, position[1])){
+                        System.out.println(this.name + " is moving down.");
+                        position[0] += 1;
+                    }
+                }
+                if(direction.equals("upright")){
+                    if(isOnTerritory(position[0]-1,position[1]+1) && !isOpponentRegion(position[0]-1,position[1]+1)){
+                        System.out.println(this.name + " is moving upright.");
+                        position[0]-=1;
+                        position[1]+=1;
+                    }
+                }
+                if(direction.equals("upleft")){
+                    if(isOnTerritory(position[0]-1,position[1]-1) && !isOpponentRegion(position[0]-1,position[1]-1)){
+                        System.out.println(this.name + " is moving upleft.");
+                        position[0]-=1;
+                        position[1]-=1;
+                    }
+                }
+                if(direction.equals("downleft")) {
+                    if (isOnTerritory(position[0] + 1,position[1] - 1) && !isOpponentRegion(position[0] + 1,position[1] - 1)) {
+                        System.out.println(this.name + " is moving downleft.");
+                        position[0] += 1;
+                        position[1] -= 1;
+                    }
+                }
+                if (direction.equals("downright")){
+                    if(isOnTerritory(position[0]+1,position[1]+1) && !isOpponentRegion(position[0]+1,position[1]+1)){
+                        System.out.println(this.name + " is moving downright.");
+                        position[0]+=1;
+                        position[1]+=1;
+                    }
+                }
             }
+            this.printPlayerInfo();
+            this.printPosition();
         }
-        if (direction.equals("down")){
-            if(isOnTerritory(position[0] +1, position[1])){
-                System.out.println(this.name + " is moving down.");
-                position[0] += 1;
-            }
-        }
-        if(direction.equals("upright")){
-            if(isOnTerritory(position[0]-1,position[1]+1)){
-                System.out.println(this.name + " is moving upright.");
-                position[0]-=1;
-                position[1]+=1;
-            }
-        }
-        if(direction.equals("upleft")){
-            if(isOnTerritory(position[0]-1,position[1]-1)){
-                System.out.println(this.name + " is moving upleft.");
-                position[0]-=1;
-                position[1]-=1;
-            }
-        }
-        if(direction.equals("downleft")) {
-            if (isOnTerritory(position[0] + 1,position[1] - 1)) {
-                System.out.println(this.name + " is moving downleft.");
-                position[0] += 1;
-                position[1] -= 1;
-            }
-        }
-        if (direction.equals("downright")){
-            if(isOnTerritory(position[0]+1,position[1]+1)){
-                System.out.println(this.name + " is moving downright.");
-                position[0]+=1;
-                position[1]+=1;
-            }
-        }
-        this.printPosition();
     }
     public void randomMove(){
-        String[] direction = {"up" , "down" , "upright", "upleft" , "downleft" ,"downright"};
-        Random rand = new Random();
-        int n = rand.nextInt(direction.length);
-        move(direction[n]);
-        printPosition();
+        if(!isDone){
+            if(pay(1,0)){
+                String[] direction = {"up" , "down" , "upright", "upleft" , "downleft" ,"downright"};
+                Random rand = new Random();
+                int n = rand.nextInt(direction.length);
+                move(direction[n]);
+            }
+            this.printPlayerInfo();
+            printPosition();
+        }
     }
     public void relocate(int x , int y){
 
@@ -173,7 +184,24 @@ public class Player {
 
     }
     public void done(){
-        return;
+        this.isDone = true;
+    }
+    private boolean pay(int executionCost , int commandCost){
+        if (budget - executionCost >= 0) {
+            budget -= executionCost;
+            if (budget - commandCost >= 0) {
+                budget -= commandCost;
+                return true;
+            }
+            else {
+                done();
+                return false;
+            }
+        }
+        else {
+            done();
+            return false;
+        }
     }
 
     //Check Function
@@ -237,7 +265,7 @@ public class Player {
         }
     }
     public void printPlayerInfo(){
-        System.out.println("Name : " + this.name + " Budget : " + this.budget);
+        System.out.println("Name : " + this.name + " |  Budget : " + this.budget + " |  Number of regions : " + possessRegion.size());
     }
 
     //API Function
