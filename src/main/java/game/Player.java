@@ -104,12 +104,10 @@ public class Player {
     }
     public int opponent(){
         int smallestDistance = Integer.MAX_VALUE;
-        Region checkRegion = null;
         //up direction
         for(int i = 1 ; i <= 6 ;i ++){
             if(isOnTerritory(city_position[0]-i,city_position[1])){
-                checkRegion = territory.region(city_position[0]-i,city_position[1]);
-                if(checkRegion.getOwner() != null && checkRegion.getOwner() != this){
+                if(isOpponentRegion(city_position[0]-i,city_position[1])){
                     if(i <= smallestDistance){
                         smallestDistance = i;
                     }
@@ -119,8 +117,7 @@ public class Player {
         //down direction
         for(int i = 1 ; i <= 6 ;i ++){
             if(isOnTerritory(city_position[0]+i,city_position[1])){
-                checkRegion = territory.region(city_position[0]+i,city_position[1]);
-                if(checkRegion.getOwner() != null && checkRegion.getOwner() != this){
+                if(isOpponentRegion(city_position[0]+i,city_position[1])){
                     if(i <= smallestDistance){
                         smallestDistance = i;
                     }
@@ -130,8 +127,7 @@ public class Player {
         //upright direction
         for(int i = 1 ; i <= 6 ;i ++){
             if(isOnTerritory(city_position[0]-i,city_position[1]+i)){
-                checkRegion = territory.region(city_position[0]-i,city_position[1]+i);
-                if(checkRegion.getOwner() != null && checkRegion.getOwner() != this){
+                if(isOpponentRegion(city_position[0]-i,city_position[1]+i)){
                     if(i <= smallestDistance){
                         smallestDistance = i;
                     }
@@ -141,8 +137,7 @@ public class Player {
         //upleft direction
         for(int i = 1 ; i <= 6 ;i ++){
             if(isOnTerritory(city_position[0]-i,city_position[1]-i)){
-                checkRegion = territory.region(city_position[0]-i,city_position[1]-i);
-                if(checkRegion.getOwner() != null && checkRegion.getOwner() != this){
+                if(isOpponentRegion(city_position[0]-i,city_position[1]-i)){
                     if(i <= smallestDistance){
                         smallestDistance = i;
                     }
@@ -152,8 +147,7 @@ public class Player {
         //downright direction
         for(int i = 1 ; i <= 6 ;i ++){
             if(isOnTerritory(city_position[0]+i,city_position[1]+i)){
-                checkRegion = territory.region(city_position[0]+i,city_position[1]+i);
-                if(checkRegion.getOwner() != null && checkRegion.getOwner() != this){
+                if(isOpponentRegion(city_position[0]+i,city_position[1]+i)){
                     if(i <= smallestDistance){
                         smallestDistance = i;
                     }
@@ -163,8 +157,7 @@ public class Player {
         //downleft direction
         for(int i = 1 ; i <= 6 ;i ++){
             if(isOnTerritory(city_position[0]+i,city_position[1]-i)){
-                checkRegion = territory.region(city_position[0]+i,city_position[1]-i);
-                if(checkRegion.getOwner() != null && checkRegion.getOwner() != this){
+                if(isOpponentRegion(city_position[0]+i,city_position[1]-i)){
                     if(i <= smallestDistance){
                         smallestDistance = i;
                     }
@@ -189,6 +182,10 @@ public class Player {
     }
     private boolean isOnTerritory(int row , int column){
         return (row >= 0) && (column >=0) && (row < territory.m) && (column < territory.n);
+    }
+
+    private boolean isOpponentRegion(int row , int column){
+        return  territory.region(row,column).getOwner() != null && territory.region(row,column).getOwner() != this;
     }
 
     //Parser Function
@@ -224,7 +221,7 @@ public class Player {
                             System.out.print("(+) ");
                         }
                     else{
-                        if(territory.region(i,j).getOwner() != null && territory.region(i,j).getOwner() != this){
+                        if(isOpponentRegion(i,j)){
                             if(territory.region(i,j).isCenterCity())
                                 System.out.print("{O} ");
                             else{
