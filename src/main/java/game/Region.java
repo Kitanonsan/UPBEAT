@@ -57,9 +57,7 @@ public class Region {
         if(this.owner != null){
             if(this.deposit - amount < 0){
                 this.deposit = this.deposit - amount;
-                if(this.owner != null){
-                    owner.removeRegion(this);
-                }
+                owner.removeRegion(this);
                 this.setOwner(null);
             }
             else
