@@ -26,8 +26,9 @@ public class GrammarParser implements Parser{
 
     protected final Tokenizer tkz;
     Player player;
-    public GrammarParser(String src) throws SyntaxError {
+    public GrammarParser(String src, Player player) throws SyntaxError {
         this.tkz = new Tokenizer(src);
+        this.player = player;
     }
 
     @Override
