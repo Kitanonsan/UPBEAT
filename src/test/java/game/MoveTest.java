@@ -20,120 +20,105 @@ public class MoveTest {
 
     @Test
     void MoveUpTest(){
-        player.printPosition();
-        for(int i = 0 ; i < 20 ; i ++){
-            delay();
+        player.printInfo();
+        for(int i = 0 ; i < 20 ; i++){
             player.move("up");
         }
     }
 
     @Test
     void MoveDownTest(){
-        player.printPosition();
-        for(int i = 0 ; i < 20 ; i ++){
-            delay();
+        player.printInfo();
+        for(int i = 0 ; i < 20 ; i++){
             player.move("down");
         }
     }
 
     @Test
     void MoveUprightTest(){
-        player.printPosition();
+        player.printInfo();
         for(int i = 0 ; i < 20 ; i++){
-            delay();
             player.move("upright");
         }
     }
 
     @Test
     void MoveUpLeftTest(){
-        player.printPosition();
+        player.printInfo();
         for(int i = 0 ; i < 20 ; i++){
-            delay();
             player.move("upleft");
         }
     }
 
     @Test
     void MoveDownLeftTest(){
-        player.printPosition();
+        player.printInfo();
         for(int i = 0 ; i < 20 ; i++){
-            delay();
             player.move("downleft");
         }
     }
     @Test
     void MoveDownRightTest(){
-        player.printPosition();
+        player.printInfo();
         for(int i = 0 ; i < 20 ; i++){
-            delay();
             player.move("downright");
         }
     }
 
     @Test
     void RandomMove(){
-        player.printPosition();
-        for(int i = 0 ; i < 30 ; i++){
-            delay();
+        player.printInfo();
+        for(int i = 0 ; i < 20 ; i++){
             player.randomMove();
         }
     }
 
     @Test
     void MoveUpButPlayerDone(){ //can't move after player done
-        player.printPosition();
+        player.printInfo();
         player.done();
-        for(int i = 0 ; i < 30 ; i++){
-            player.move("up");
-        }
+        player.move("up");
     }
 
     @Test
     void MoveDownButPlayerDone(){ //can't move after player done
-        player.printPosition();
+        player.printInfo();
         player.done();
-        for(int i = 0 ; i < 30 ; i++){
-            player.move("down");
-        }
+        player.move("down");
     }
 
     @Test
     void MoveUpRightButPlayerDone(){ //can't move after player done
-        player.printPosition();
+        player.printInfo();
         player.done();
-        for(int i = 0 ; i < 30 ; i++){
-            player.move("upright");
-        }
+        player.move("upright");
     }
 
     @Test
     void MoveUpLefttButPlayerDone(){ //can't move after player done
-        player.printPosition();
+        player.printInfo();
         player.done();
-        for(int i = 0 ; i < 30 ; i++){
-            player.move("upleft");
-        }
+        player.move("upleft");
     }
 
     @Test
     void MoveDownRightButPlayerDone(){ //can't move after player done
-        player.printPosition();
+        player.printInfo();
         player.done();
-        for(int i = 0 ; i < 30 ; i++){
-            player.move("downright");
-        }
+        player.move("downright");
     }
 
     @Test
     void MoveDownLeftButPlayerDone(){ //can't move after player done
-        player.printPosition();
+        player.printInfo();
         player.done();
-        for(int i = 0 ; i < 30 ; i++){
-            player.move("downleft");
-        }
+        player.move("downleft");
     }
-
-
+    @Test
+    void NotEnoughBudgetToMove(){
+        Player player = new Player("p",territory,8,8,0);
+        player.printInfo();
+        player.move("up");
+    }
 
 }

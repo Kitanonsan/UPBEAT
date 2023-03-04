@@ -25,7 +25,12 @@ public class Region {
         this.isCenterCity = b;
     }
     public void updateInterestRate(int turnCount){
-        this.r = Configuration.instance().interest_pct*Math.log10(this.deposit)*Math.log(turnCount);
+        if(turnCount == 1){
+            this.r = Configuration.instance().interest_pct;
+        }
+        else{
+            this.r = Configuration.instance().interest_pct*Math.log10(this.deposit)*Math.log(turnCount);
+        }
     }
     public void updateDeposit(){
         this.deposit = deposit+(deposit*r/100);
@@ -67,23 +72,20 @@ public class Region {
                 this.deposit = this.deposit - amount;
         }
     }
-    public void showInfo(){
+    public void printInfo(){
         System.out.print("(" + this.position[0] + "," + this.position[1] + ")");
         System.out.print(" Deposit : " + this.deposit);
         System.out.print(" Owner : " + this.owner);
         System.out.print(" Center city : " + (isCenterCity?this.owner:"no"));
         System.out.println(" ");
     }
-
     public int getDeposit(){
         int d = (int) this.deposit;
         return d;
     }
-
     public Player getOwner(){
         return this.owner;
     }
-
     public double getInterestRate(){
         return this.r;
     }
