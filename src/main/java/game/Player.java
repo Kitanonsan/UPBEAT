@@ -32,14 +32,29 @@ public class Player {
         //Start city center position
         city_position[0] = start_row;
         city_position[1] = start_column;
-        territory.region(start_row,start_column).setCenterCity(true);
-        territory.region(start_row,start_column).setOwner(this);
-        territory.region(start_row,start_column).setCenterCityDeposit(Configuration.instance().init_center_dep);
+        territory.region(city_position[0],city_position[1]).setCenterCity(true);
+        territory.region(city_position[0],city_position[1]).setOwner(this);
+        territory.region(city_position[0],city_position[1]).setCenterCityDeposit(Configuration.instance().init_center_dep);
         possessRegion.add(territory.region(city_position[0],city_position[1]));
 
         //initial start budget
         this.budget = Configuration.instance().init_budget;
 
+    }
+
+    //For testing only (you can assign spawn position on territory)
+    public Player(String name , Territory territory , int row , int column){
+        this.name = name;
+        this.territory = territory;
+        position[0] = row;
+        position[1] = column;
+        city_position[0] = row;
+        city_position[1] = column;
+        territory.region(city_position[0],city_position[1]).setCenterCity(true);
+        territory.region(city_position[0],city_position[1]).setOwner(this);
+        territory.region(city_position[0],city_position[1]).setCenterCityDeposit(Configuration.instance().init_center_dep);
+        possessRegion.add(territory.region(city_position[0],city_position[1]));
+        this.budget = Configuration.instance().init_budget;
     }
     public void move(String direction){
         if(!isPlayerDone){
@@ -108,13 +123,16 @@ public class Player {
     public void collect(){
 
     }
+    public void shoot(String direction){
+
+    }
     public void nearby(String direction){
 
     }
     public int opponent(){
         int smallestDistance = Integer.MAX_VALUE;
-        //up direction
         for(int i = 1 ; i <= 6 ;i ++){
+            //up direction{
             if(isOnTerritory(city_position[0]-i,city_position[1])){
                 if(isOpponentRegion(city_position[0]-i,city_position[1])){
                     if(i <= smallestDistance){
@@ -122,9 +140,7 @@ public class Player {
                     }
                 }
             }
-        }
-        //down direction
-        for(int i = 1 ; i <= 6 ;i ++){
+            //down direction
             if(isOnTerritory(city_position[0]+i,city_position[1])){
                 if(isOpponentRegion(city_position[0]+i,city_position[1])){
                     if(i <= smallestDistance){
@@ -132,19 +148,15 @@ public class Player {
                     }
                 }
             }
-        }
-        //upright direction
-        for(int i = 1 ; i <= 6 ;i ++){
+            //upright direction
             if(isOnTerritory(city_position[0]-i,city_position[1]+i)){
                 if(isOpponentRegion(city_position[0]-i,city_position[1]+i)){
                     if(i <= smallestDistance){
-                        smallestDistance = i;
-                    }
+                    smallestDistance = i;
+                 }
                 }
             }
-        }
-        //upleft direction
-        for(int i = 1 ; i <= 6 ;i ++){
+            //upleft direction
             if(isOnTerritory(city_position[0]-i,city_position[1]-i)){
                 if(isOpponentRegion(city_position[0]-i,city_position[1]-i)){
                     if(i <= smallestDistance){
@@ -152,19 +164,16 @@ public class Player {
                     }
                 }
             }
-        }
-        //downright direction
-        for(int i = 1 ; i <= 6 ;i ++){
+            //downright direction
             if(isOnTerritory(city_position[0]+i,city_position[1]+i)){
                 if(isOpponentRegion(city_position[0]+i,city_position[1]+i)){
                     if(i <= smallestDistance){
                         smallestDistance = i;
                     }
                 }
+
             }
-        }
-        //downleft direction
-        for(int i = 1 ; i <= 6 ;i ++){
+            //downleft direction
             if(isOnTerritory(city_position[0]+i,city_position[1]-i)){
                 if(isOpponentRegion(city_position[0]+i,city_position[1]-i)){
                     if(i <= smallestDistance){
@@ -177,9 +186,6 @@ public class Player {
             return 0;
         else
             return smallestDistance;
-    }
-    public void shoot(String direction){
-
     }
     public void done(){
         isPlayerDone = true;
