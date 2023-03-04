@@ -126,66 +126,120 @@ public class Player {
     public void shoot(String direction){
 
     }
-    public void nearby(String direction){
-
+    public int nearby(String direction){
+        int nearby = Integer.MAX_VALUE;
+        if(direction.equals("up")){
+            for(int i = 1 ; i < Configuration.instance().m ; i++){
+                if(isOnTerritory(position[0]-i,position[1]) && isOpponentRegion(position[0]-i,position[1])){
+                    if((100*i)+territory.region(position[0]-i,position[1]).getDeposit() < nearby)
+                        nearby = (100*i)+territory.region(position[0]-i,position[1]).getDeposit();
+                }
+            }
+        }
+        else if(direction.equals("down")){
+            for(int i = 1 ; i < Configuration.instance().m ; i++){
+                if(isOnTerritory(position[0]+i,position[1]) && isOpponentRegion(position[0]+i,position[1])){
+                    if((100*i)+territory.region(position[0]+i,position[1]).getDeposit() < nearby)
+                        nearby = (100*i)+territory.region(position[0]+i,position[1]).getDeposit();
+                }
+            }
+        }
+        else if(direction.equals("upright")){
+            for(int i = 1 ; i < Configuration.instance().m ; i++){
+                if(isOnTerritory(position[0]-i,position[1]+i) && isOpponentRegion(position[0]-i,position[1]+i)){
+                    if((100*i)+territory.region(position[0]-i,position[1]+i).getDeposit() < nearby)
+                        nearby = (100*i)+territory.region(position[0]-i,position[1]+i).getDeposit();
+                }
+            }
+        }
+        else if(direction.equals("upleft")){
+            for(int i = 1 ; i < Configuration.instance().m ; i++){
+                if(isOnTerritory(position[0]-i,position[1]-i) && isOpponentRegion(position[0]-i,position[1]-i)){
+                    if((100*i)+territory.region(position[0]-i,position[1]-i).getDeposit() < nearby)
+                        nearby = (100*i)+territory.region(position[0]-i,position[1]-i).getDeposit();
+                }
+            }
+        }
+        else if(direction.equals("downleft")){
+            for(int i = 1 ; i < Configuration.instance().m ; i++){
+                if(isOnTerritory(position[0]+i,position[1]-i) && isOpponentRegion(position[0]+i,position[1]-i)){
+                    if((100*i)+territory.region(position[0]+i,position[1]-i).getDeposit() < nearby)
+                        nearby = (100*i)+territory.region(position[0]+i,position[1]-i).getDeposit();
+                }
+            }
+        }
+        else if(direction.equals("downright")){
+            for(int i = 1 ; i < Configuration.instance().m ; i++){
+                if(isOnTerritory(position[0]+i,position[1]+i) && isOpponentRegion(position[0]+i,position[1]+i)){
+                    if((100*i)+territory.region(position[0]+i,position[1]+i).getDeposit() < nearby)
+                        nearby = (100*i)+territory.region(position[0]+i,position[1]+i).getDeposit();
+                }
+            }
+        }
+        if(nearby == Integer.MAX_VALUE){
+            return 0;
+        }
+        else{
+            return nearby;
+        }
     }
     public int opponent(){
-        int smallestDistance = Integer.MAX_VALUE;
+        int distance = Integer.MAX_VALUE;
         for(int i = 1 ; i <= 6 ;i ++){
-            //up direction{
-            if(isOnTerritory(city_position[0]-i,city_position[1])){
-                if(isOpponentRegion(city_position[0]-i,city_position[1])){
-                    if(i <= smallestDistance){
-                        smallestDistance = i;
+            //up direction
+            if(isOnTerritory(position[0]-i,position[1])){
+                if(isOpponentRegion(position[0]-i,position[1])){
+                    if(i <= distance){
+                        distance = i;
                     }
                 }
             }
             //down direction
-            if(isOnTerritory(city_position[0]+i,city_position[1])){
-                if(isOpponentRegion(city_position[0]+i,city_position[1])){
-                    if(i <= smallestDistance){
-                        smallestDistance = i;
+            if(isOnTerritory(position[0]+i,position[1])){
+                if(isOpponentRegion(position[0]+i,position[1])){
+                    if(i <= distance){
+                        distance = i;
                     }
                 }
             }
             //upright direction
-            if(isOnTerritory(city_position[0]-i,city_position[1]+i)){
-                if(isOpponentRegion(city_position[0]-i,city_position[1]+i)){
-                    if(i <= smallestDistance){
-                    smallestDistance = i;
+            if(isOnTerritory(position[0]-i,position[1]+i)){
+                if(isOpponentRegion(position[0]-i,position[1]+i)){
+                    if(i <= distance){
+                        distance = i;
                  }
                 }
             }
             //upleft direction
-            if(isOnTerritory(city_position[0]-i,city_position[1]-i)){
-                if(isOpponentRegion(city_position[0]-i,city_position[1]-i)){
-                    if(i <= smallestDistance){
-                        smallestDistance = i;
+            if(isOnTerritory(position[0]-i,position[1]-i)){
+                if(isOpponentRegion(position[0]-i,position[1]-i)){
+                    if(i <= distance){
+                        distance = i;
                     }
                 }
             }
             //downright direction
-            if(isOnTerritory(city_position[0]+i,city_position[1]+i)){
-                if(isOpponentRegion(city_position[0]+i,city_position[1]+i)){
-                    if(i <= smallestDistance){
-                        smallestDistance = i;
+            if(isOnTerritory(position[0]+i,position[1]+i)){
+                if(isOpponentRegion(position[0]+i,position[1]+i)){
+                    if(i <= distance){
+                        distance = i;
                     }
                 }
 
             }
             //downleft direction
-            if(isOnTerritory(city_position[0]+i,city_position[1]-i)){
-                if(isOpponentRegion(city_position[0]+i,city_position[1]-i)){
-                    if(i <= smallestDistance){
-                        smallestDistance = i;
+            if(isOnTerritory(position[0]+i,position[1]-i)){
+                if(isOpponentRegion(position[0]+i,position[1]-i)){
+                    if(i <= distance){
+                        distance = i;
                     }
                 }
             }
         }
-        if(smallestDistance == Integer.MAX_VALUE)
+        if(distance == Integer.MAX_VALUE)
             return 0;
         else
-            return smallestDistance;
+            return distance;
     }
     public void done(){
         isPlayerDone = true;
