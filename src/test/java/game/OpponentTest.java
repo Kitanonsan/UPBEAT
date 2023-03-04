@@ -1,7 +1,6 @@
 package game;
-
 import org.junit.jupiter.api.Test;
-
+import static org.junit.jupiter.api.Assertions.*;
 public class OpponentTest {
 
     public void delay(){
@@ -23,7 +22,7 @@ public class OpponentTest {
                     p1.printPosition();
                     System.out.println("Opponent return : " + p1.opponent());
                     System.out.println();
-                    delay();
+                    assertEquals(k<=6?k:0,p1.opponent());
                 }
             }
         }
@@ -39,9 +38,10 @@ public class OpponentTest {
                     p1.printPosition();
                     System.out.println("Opponent return : " + p1.opponent());
                     System.out.println();
-                    delay();
+                    assertEquals(k<=6?k:0,p1.opponent());
                 }
             }
         }
     }
+
 }
