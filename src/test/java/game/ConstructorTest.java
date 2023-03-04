@@ -7,6 +7,7 @@ public class ConstructorTest {
     void ConstructorTesting(){
         Territory territory = new Territory();
         Player p = new Player("Non",territory);
+        p.printPlayerInfo();
         p.printPosition();
         territory.showMapInfo();
         System.out.println(territory.region(p.city_position[0],p.city_position[1]));
