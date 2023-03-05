@@ -37,12 +37,13 @@ export default function ConstructionButton() {
           <label className="label">
             <div>
               <h3>Enter Construction Plan : </h3>
-              {/* <input
+              <input
                 type="text"
                 value={constructionPlan}
                 onChange={handleInputChange}
                 className="input"
-              /> */}
+              />
+
               {/* <Inputform /> */}
             </div>
           </label>
