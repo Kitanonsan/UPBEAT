@@ -12,6 +12,7 @@ public class Player {
     private int[] city_position = new int[2];
     private Set<Region> possessRegion = new HashSet<>();
     private boolean isPlayerDone = false;
+    private boolean isLose = false;
     private final Territory territory ;
     public Player(String name , Territory territory){
         this.name = name;
@@ -113,6 +114,7 @@ public class Player {
                 else{
                     System.out.println(name+" can't invest on this region because it was occupied by opponent.");
                 }
+                this.done();
             }
         }
     }
@@ -125,11 +127,36 @@ public class Player {
                 else{
                     System.out.println(name + " can't collect because not owned this region.");
                 }
+                this.done();
             }
         }
     }
-    public void shoot(String direction){
-
+    public void shoot(String direction , int amount){
+        if(!isPlayerDone){
+            if(pay(1)){
+                if(pay(amount)){
+                    int[] shootDirection = nextPosition(position,direction);
+                    if(onTerritory(shootDirection)){
+                        if(territory.region(shootDirection).getOwner() != null){
+                            territory.region(shootDirection).gotShot(amount);
+                            if(territory.region(shootDirection).getDeposit() == 0 && territory.region(shootDirection).isCenterCity()){
+                                territory.region(shootDirection).getOwner().lose();
+                                Set<Region> Set = territory.region(shootDirection).getOwner().getPossessRegion();
+                                for(Region region : Set){
+                                    region.setOwner(null);
+                                    region.setCenterCity(false);
+                                }
+                                Set.clear();
+                            }
+                        }
+                        else{
+                            System.out.println(name + "can't shoot no owner region.");
+                        }
+                    }
+                    this.done();
+                }
+            }
+        }
     }
     public int nearby(String direction){
         int[] nearbyOpponent = position;
@@ -219,6 +246,15 @@ public class Player {
     public int[] getCityPosition(){
         int[] cityPosition= this.city_position;
         return cityPosition;
+    }
+    public void lose(){
+        isLose = true;
+    }
+    public void newTurn(){
+        isPlayerDone = false;
+    }
+    public Set<Region> getPossessRegion(){
+        return possessRegion;
     }
     public int[] nextPosition(int[] currentPosition,String direction){
         int[] nextPosition = new int[2];
