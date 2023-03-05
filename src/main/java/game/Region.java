@@ -61,12 +61,12 @@ public class Region {
     }
     public void gotShot(int amount){
         if(this.owner != null){
-            if(this.deposit - amount < 0){
+            if(this.deposit - amount <= 0){
                 this.deposit = 0;
+                this.r = Configuration.instance().interest_pct;
                 if(!isCenterCity){
                     owner.removeRegion(this);
                     this.setOwner(null);
-                    this.r = Configuration.instance().interest_pct;
                 }
             }
             else
