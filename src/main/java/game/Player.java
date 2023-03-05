@@ -5,167 +5,303 @@ import java.util.Set;
 import java.util.Random;
 
 public class Player {
-    public String name;
-    public int budget;
+    private final String name;
+    private int budget;
     protected Map<String, Long> variable;
-    public int[] position = new int[2] ; //row: position[0] , column: position[1]
-    public int[] city_position = new int[2];
+    private int[] position = new int[2] ; //row: position[0] , column: position[1]
+    private int[] city_position = new int[2];
     private Set<Region> possessRegion = new HashSet<>();
-    public boolean isLoss = false;
-    private Territory territory ;
-    private Configuration config = Configuration.instance();
+    private boolean isPlayerDone = false;
+    private boolean isLose = false;
+    private final Territory territory ;
     public Player(String name , Territory territory){
         this.name = name;
         this.territory = territory;
-
         //Random start position
         Random rand = new Random();
-        int start_row = rand.nextInt(config.m);
-        int start_column = rand.nextInt(config.n);
-        while(territory.Regions[start_row][start_column].getOwner() != null){
-            start_row = rand.nextInt(config.m);
-            start_column = rand.nextInt(config.n);
+        int start_row = rand.nextInt(territory.row());
+        int start_column = rand.nextInt(territory.column());
+        while(territory.region(new int[]{start_row,start_column}).getOwner() != null){
+            start_row = rand.nextInt(territory.row());
+            start_column = rand.nextInt(territory.column());
         }
         position[0] = start_row;
         position[1] = start_column;
-
         //Start city center position
-        city_position[0] = start_row;
-        city_position[1] = start_column;
-        territory.region(start_row,start_column).setCenterCity(true);
-        territory.region(start_row,start_column).setOwner(this);
-        possessRegion.add(territory.region(city_position[0],city_position[1]));
-
+        city_position[0] = position[0];
+        city_position[1] = position[1];
+        territory.region(city_position).setCenterCity(true);
+        territory.region(city_position).setOwner(this);
+        territory.region(city_position).setCenterCityDeposit(Configuration.instance().init_center_dep);
+        possessRegion.add(territory.region(city_position));
         //initial start budget
-        this.budget = config.init_budget;
+        this.budget = Configuration.instance().init_budget;
+    }
 
+    //For testing only (you can assign spawn position on territory)
+    public Player(String name , Territory territory , int row , int column , int budget){
+        this.name = name;
+        this.territory = territory;
+        position[0] = row;
+        position[1] = column;
+        city_position[0] = row;
+        city_position[1] = column;
+        territory.region(city_position).setCenterCity(true);
+        territory.region(city_position).setOwner(this);
+        territory.region(city_position).setCenterCityDeposit(Configuration.instance().init_center_dep);
+        possessRegion.add(territory.region(city_position));
+        this.budget = budget;
     }
     public void move(String direction){
-        if(direction.equals("up")) {
-            if (isOnTerritory(position[0] - 1, position[1])) {
-                System.out.println(this.name + " is moving up.");
-                position[0] -= 1;
-            }
-        }
-        if (direction.equals("down")){
-            if(isOnTerritory(position[0] +1, position[1])){
-                System.out.println(this.name + " is moving down.");
-                position[0] += 1;
-            }
-        }
-        if(direction.equals("upright")){
-            if(isOnTerritory(position[0]-1,position[1]+1)){
-                System.out.println(this.name + " is moving upright.");
-                position[0]-=1;
-                position[1]+=1;
-            }
-        }
-        if(direction.equals("upleft")){
-            if(isOnTerritory(position[0]-1,position[1]-1)){
-                System.out.println(this.name + " is moving upleft.");
-                position[0]-=1;
-                position[1]-=1;
-            }
-        }
-        if(direction.equals("downleft")) {
-            if (isOnTerritory(position[0] + 1,position[1] - 1)) {
-                System.out.println(this.name + " is moving downleft.");
-                position[0] += 1;
-                position[1] -= 1;
-            }
-        }
-        if (direction.equals("downright")){
-            if(isOnTerritory(position[0]+1,position[1]+1)){
-                System.out.println(this.name + " is moving downright.");
-                position[0]+=1;
-                position[1]+=1;
-            }
-        }
-        this.printPosition();
-    }
-    public void randomMove(){
-        String[] direction = {"up" , "down" , "upright", "upleft" , "downleft" ,"downright"};
-        Random rand = new Random();
-        int n = rand.nextInt(direction.length);
-        move(direction[n]);
-        printPosition();
-    }
-    public void relocate(int x , int y){
-
-    }
-    public void invest(int budget){
-
-    }
-    public void collect(){
-
-    }
-    public void nearby(String direction){
-
-    }
-    public void opponent(String direction){
-
-    }
-    public void shoot(String direction){
-
-    }
-    public void done(){
-        return;
-    }
-
-    //Check Function
-    public boolean isLoss() {
-        return territory.region(city_position[0],city_position[1]).getDeposit() == 0;
-    }
-    private boolean isOnTerritory(int row , int column){
-        return (row >= 0) && (column >=0) && (row < territory.m) && (column < territory.n);
-    }
-
-    //Parser Function
-    public Map<String, Long> getVariable(){
-        return variable;
-    }
-    //Manage Region Function
-    public void removeRegion(Region r){
-        possessRegion.remove(r);
-    }
-
-    //Print Function
-    public void printPosition(){
-        System.out.println(this.name+" at "+"Row: " + position[0] + " Column: " + position[1]);
-        for(int i = 0 ; i < config.m ; i ++){
-            for(int j = 0 ; j < config.n; j++){
-                if(i == position[0] && j == position[1]){
-                    if(territory.region(i,j).getOwner() == this)
-                        if(territory.region(i,j).isCenterCity())
-                            System.out.print("[P] ");
-                        else
-                            System.out.print("(P) ");
-                    else
-                        System.out.print(" P  ");
+        if(!isPlayerDone){
+            if(pay(1)){
+                if(direction.equals("up")) {
+                    if(onTerritory(nextPosition(position,"up"))){
+                        position = nextPosition(position,"up");
+                    }
                 }
-                else{
-                    if(territory.Regions[i][j].getOwner() == this)
-                        if(territory.region(i,j).isCenterCity())
-                            System.out.print("[C] ");
-                        else{
-                            System.out.print("(+) ");
-                        }
-                    else{
-                        System.out.print(" -  ");
+                if (direction.equals("down")){
+                    if(onTerritory(nextPosition(position,"down"))){
+                        position = nextPosition(position,"down");
+                    }
+                }
+                if(direction.equals("upright")){
+                    if(onTerritory(nextPosition(position,"upright"))){
+                        position = nextPosition(position,"upright");
+                    }
+                }
+                if(direction.equals("upleft")){
+                    if(onTerritory(nextPosition(position,"upleft"))){
+                        position = nextPosition(position,"upleft");
+                    }
+                }
+                if(direction.equals("downleft")) {
+                    if(onTerritory(nextPosition(position,"downleft"))){
+                        position = nextPosition(position,"downleft");
+                    }
+                }
+                if (direction.equals("downright")){
+                    if(onTerritory(nextPosition(position,"downright"))){
+                        position = nextPosition(position,"downright");
                     }
                 }
             }
-            System.out.println();
+        }
+        this.printInfo();
+    }
+    public void randomMove(){
+        if(!isPlayerDone){
+            String[] direction = {"up" , "down" , "upright", "upleft" , "downleft" ,"downright"};
+            Random rand = new Random();
+            int n = rand.nextInt(direction.length);
+            move(direction[n]);
         }
     }
-    public void printPlayerInfo(){
-        System.out.println("Name : " + this.name + " Budget : " + this.budget);
+    public void relocate(){
+        if(!isPlayerDone){
+
+        }
+    }
+    public void invest(int amount){
+        if(!isPlayerDone){
+            if(pay(1)){
+                if(territory.region(position).getOwner() == null || territory.region(position).getOwner() == this){
+                    if(pay(amount)){
+                        territory.region(position).updateAfterInvest(amount,this);
+                        System.out.println(name + " invested "+ amount +" in region position (" +position[0] +"," + position[1]+")");
+                    }
+                }
+                else{
+                    System.out.println(name+" can't invest on this region because it was occupied by opponent.");
+                }
+                this.done();
+            }
+        }
+    }
+    public void collect(int amount){
+        if(!isPlayerDone){
+            if(pay(1)){
+                if(territory.region(position).getOwner()  == this){
+                    budget = budget + territory.region(position).updateAfterCollect(amount);
+                }
+                else{
+                    System.out.println(name + " can't collect because not owned this region.");
+                }
+                this.done();
+            }
+        }
+    }
+    public void shoot(String direction , int amount){
+        if(!isPlayerDone){
+            if(pay(1)){
+                if(pay(amount)){
+                    int[] shootDirection = nextPosition(position,direction);
+                    if(onTerritory(shootDirection)){
+                        if(territory.region(shootDirection).getOwner() != null){
+                            territory.region(shootDirection).gotShot(amount);
+                            if(territory.region(shootDirection).getDeposit() == 0 && territory.region(shootDirection).isCenterCity()){
+                                territory.region(shootDirection).getOwner().lose();
+                                Set<Region> Set = territory.region(shootDirection).getOwner().getPossessRegion();
+                                for(Region region : Set){
+                                    region.setOwner(null);
+                                    region.setCenterCity(false);
+                                }
+                                Set.clear();
+                            }
+                        }
+                        else{
+                            System.out.println(name + " can't shoot no owner region.");
+                        }
+                    }
+                    this.done();
+                }
+            }
+        }
+    }
+    public int nearby(String direction){
+        int[] nearbyOpponent = position;
+        for(int i = 1 ; i < Configuration.instance().m*Configuration.instance().n ; i++){
+            nearbyOpponent = nextPosition(nearbyOpponent,direction);
+            if(isOpponentRegion(nearbyOpponent)){
+                return 100*i+Integer.toString(territory.region(nearbyOpponent).getDeposit()).length();
+            }
+        }
+        return 0;
+    }
+    public int opponent(){
+        int[] upDirection = position;
+        int[] downDirection = position;
+        int[] upleftDirection= position;
+        int[] uprightDirection= position;
+        int[] downleftDirection = position;
+        int[] downrightDirection= position;
+        if(territory.region(position).getOwner() == this){
+            for(int i = 1 ; i <= 6; i++){
+                upDirection= nextPosition(upDirection,"up");
+                if(isOpponentRegion(upDirection))
+                    return i;
+                downDirection = nextPosition(downDirection,"down");
+                if(isOpponentRegion(downDirection))
+                    return i;
+                upleftDirection = nextPosition(upleftDirection,"upleft");
+                if(isOpponentRegion(upleftDirection))
+                    return i;
+                uprightDirection = nextPosition(uprightDirection,"upright");
+                if(isOpponentRegion(uprightDirection))
+                    return i;
+                downleftDirection = nextPosition(downleftDirection,"downleft");
+                if(isOpponentRegion(downleftDirection))
+                    return i;
+                downrightDirection = nextPosition(downrightDirection,"downright");
+                if(isOpponentRegion(downrightDirection))
+                    return i;
+            }
+        }
+        return 0;
+    }
+    public void done(){
+        System.out.println(this.name + " is done.");
+        isPlayerDone = true;
+    }
+    private boolean pay(int cost){
+        if (budget - cost >= 0) {
+            budget -= cost;
+            return true;
+        }
+        else {
+            System.out.println(this.name + " don't have enough budget to execute this command.");
+            done();
+            return false;
+        }
     }
 
-    //API Function
+    public boolean isLose() {
+        return isLose;
+    }
+    private boolean onTerritory(int[] position){
+        return (position[0] >= 0) && (position[1] >=0) && (position[0] < territory.row()) && (position[1] < territory.column());
+    }
+    private boolean isOpponentRegion(int[] position){
+        if(onTerritory(position))
+            return  territory.region(position).getOwner() != null && territory.region(position).getOwner() != this;
+        else
+            return false;
+    }
+    public Map<String, Long> getVariable(){
+        return variable;
+    }
+    public void removeRegion(Region r){
+        possessRegion.remove(r);
+    }
+    public void addRegion(Region r){possessRegion.add(r);}
+
+    public void printInfo(){
+        System.out.println("Name: " + this.name + " |  Budget: " + this.budget + " |  Number of possess regions: " + possessRegion.size());
+        System.out.println("Position: (" + position[0] +"," + position[1] + ")");
+    }
     public int[] getPosition(){
-        int[] copyPosition = this.position;
-        return copyPosition;
+        int[] Position = this.position;
+        return Position;
+    }
+    public int[] getCityPosition(){
+        int[] cityPosition= this.city_position;
+        return cityPosition;
+    }
+    public void lose(){
+        isLose = true;
+    }
+    public void newTurn(){
+        isPlayerDone = false;
+    }
+    public Set<Region> getPossessRegion(){
+        return possessRegion;
+    }
+    public int[] nextPosition(int[] currentPosition,String direction){
+        int[] nextPosition = new int[2];
+        if(direction.equals("up")){
+            nextPosition[0] = currentPosition[0]-1;
+            nextPosition[1] = currentPosition[1];
+        }
+        else if(direction.equals("down")){
+            nextPosition[0] = currentPosition[0]+1;
+            nextPosition[1] = currentPosition[1];
+        }
+        else if(direction.equals("upright")){
+            if(currentPosition[1]%2 ==0){
+                nextPosition[0] = currentPosition[0];
+            }
+            else{
+                nextPosition[0] = currentPosition[0]-1;
+            }
+            nextPosition[1] = currentPosition[1]+1;
+        }
+        else if(direction.equals("upleft")){
+            if(currentPosition[1]%2 ==0){
+                nextPosition[0] = currentPosition[0];
+            }
+            else{
+                nextPosition[0] = currentPosition[0]-1;
+            }
+            nextPosition[1] = currentPosition[1]-1;
+        }
+        else if(direction.equals("downright")){
+            if(currentPosition[1]%2 != 0){
+                nextPosition[0] = currentPosition[0];
+            }
+            else{
+                nextPosition[0] = currentPosition[0]+1;
+            }
+            nextPosition[1] = currentPosition[1]+1;
+        } else if (direction.equals("downleft")) {
+            if(currentPosition[1]%2 != 0){
+                nextPosition[0] = currentPosition[0];
+            }
+            else{
+                nextPosition[0] = currentPosition[0]+1;
+            }
+            nextPosition[1] = currentPosition[1]-1;
+        }
+        return nextPosition;
     }
 
 }
