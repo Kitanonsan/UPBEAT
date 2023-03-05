@@ -1,6 +1,5 @@
 package game;
 import java.lang.Math;
-
 public class Region {
     private final int[] position;
     private double deposit;
@@ -46,9 +45,9 @@ public class Region {
         }
     }
     public int updateAfterCollect(int amount){
-        if(amount - this.deposit < 0)
+        if( this.deposit - amount< 0)
             return 0;
-        else if(amount - this.deposit == 0){
+        else if(this.deposit - amount == 0){
             this.deposit = 0;
             this.r = Configuration.instance().interest_pct;
             this.owner.removeRegion(this);
@@ -64,9 +63,11 @@ public class Region {
         if(this.owner != null){
             if(this.deposit - amount < 0){
                 this.deposit = 0;
-                owner.removeRegion(this);
-                this.setOwner(null);
-                this.r = Configuration.instance().interest_pct;
+                if(!isCenterCity){
+                    owner.removeRegion(this);
+                    this.setOwner(null);
+                    this.r = Configuration.instance().interest_pct;
+                }
             }
             else
                 this.deposit = this.deposit - amount;
