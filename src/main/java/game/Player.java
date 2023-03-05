@@ -101,13 +101,13 @@ public class Player {
 
         }
     }
-    public void invest(int budget){
+    public void invest(int amount){
         if(!isPlayerDone){
             if(pay(1)){
                 if(territory.region(position).getOwner() == null || territory.region(position).getOwner() == this){
-                    if(pay(budget)){
-                        territory.region(position).updateAfterInvest(budget,this);
-                        System.out.println(name + " invested "+ budget +" in region position (" +position[0] +"," + position[1]+")");
+                    if(pay(amount)){
+                        territory.region(position).updateAfterInvest(amount,this);
+                        System.out.println(name + " invested "+ amount +" in region position (" +position[0] +"," + position[1]+")");
                     }
                 }
                 else{
@@ -116,8 +116,17 @@ public class Player {
             }
         }
     }
-    public void collect(){
-
+    public void collect(int amount){
+        if(!isPlayerDone){
+            if(pay(1)){
+                if(territory.region(position).getOwner()  == this){
+                    budget = budget + territory.region(position).updateAfterCollect(amount);
+                }
+                else{
+                    System.out.println(name + " can't collect because not owned this region.");
+                }
+            }
+        }
     }
     public void shoot(String direction){
 
@@ -200,7 +209,7 @@ public class Player {
     public void addRegion(Region r){possessRegion.add(r);}
 
     public void printInfo(){
-        System.out.println("Name: " + this.name + " |  Budget: " + this.budget + " |  Number of regions: " + possessRegion.size());
+        System.out.println("Name: " + this.name + " |  Budget: " + this.budget + " |  Number of possess regions: " + possessRegion.size());
         System.out.println("Position: (" + position[0] +"," + position[1] + ")");
     }
     public int[] getPosition(){
