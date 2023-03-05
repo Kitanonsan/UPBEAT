@@ -111,6 +111,13 @@ public class Player {
 
     }
     public int nearby(String direction){
+        int[] nearbyOpponent = position;
+        for(int i = 1 ; i < Configuration.instance().m*Configuration.instance().n ; i++){
+            nearbyOpponent = nextPosition(nearbyOpponent,direction);
+            if(isOpponentRegion(nearbyOpponent)){
+                return 100*i+Integer.toString(territory.region(nearbyOpponent).getDeposit()).length();
+            }
+        }
         return 0;
     }
     public int opponent(){
@@ -166,14 +173,12 @@ public class Player {
     private boolean onTerritory(int[] position){
         return (position[0] >= 0) && (position[1] >=0) && (position[0] < territory.row()) && (position[1] < territory.column());
     }
-
     private boolean isOpponentRegion(int[] position){
         if(onTerritory(position))
             return  territory.region(position).getOwner() != null && territory.region(position).getOwner() != this;
         else
             return false;
     }
-
     public Map<String, Long> getVariable(){
         return variable;
     }
@@ -194,7 +199,6 @@ public class Player {
         int[] cityPosition= this.city_position;
         return cityPosition;
     }
-
     public int[] nextPosition(int[] currentPosition,String direction){
         int[] nextPosition = new int[2];
         if(direction.equals("up")){
@@ -206,7 +210,7 @@ public class Player {
             nextPosition[1] = currentPosition[1];
         }
         else if(direction.equals("upright")){
-            if(position[1]%2 ==0){
+            if(currentPosition[1]%2 ==0){
                 nextPosition[0] = currentPosition[0];
             }
             else{
@@ -215,7 +219,7 @@ public class Player {
             nextPosition[1] = currentPosition[1]+1;
         }
         else if(direction.equals("upleft")){
-            if(position[1]%2 ==0){
+            if(currentPosition[1]%2 ==0){
                 nextPosition[0] = currentPosition[0];
             }
             else{
@@ -224,7 +228,7 @@ public class Player {
             nextPosition[1] = currentPosition[1]-1;
         }
         else if(direction.equals("downright")){
-            if(position[1]%2 != 0){
+            if(currentPosition[1]%2 != 0){
                 nextPosition[0] = currentPosition[0];
             }
             else{
