@@ -7,7 +7,6 @@ public class PayTest {
     void BudgetNotEnoughForMove(){
         Territory t = new Territory();
         Player p = new Player("P",t);
-        p.budget = 0;
         p.move("up");
     }
 }

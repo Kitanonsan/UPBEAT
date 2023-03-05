@@ -1,5 +1,8 @@
 package game;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 public class OpponentTest {
 
@@ -11,6 +14,9 @@ public class OpponentTest {
                     Territory territory = new Territory();
                     Player p1 = new Player("P1",territory,Configuration.instance().m-1-i,j,0);
                     Player p2 = new Player("P2",territory,Configuration.instance().m-1-i-k,j,0);
+                    System.out.println(Arrays.toString(p1.getPosition()));
+                    System.out.println(Arrays.toString(p2.getPosition()));
+                    System.out.println(p1.opponent());
                     assertEquals(k<=6?k:0,p1.opponent());
                 }
             }
@@ -24,10 +30,23 @@ public class OpponentTest {
                     Territory territory = new Territory();
                     Player p1 = new Player("P1",territory,i,j,0);
                     Player p2 = new Player("P2",territory,i+k,j,0);
+                    System.out.println(Arrays.toString(p1.getPosition()));
+                    System.out.println(Arrays.toString(p2.getPosition()));
+                    System.out.println(p1.opponent());
                     assertEquals(k<=6?k:0,p1.opponent());
                 }
             }
         }
+    }
+
+    @Test
+    void UpRightOpponentTest(){
+            Territory territory = new Territory();
+            Player p1 = new Player("P1",territory,9,0,0);
+            Player p2 = new Player("P2",territory,9,2,0);
+            System.out.println(Arrays.toString(p1.getPosition()));
+            System.out.println(Arrays.toString(p2.getPosition()));
+            System.out.println(p1.opponent());
     }
 
 }

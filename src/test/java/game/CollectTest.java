@@ -14,7 +14,6 @@ public class CollectTest {
         p1.collect(100);
         p1.printInfo();
     }
-
     @Test
     void collectOpponentRegion(){
         Territory territory = new Territory();
@@ -26,7 +25,6 @@ public class CollectTest {
         p1.collect(100);
         p1.printInfo();
     }
-
     @Test
     void collectNoOwnerRegion(){
         Territory territory = new Territory();
