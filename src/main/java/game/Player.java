@@ -102,7 +102,19 @@ public class Player {
         }
     }
     public void invest(int budget){
-
+        if(!isPlayerDone){
+            if(pay(1)){
+                if(territory.region(position).getOwner() == null || territory.region(position).getOwner() == this){
+                    if(pay(budget)){
+                        territory.region(position).updateAfterInvest(budget,this);
+                        System.out.println(name + " invested "+ budget +" in region position (" +position[0] +"," + position[1]+")");
+                    }
+                }
+                else{
+                    System.out.println(name+" can't invest on this region because it was occupied by opponent.");
+                }
+            }
+        }
     }
     public void collect(){
 
@@ -155,9 +167,9 @@ public class Player {
         System.out.println(this.name + " is done.");
         isPlayerDone = true;
     }
-    private boolean pay(int totalCost){
-        if (budget - totalCost >= 0) {
-            budget -= totalCost;
+    private boolean pay(int cost){
+        if (budget - cost >= 0) {
+            budget -= cost;
             return true;
         }
         else {
