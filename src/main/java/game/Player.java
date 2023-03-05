@@ -150,7 +150,7 @@ public class Player {
                             }
                         }
                         else{
-                            System.out.println(name + "can't shoot no owner region.");
+                            System.out.println(name + " can't shoot no owner region.");
                         }
                     }
                     this.done();
@@ -215,8 +215,8 @@ public class Player {
         }
     }
 
-    public boolean isLoss() {
-        return territory.region(city_position).getDeposit() == 0;
+    public boolean isLose() {
+        return isLose;
     }
     private boolean onTerritory(int[] position){
         return (position[0] >= 0) && (position[1] >=0) && (position[0] < territory.row()) && (position[1] < territory.column());
