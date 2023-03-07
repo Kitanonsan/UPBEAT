@@ -345,34 +345,39 @@ body {
 }
 
 .Back_button_Con {
-  float: left;
+  position: fixed;
+  width: 120px;
+  height: 120px;
+  bottom: 20px;
+  left: 20px;
+  background-color: #ffffff;
+  color: #ff4242;
+  padding: none;
+  border: 5px solid #ff4242;
+  border-radius: 40px;
+  font-size: 25px;
   font-family: "Kanit", sans-serif;
   font-weight: bold;
-  margin-right: 500px;
-  margin-top: 20px;
-  padding: 20px 40px;
-  background-color: #e67979;
-  color: rgb(0, 0, 0);
-  font-size: 25px;
-  border: 2px solid white;
-  border-radius: 10px;
   cursor: pointer;
 }
 
 .Go_button_Con {
-  float: right;
+  position: fixed;
+  width: 120px;
+  height: 120px;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ffffff;
+  color: #79e67d;
+  padding: none;
+  border: 5px solid #79e67d;
+  border-radius: 40px;
+  font-size: 25px;
   font-family: "Kanit", sans-serif;
   font-weight: bold;
-  margin-left: 500px;
-  margin-top: 20px;
-  padding: 20px 50px;
-  background-color: #79e67d;
-  color: rgb(0, 0, 0);
-  font-size: 25px;
-  border: 2px solid white;
-  border-radius: 10px;
   cursor: pointer;
 }
+
 .Done_button_Con {
   float: right;
   font-family: "Kanit", sans-serif;
