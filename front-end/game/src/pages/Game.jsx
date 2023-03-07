@@ -5,7 +5,7 @@ import Frame from "../components/frame";
 export default function Home() {
   return (
     <BaseLayout>
-      <div>Center City Page</div>
+      <div>Game Page</div>
       <Frame>
         <Hexgrid />
       </Frame>
