@@ -221,6 +221,7 @@ body {
   font-size: 80px;
   font-family: "Kanit", sans-serif;
   font-weight: bold;
+  cursor: pointer;
 }
 .PlayerSelect_button_right {
   height: 700px;
@@ -231,12 +232,38 @@ body {
   font-size: 80px;
   font-family: "Kanit", sans-serif;
   font-weight: bold;
+  cursor: pointer;
 }
 
-/* .StartGame_button {
-  width: 200px;
-  height: 50px;
-} */
+.BacktoIPpage {
+  position: fixed;
+  width: 120px;
+  height: 120px;
+  bottom: 20px;
+  left: 20px;
+  background-color: #ffffff;
+  color: #ff4242;
+  padding: none;
+  border: 5px solid #ff4242;
+  border-radius: 40px;
+  font-size: 25px;
+  font-family: "Kanit", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.Go_set_constructionplan_button {
+  margin-top: 20px;
+  padding: 40px 180px;
+  font-family: "Kanit", sans-serif;
+  font-weight: bold;
+  background-color: #522d79;
+  color: rgb(252, 252, 252);
+  font-size: 60px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
 
 /*ConstructionPlan Input in game--------------------------------------------------------------------------*/
 .input {
@@ -255,7 +282,7 @@ body {
   resize: none; */
 }
 
-/*Strat Game Page--------------------------------------------------------------------------*/
+/*Start Game Page--------------------------------------------------------------------------*/
 .StartGame_Container {
   display: flex;
   flex-direction: column;

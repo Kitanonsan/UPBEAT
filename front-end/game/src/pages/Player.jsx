@@ -9,7 +9,12 @@ export default function Player() {
         <button className="PlayerSelect_button_right">Player 2</button>
       </div>
       <Link href="ConstructionPlanPage">
-        <button className="StartGame_button">Start Game</button>
+        <button className="Go_set_constructionplan_button">
+          Set Construction Plan
+        </button>
+      </Link>
+      <Link href="Setting">
+        <button className="BacktoIPpage">Back</button>
       </Link>
     </div>
   );
