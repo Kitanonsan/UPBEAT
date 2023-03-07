@@ -147,12 +147,13 @@ body {
   padding: none;
   border: 5px solid #4caf50;
   border-radius: 40px;
-  font-size: 16px;
+  font-size: 25px;
+  font-family: "Kanit", sans-serif;
+  font-weight: bold;
   cursor: pointer;
 }
-
 .done-button:hover {
-  background-color: #3e8e41;
+  background-color: #292929;
 }
 /*Construction--------------------------------------------------------------------------*/
 .Construction-button {
@@ -166,14 +167,21 @@ body {
   padding: none;
   border: 5px solid #af904c;
   border-radius: 40px;
-  font-size: 16px;
+  font-size: 15px;
+  font-family: "Kanit", sans-serif;
+  font-weight: bold;
   cursor: pointer;
 }
 
 .Construction-button:hover {
-  background-color: #8e433e;
+  background-color: #292929;
 }
 /*Setting Page--------------------------------------------------------------------------*/
+
+.Text_IP {
+  font-size: 80px;
+  color: black;
+}
 .InputIP {
   font-size: 35px;
   border: 1px solid #ccc;
