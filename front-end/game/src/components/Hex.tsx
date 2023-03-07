@@ -51,6 +51,16 @@ export default function Hexgrid() {
     />
   );
 
+  matrix[0][1] = (
+    <Image
+      src={"/images/GM4.png"}
+      alt=""
+      width={W}
+      height={H}
+      onError={() => console.log("Error loading CenterCity")}
+    />
+  );
+
   return (
     <div>
       {matrix.map((row, rowIndex) => (
