@@ -22,7 +22,7 @@ export default function Setting() {
   return (
     <div className="ConstructionPlan_Container">
       <div>
-        <h1 className="Text_ConstructionPLan"> ENTER IP ADDRESS</h1>
+        <h1 className="Text_IP"> ENTER IP ADDRESS</h1>
       </div>
 
       <div style={{ position: "relative" }}>
