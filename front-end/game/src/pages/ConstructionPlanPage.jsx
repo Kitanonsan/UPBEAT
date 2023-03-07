@@ -40,7 +40,7 @@ export default function Start() {
         </button>
       </div>
       <div className="ButtonGroup">
-        <Link href="/">
+        <Link href="Player">
           <button className="Back_button_Con">BACK</button>
         </Link>
         <Link href="/Game">
