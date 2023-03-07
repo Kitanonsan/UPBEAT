@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #495464;
+  background-color: #5276ac;
   font-family: "Kanit", sans-serif;
   color: rgb(253, 253, 253);
 }
@@ -173,10 +173,11 @@ body {
 .Construction-button:hover {
   background-color: #8e433e;
 }
-/*SettingPage--------------------------------------------------------------------------*/
+/*Setting Page--------------------------------------------------------------------------*/
 .InputIP {
   font-size: 35px;
   border: 1px solid #ccc;
+  border-radius: 10px;
   width: 500px;
   height: 100px;
 }
@@ -195,8 +196,49 @@ body {
   border-radius: 10px;
   cursor: pointer;
 }
+/*Player Page--------------------------------------------------------------------------*/
+.Player_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-/*ConstructionPlan--------------------------------------------------------------------------*/
+.PlayerSelect_buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.PlayerSelect_button_left {
+  height: 700px;
+  flex-grow: 1;
+  border: 20px;
+  background-color: #50b3e5;
+  border-radius: 20px;
+  font-size: 80px;
+  font-family: "Kanit", sans-serif;
+  font-weight: bold;
+}
+.PlayerSelect_button_right {
+  height: 700px;
+  flex-grow: 1;
+  border: 20px;
+  background-color: #ff5e58;
+  border-radius: 20px;
+  font-size: 80px;
+  font-family: "Kanit", sans-serif;
+  font-weight: bold;
+}
+
+/* .StartGame_button {
+  width: 200px;
+  height: 50px;
+} */
+
+/*ConstructionPlan Input in game--------------------------------------------------------------------------*/
 .input {
   font-size: 16px;
   border: 1px solid #ccc;
@@ -243,7 +285,7 @@ body {
   cursor: pointer;
 }
 
-/*Construction PLan Page--------------------------------------------------------------------------*/
+/*Construction Plan Page--------------------------------------------------------------------------*/
 .ConstructionPlan_Container {
   display: flex;
   flex-direction: column;
