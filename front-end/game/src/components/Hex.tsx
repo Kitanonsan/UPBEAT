@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function Hexgrid() {
   //-------------------------------------------------
   const rows = 12;
-  const columns = 10;
+  const columns = 9;
   const H = 82;
   const W = (246 / 212) * H;
   //H=212   W=246
@@ -41,6 +41,7 @@ export default function Hexgrid() {
       imageIndex++;
     }
   }
+
   matrix[6][4] = (
     <Image
       src={"/images/CT.png"}
@@ -63,6 +64,9 @@ export default function Hexgrid() {
 
   const [zoomLevel, setZoomLevel] = useState(1);
 
+  const wrapperWidth = `${W * columns * zoomLevel}px`;
+  const wrapperHeight = `${H * rows * zoomLevel}px`;
+
   const transformStyle = `scale(${zoomLevel})`;
 
   const zoomIn = () => {
@@ -78,7 +82,13 @@ export default function Hexgrid() {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <div
         style={{
           display: "flex",
@@ -86,10 +96,16 @@ export default function Hexgrid() {
           marginBottom: "10px",
         }}
       >
-        <button onClick={zoomIn} style={{ marginRight: "10px" }}>
+        <button
+          onClick={zoomIn}
+          style={{ marginRight: "10px" }}
+          className="Zoomin"
+        >
           Zoom In
         </button>
-        <button onClick={zoomOut}>Zoom Out</button>
+        <button onClick={zoomOut} className="Zoomout">
+          Zoom Out
+        </button>
       </div>
       <div
         style={{
