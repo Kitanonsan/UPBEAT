@@ -8,6 +8,7 @@ import {
   MdOutlineKeyboardArrowLeft,
 } from "react-icons/md";
 import { BsList, BsArrowsMove } from "react-icons/bs";
+import { AiOutlineZoomIn, AiOutlineZoomOut } from "react-icons/ai";
 import { GrHomeRounded, GrContactInfo } from "react-icons/gr";
 import { BiTimeFive, BiCoinStack } from "react-icons/bi";
 import { MdLocationPin, MdShareLocation } from "react-icons/md";
@@ -30,14 +31,14 @@ const sidebarItem = [
   },
 
   {
-    name: "City",
+    name: "Zoom In",
     href: "/",
-    icon: MdLocationPin,
+    icon: AiOutlineZoomIn,
   },
   {
-    name: "Time",
+    name: "Zoom Out",
     href: "/",
-    icon: BiTimeFive,
+    icon: AiOutlineZoomOut,
     time: 60,
   },
   {
