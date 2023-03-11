@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import ConstructionButton from "./ConstructionplanButton";
+import ConstructionButton from "./ConstructionplanButton.jsx";
 import DoneButton from "./DoneButton";
 import Sidebar from "./Sidebar";
 import Timer from "./Timer";
@@ -13,9 +13,9 @@ export default function BaseLayout({ children }: Props) {
     <div className="Layout">
       <Sidebar />
       {children}
-      <Timer />
-      <DoneButton />
-      <ConstructionButton />
+      {/* <Timer /> */}
+      {/* <DoneButton /> */}
+      {/* <ConstructionButton /> */}
     </div>
   );
 }
