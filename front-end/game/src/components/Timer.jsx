@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export default function Timer() {
-  const [timeLeft, setTimeLeft] = useState(30); // Set initial time to 30 seconds
+  const [timeLeft, setTimeLeft] = useState(60); // Set initial time to 60 seconds
 
   useEffect(() => {
     const intervalId = setInterval(() => {
