@@ -125,15 +125,13 @@ body {
 }
 /*Timer--------------------------------------------------------------------------*/
 .countdown {
-  position: fixed;
-  top: 10px;
-  right: 5%;
-  transform: translateX(-50%);
+  transform: translateY(50%);
   background-color: white;
   border: 1px solid black;
   padding: 10px;
   border-radius: 5px;
   color: black;
+  position: fixed;
 }
 /*Done--------------------------------------------------------------------------*/
 .done-button {
@@ -231,6 +229,10 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
+.PlayerSelect_button_left:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+}
+
 .PlayerSelect_button_right {
   height: 700px;
   flex-grow: 1;
@@ -241,6 +243,9 @@ body {
   font-family: "Kanit", sans-serif;
   font-weight: bold;
   cursor: pointer;
+}
+.PlayerSelect_button_right:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
 }
 
 .BacktoIPpage {
@@ -259,6 +264,9 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
+.BacktoIPpage:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+}
 
 .Go_set_constructionplan_button {
   margin-top: 20px;
@@ -272,6 +280,9 @@ body {
   border-radius: 25px;
   cursor: pointer;
 }
+.Go_set_constructionplan_button:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+}
 
 /*ConstructionPlan Input in game--------------------------------------------------------------------------*/
 .input {
@@ -279,15 +290,50 @@ body {
   border: 1px solid #ccc;
   width: 100%;
   height: 500px;
-  /* width: 100%;
-  height: 150px;
-  padding: 12px 20px;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
+  position: relative;
+  right: 10px;
+}
+
+/*Zoom--------------------------------------------------------------------------*/
+.Zoomin {
+  background-color: #7c94d7; /* green background color */
+  color: white; /* white text color */
+  border: none;
   border-radius: 4px;
-  background-color: #f8f8f8;
+  cursor: pointer;
+  padding: 10px 16px;
   font-size: 16px;
-  resize: none; */
+  font-weight: bold;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+  margin-right: 10px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.Zoomin:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+}
+
+.Zoomout {
+  background-color: #eeb85b; /* red background color */
+  color: white; /* white text color */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+  position: fixed;
+  bottom: 20px;
+  right: 140px;
+}
+
+.Zoomout:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
 }
 
 /*Start Game Page--------------------------------------------------------------------------*/
@@ -320,6 +366,10 @@ body {
   cursor: pointer;
 }
 
+.StartGame_button:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+}
+
 /*Construction Plan Page--------------------------------------------------------------------------*/
 .ConstructionPlan_Container {
   display: flex;
@@ -338,7 +388,7 @@ body {
   background-color: #3e8e41;
 }
 
-.InputConstructionPlan {
+.TextAreaConstructionPlan {
   margin-top: 40px;
   width: 1200px;
   height: 200px;
@@ -369,6 +419,10 @@ body {
   cursor: pointer;
 }
 
+.Back_button_Con:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+}
+
 .Go_button_Con {
   position: fixed;
   width: 120px;
@@ -385,6 +439,9 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
+.Go_button_Con:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+}
 
 .Done_button_Con {
   float: right;
@@ -400,8 +457,11 @@ body {
   border-radius: 10px;
   cursor: pointer;
 }
+.Done_button_Con:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+}
 
-/*Change Construction PLan Button--------------------------------------------------------------------------*/
+/*Change Construction Plan Button--------------------------------------------------------------------------*/
 
 .form {
   margin-top: 80px;
@@ -419,7 +479,37 @@ body {
 .submit-button:hover {
   background-color: #3e8e41;
 }
-/*Ace Input--------------------------------------------------------------------------*/
+
+/*Input in game--------------------------------------------------------------------------*/
+
+.inputplan {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 1.5;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  margin-bottom: 20px;
+  margin-left: 30px;
+}
+
+.saveplan {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #55e284;
+  color: #080808;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 30px;
+}
+.saveplan:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+}
 
 /*Hex Pattern--------------------------------------------------------------------------*/
 img {
