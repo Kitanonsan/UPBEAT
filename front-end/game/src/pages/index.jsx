@@ -6,7 +6,7 @@ export default function Start() {
       <div className="Center_startGame">
         <img src="/U.png" />
       </div>
-      <Link href="Setting">
+      <Link href="Player">
         <button className="StartGame_button">Start Game</button>
       </Link>
     </div>
