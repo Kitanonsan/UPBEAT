@@ -13,7 +13,7 @@ export default function Player() {
           Set Construction Plan
         </button>
       </Link>
-      <Link href="Setting">
+      <Link href="/">
         <button className="BacktoIPpage">Back</button>
       </Link>
     </div>
