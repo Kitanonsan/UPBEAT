@@ -6,9 +6,7 @@ export default function Home() {
   return (
     <BaseLayout>
       <div>Game Page</div>
-      <Frame>
-        <Hexgrid />
-      </Frame>
+      <Frame>{/* <Hexgrid /> */}</Frame>
     </BaseLayout>
   );
 }

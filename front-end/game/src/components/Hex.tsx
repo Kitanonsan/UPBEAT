@@ -61,20 +61,55 @@ export default function Hexgrid() {
     />
   );
 
+  const [zoomLevel, setZoomLevel] = useState(1);
+
+  const transformStyle = `scale(${zoomLevel})`;
+
+  const zoomIn = () => {
+    if (zoomLevel < 2) {
+      setZoomLevel(zoomLevel + 0.1);
+    }
+  };
+
+  const zoomOut = () => {
+    if (zoomLevel > 0.5) {
+      setZoomLevel(zoomLevel - 0.1);
+    }
+  };
+
   return (
     <div>
-      {matrix.map((row, rowIndex) => (
-        <span
-          className={rowIndex % 2 === 0 ? "odd" : "even"}
-          style={{ width: W - W / 4 + 3 }}
-        >
-          <div key={rowIndex}>
-            {row.map((cell: JSX.Element | null, cellIndex: number) => (
-              <div key={cellIndex}>{cell} </div>
-            ))}
-          </div>
-        </span>
-      ))}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: "10px",
+        }}
+      >
+        <button onClick={zoomIn} style={{ marginRight: "10px" }}>
+          Zoom In
+        </button>
+        <button onClick={zoomOut}>Zoom Out</button>
+      </div>
+      <div
+        style={{
+          transform: transformStyle,
+          transformOrigin: "top left",
+        }}
+      >
+        {matrix.map((row, rowIndex) => (
+          <span
+            className={rowIndex % 2 === 0 ? "odd" : "even"}
+            style={{ width: W - W / 4 + 3 }}
+          >
+            <div key={rowIndex}>
+              {row.map((cell: JSX.Element | null, cellIndex: number) => (
+                <div key={cellIndex}>{cell} </div>
+              ))}
+            </div>
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
