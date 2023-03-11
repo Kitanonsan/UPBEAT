@@ -26,8 +26,9 @@ export default function Start() {
       </div>
       <div className="ConstructionPlanHelp">{/* <img src="/U.png" /> */}</div>
       <div style={{ position: "relative" }}>
-        <input
-          className="InputConstructionPlan"
+        <textarea
+          className="TextAreaConstructionPlan"
+          placeholder="Enter your construction plan here..."
           value={inputValue}
           onChange={handleInputChange}
         />
