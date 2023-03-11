@@ -1,0 +1,19 @@
+  matrix[6][4] = (
+    <Image
+      src={"/images/CT.png"}
+      alt=""
+      width={W}
+      height={H}
+      onError={() => console.log("Error loading CenterCity")}
+    />
+  );
+
+  matrix[0][1] = (
+    <Image
+      src={"/images/GM4.png"}
+      alt=""
+      width={W}
+      height={H}
+      onError={() => console.log("Error loading CenterCity")}
+    />
+  );
