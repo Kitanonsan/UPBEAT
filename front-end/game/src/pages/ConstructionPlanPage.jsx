@@ -67,7 +67,7 @@ export default function Start() {
       </div>
       <style jsx>{`
         .background-image {
-          background-image: url("/images/flower.png");
+          background-image: url("/images/slide.gif");
           background-size: cover;
           background-position: center;
           height: 100%;
