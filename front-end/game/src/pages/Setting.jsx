@@ -1,10 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
 
 export default function Setting() {
   const [inputValue, setInputValue] = useState("");
   const [constructionPlan, setConstructionPlan] = useState("");
+
+  useEffect(() => {
+    // Fetch the data from the JSON file
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/api/read-file-IP");
+        setInputValue(response.data.ipAddress); // Set the initial value here
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleClick = async () => {
     try {
@@ -26,9 +39,9 @@ export default function Setting() {
       </div>
 
       <div style={{ position: "relative" }}>
-        <input
+        <textarea
           className="InputIP"
-          value={inputValue}
+          defaultValue={inputValue}
           onChange={handleInputChange}
         />
         <button

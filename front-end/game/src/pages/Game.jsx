@@ -1,16 +1,24 @@
 import BaseLayout from "@/components/BaseLayout";
 import Hexgrid from "@/components/Hex";
 import InputPlan from "../components/Input";
-import Frame from "../components/frame";
 import Timer from "../components/Timer";
 
 export default function Home() {
   return (
-    <BaseLayout>
-      <Timer />
-      <div>Game Page</div>
-      <Hexgrid />
-      <InputPlan />
-    </BaseLayout>
+    <div className="backofgame">
+      <BaseLayout>
+        <Timer />
+
+        <Hexgrid />
+        <InputPlan />
+      </BaseLayout>
+      <style jsx>{`
+        .backofgame {
+          background-image: url("/images/flower.png");
+          background-size: cover;
+          background-position: center;
+        }
+      `}</style>
+    </div>
   );
 }

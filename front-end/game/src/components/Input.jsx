@@ -21,11 +21,13 @@ export default function InputPlan() {
 
   return (
     <div>
-      <h1 style={{ color: "black" }}>Construction Plan</h1>
+      <h1 style={{ color: "black" }} className="textplan">
+        Construction Plan
+      </h1>
       <textarea
         value={inputValue}
         onChange={handleInputChange}
-        placeholder="Enter your construction plan here..."
+        placeholder="Enter your construction plan here.. ."
         className="inputplan"
       />
       <button onClick={handleClick} className="saveplan">

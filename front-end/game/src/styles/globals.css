@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100;300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100;300&family=Press+Start+2P&display=swap");
+
 * {
   pad: 0;
   margin: 0;
@@ -7,7 +9,7 @@
 
 body {
   background-color: #f0d3b1;
-  font-family: "Kanit", sans-serif;
+  font-family: "Press Start 2P", cursive;
   color: rgb(253, 253, 253);
 }
 
@@ -146,7 +148,7 @@ body {
   border: 5px solid #4caf50;
   border-radius: 40px;
   font-size: 25px;
-  font-family: "Kanit", sans-serif;
+
   font-weight: bold;
   cursor: pointer;
 }
@@ -166,7 +168,7 @@ body {
   border: 5px solid #af904c;
   border-radius: 40px;
   font-size: 15px;
-  font-family: "Kanit", sans-serif;
+
   font-weight: bold;
   cursor: pointer;
 }
@@ -203,6 +205,21 @@ body {
   cursor: pointer;
 }
 /*Player Page--------------------------------------------------------------------------*/
+
+.selectplayer {
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  font-size: 120px;
+  color: #000000;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: #fdfdfd;
+  text-stroke-width: 3px;
+  text-stroke-color: #ffffff;
+}
+
 .Player_container {
   display: flex;
   flex-direction: column;
@@ -214,18 +231,23 @@ body {
 .PlayerSelect_buttons {
   display: flex;
   justify-content: space-between;
+
   width: 100%;
   margin-bottom: 20px;
 }
 
 .PlayerSelect_button_left {
-  height: 700px;
+  height: 200px;
+  width: 600px;
   flex-grow: 1;
+  margin-left: 200px;
+  margin-right: 20px;
+  font-family: "Press Start 2P", cursive;
   border: 20px;
   background-color: #50b3e5;
   border-radius: 20px;
-  font-size: 80px;
-  font-family: "Kanit", sans-serif;
+  font-size: 50px;
+
   font-weight: bold;
   cursor: pointer;
 }
@@ -234,13 +256,16 @@ body {
 }
 
 .PlayerSelect_button_right {
-  height: 700px;
+  height: 200px;
+  width: 600px;
+  margin-left: 20px;
+  margin-right: 200px;
   flex-grow: 1;
   border: 20px;
   background-color: #ff5e58;
   border-radius: 20px;
-  font-size: 80px;
-  font-family: "Kanit", sans-serif;
+  font-size: 50px;
+  font-family: "Press Start 2P", cursive;
   font-weight: bold;
   cursor: pointer;
 }
@@ -260,7 +285,7 @@ body {
   border: 5px solid #ff4242;
   border-radius: 40px;
   font-size: 25px;
-  font-family: "Kanit", sans-serif;
+  font-family: "Press Start 2P", cursive;
   font-weight: bold;
   cursor: pointer;
 }
@@ -269,13 +294,16 @@ body {
 }
 
 .Go_set_constructionplan_button {
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
   margin-top: 20px;
-  padding: 40px 180px;
-  font-family: "Kanit", sans-serif;
+  padding: 20px 20px;
+  font-family: "Press Start 2P", cursive;
   font-weight: bold;
   background-color: #522d79;
   color: rgb(252, 252, 252);
-  font-size: 60px;
+  font-size: 30px;
   border: none;
   border-radius: 25px;
   cursor: pointer;
@@ -287,8 +315,9 @@ body {
 /*ConstructionPlan Input in game--------------------------------------------------------------------------*/
 .input {
   font-size: 16px;
+  font-family: "Press Start 2P", cursive;
   border: 1px solid #ccc;
-  width: 100%;
+  width: 90%;
   height: 500px;
   position: relative;
   right: 10px;
@@ -340,9 +369,9 @@ body {
 .StartGame_Container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  height: 80vh;
+  height: 100vh;
 }
 
 .Center_startGame {
@@ -350,19 +379,17 @@ body {
 }
 
 .Center_startGame img {
-  width: 400px;
-  height: 400px;
+  width: 900px;
+  height: 900px;
+  transform: translateX(-50%, -50%);
+  transform: translateY(-50%, -50%);
 }
 .StartGame_button {
-  margin-top: 20px;
-  padding: 40px 180px;
-  font-family: "Kanit", sans-serif;
-  font-weight: bold;
-  background-color: #90bcd7;
+  margin-top: 150px;
+
+  font-family: "Press Start 2P", cursive;
   color: rgb(0, 0, 0);
-  font-size: 60px;
-  border: none;
-  border-radius: 25px;
+  font-size: 180px;
   cursor: pointer;
 }
 
@@ -376,11 +403,13 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 100vh;
 }
 
 .Text_ConstructionPLan {
   font-size: 80px;
+  margin-bottom: 30px;
+  margin-top: 20px;
   color: #080808;
 }
 .ConstructionPlanHelp {
@@ -415,7 +444,7 @@ body {
   border: 5px solid #ff4242;
   border-radius: 40px;
   font-size: 25px;
-  font-family: "Kanit", sans-serif;
+  font-family: "Press Start 2P", cursive;
   font-weight: bold;
   cursor: pointer;
 }
@@ -436,7 +465,7 @@ body {
   border: 5px solid #79e67d;
   border-radius: 40px;
   font-size: 25px;
-  font-family: "Kanit", sans-serif;
+  font-family: "Press Start 2P", cursive;
   font-weight: bold;
   cursor: pointer;
 }
@@ -446,7 +475,7 @@ body {
 
 .Done_button_Con {
   float: right;
-  font-family: "Kanit", sans-serif;
+  font-family: "Press Start 2P", cursive;
   font-weight: bold;
   margin-left: 500px;
   margin-top: 20px;
@@ -483,8 +512,13 @@ body {
 
 /*Input in game--------------------------------------------------------------------------*/
 
+.textplan {
+  margin-top: 20px;
+}
+
 .inputplan {
-  width: 90%;
+  margin-top: 20px;
+  width: 80%;
   height: 400px;
   padding: 10px;
   box-sizing: border-box;

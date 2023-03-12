@@ -4,7 +4,7 @@ import Grid from "./Grid";
 
 export default function Hexgrid() {
   //-------------------------------------------------
-  const rows = 14;
+  const rows = 12;
   const columns = 10;
   const H = 82;
   const W = (246 / 212) * H;

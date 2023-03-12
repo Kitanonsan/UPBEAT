@@ -30,7 +30,8 @@
     "src/pages/_app.jsx",
     "src/components/ConstructionplanButton.jsx",
     "src/components/BaseLayout.jsx",
-    "src/components/Timer.jsx"
+    "src/components/Timer.jsx",
+    "src/pages/api/read-file-ConstructionPlan.js"
   ],
   "exclude": ["node_modules"]
 }
