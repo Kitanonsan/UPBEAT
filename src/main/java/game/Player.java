@@ -207,6 +207,14 @@ public class Player {
             }
         }
     }
+    public int infoMode(String mode, String direction){
+        if (mode.equals("nearby")){
+            return nearby(direction);
+        }else if (mode.equals("opponent")){
+            return opponent();
+        }
+        return 0;
+    }
     public int nearby(String direction){
         int[] nearbyOpponent = position;
         for(int i = 1 ; i < Configuration.instance().m*Configuration.instance().n ; i++){
