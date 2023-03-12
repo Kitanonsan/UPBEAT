@@ -18,7 +18,7 @@ public class RegionTest {
         r.printInfo();
         System.out.println(r.getDeposit());
         System.out.println(r.getInterestRate());
-        for(int i = 0 ; i < 10 ; i++){
+        for(int i = 1 ; i < 10 ; i++){
             r.updateDeposit();
             System.out.println(r.getDeposit());
 

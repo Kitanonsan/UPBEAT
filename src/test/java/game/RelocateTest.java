@@ -37,4 +37,15 @@ public class RelocateTest {
         p1.printInfo();
         p2.printInfo();
     }
+
+    @Test
+    void RelocateTest2(){
+        Territory territory = new Territory();
+        Player p1 = new Player("P1",territory,0,0,1000);
+        for(int i = 0 ; i < 100 ; i++){
+            p1.randomMove();
+        }
+        p1.relocate();
+        p1.printInfo();
+    }
 }
