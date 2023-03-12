@@ -12,14 +12,16 @@ export default function InputPlan() {
     try {
       await axios.post("/api/write-file", { inputValue });
       console.log("Input saved!");
+      alert("Construction plan saved!");
     } catch (error) {
       console.error(error);
+      alert("Failed to save construction plan.");
     }
   };
 
   return (
     <div>
-      <h1>Construction Plan</h1>
+      <h1 style={{ color: "black" }}>Construction Plan</h1>
       <textarea
         value={inputValue}
         onChange={handleInputChange}

@@ -10,8 +10,10 @@ export default function Start() {
     try {
       await axios.post("/api/write-file", { inputValue });
       console.log("Input saved!");
+      alert("Construction plan saved!");
     } catch (error) {
       console.error(error);
+      alert("Failed to save construction plan.");
     }
   };
 
@@ -31,7 +33,7 @@ export default function Start() {
           placeholder="Enter your construction plan here..."
           value={inputValue}
           onChange={handleInputChange}
-        />
+        ></textarea>
         <button
           className="Done_button_Con"
           style={{ position: "absolute", bottom: 5, right: 5 }}
