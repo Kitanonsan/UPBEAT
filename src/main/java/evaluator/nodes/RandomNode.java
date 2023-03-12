@@ -16,6 +16,6 @@ public class RandomNode extends IdentifierNode{
 
     @Override
     public long evaluate(){
-        return random.nextInt()%1000;
+        return random.nextInt(1000);
     }
 }
