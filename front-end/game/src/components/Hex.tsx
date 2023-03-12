@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
+import Grid from "./Grid";
 
 export default function Hexgrid() {
   //-------------------------------------------------
@@ -29,38 +30,19 @@ export default function Hexgrid() {
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < columns; j++) {
       const imageName = shuffledImageNames[imageIndex];
-      matrix[i][j] = (
-        <Image
-          src={`/images/${imageName}`}
-          alt=""
-          width={W}
-          height={H}
-          onError={() => console.log(`Error loading ${imageName}`)}
-        />
-      );
+      matrix[i][j] = imageName;
       imageIndex++;
     }
   }
 
-  matrix[6][4] = (
-    <Image
-      src={"/images/CT.png"}
-      alt=""
-      width={W}
-      height={H}
-      onError={() => console.log("Error loading CenterCity")}
-    />
-  );
-
-  matrix[0][1] = (
-    <Image
-      src={"/images/GM4.png"}
-      alt=""
-      width={W}
-      height={H}
-      onError={() => console.log("Error loading CenterCity")}
-    />
-  );
+  matrix[6][4] = "CT.png";
+  matrix[0][1] = "GM4.png";
+  matrix[1][1] = "GM2.png";
+  matrix[5][1] = "GM4.png";
+  matrix[3][1] = "GM7.png";
+  matrix[3][2] = "GM1.png";
+  matrix[3][7] = "GM8.png";
+  matrix[3][6] = "GM5.png";
 
   const [zoomLevel, setZoomLevel] = useState(1);
 
@@ -80,7 +62,6 @@ export default function Hexgrid() {
       setZoomLevel(zoomLevel - 0.1);
     }
   };
-
   return (
     <div
       style={{
@@ -113,18 +94,7 @@ export default function Hexgrid() {
           transformOrigin: "top left",
         }}
       >
-        {matrix.map((row, rowIndex) => (
-          <span
-            className={rowIndex % 2 === 0 ? "odd" : "even"}
-            style={{ width: W - W / 4 + 3 }}
-          >
-            <div key={rowIndex}>
-              {row.map((cell: JSX.Element | null, cellIndex: number) => (
-                <div key={cellIndex}>{cell} </div>
-              ))}
-            </div>
-          </span>
-        ))}
+        <Grid matrix={matrix} W={W} H={H} />
       </div>
     </div>
   );
