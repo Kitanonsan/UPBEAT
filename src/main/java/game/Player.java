@@ -9,6 +9,7 @@ public class Player {
     private int[] city_position = new int[2];
     private Set<Region> possessRegion = new HashSet<>();
     private boolean isPlayerDone = false;
+    private boolean isPlayerLost = false;
     private final Territory territory ;
     public Player(String name , Territory territory){
         this.name = name;
@@ -49,7 +50,7 @@ public class Player {
         this.budget = budget;
     }
     public void move(String direction){
-        if(!isPlayerDone){
+        if(!isPlayerDone && !lose()){
             if(pay(1)){
                 if(direction.equals("up")) {
                     if(onTerritory(nextPosition(position,"up"))){
@@ -86,7 +87,7 @@ public class Player {
         this.printInfo();
     }
     public void randomMove(){
-        if(!isPlayerDone){
+        if(!isPlayerDone && !lose()){
             String[] direction = {"up" , "down" , "upright", "upleft" , "downleft" ,"downright"};
             Random rand = new Random();
             int n = rand.nextInt(direction.length);
@@ -94,7 +95,7 @@ public class Player {
         }
     }
     public void relocate(){
-        if(!isPlayerDone){
+        if(!isPlayerDone && !lose()){
             int[] currentPosition = city_position;
             int distance = 0;
             System.out.print(city_position[0] + "," + city_position[1]);
@@ -158,7 +159,7 @@ public class Player {
         }
     }
     public void invest(int amount){
-        if(!isPlayerDone){
+        if(!isPlayerDone && !lose()){
             if(pay(1)){
                 if(territory.region(position).getOwner() == null || territory.region(position).getOwner() == this){
                     if(pay(amount)){
@@ -173,7 +174,7 @@ public class Player {
         }
     }
     public void collect(int amount){
-        if(!isPlayerDone){
+        if(!isPlayerDone && !lose()){
             if(pay(1)){
                 if(territory.region(position).getOwner()  == this){
                     budget = budget + territory.region(position).updateAfterCollect(amount);
@@ -185,7 +186,7 @@ public class Player {
         }
     }
     public void shoot(String direction , long amount){
-        if(!isPlayerDone){
+        if(!isPlayerDone && !lose()){
             if(pay(1)){
                 if(pay(amount)){
                     if(territory.region(position).getOwner() == this){
@@ -193,6 +194,7 @@ public class Player {
                         if(onTerritory(shootDirection)){
                             if(territory.region(shootDirection).getOwner() != null){
                                 territory.region(shootDirection).gotShot(amount);
+                                territory.region(shootDirection).getOwner().lose();
                             }
                             else{
                                 System.out.println(name + " can't shoot no owner region.");
@@ -263,12 +265,16 @@ public class Player {
         }
     }
     public boolean lose(){
-        if(territory.region(city_position).getDeposit() == 0 || this.budget == 0){
+        if(isPlayerLost){
+            return true;
+        }
+        else if(territory.region(city_position).getDeposit() == 0 || this.budget == 0){
             for(Region region : possessRegion){
                 region.setOwner(null);
                 region.setCenterCity(false);
             }
             possessRegion.clear();
+            isPlayerLost = true;
             return true;
         }
         else
