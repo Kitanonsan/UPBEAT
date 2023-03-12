@@ -71,7 +71,6 @@ public class GrammarParser implements Parser{
         tkz.consume(Regex.Then);
         Node trueStatement = parseStatement();
 
-//        System.out.println(tkz.peek());
         tkz.consume(Regex.Else);
         Node falseStatement = parseStatement();
 
@@ -91,7 +90,6 @@ public class GrammarParser implements Parser{
     }
 
     public Node parseBlock() throws SyntaxError{
-//        System.out.println(tkz.peek());
         BlockStatementNode blockStatement = new BlockStatementNode();
         tkz.consume("[{]");
         while(!tkz.peek("[}]"))
@@ -168,7 +166,7 @@ public class GrammarParser implements Parser{
             Node RegionCommandNode = new RegionCommandNode(financeMode, amount,player);
             return RegionCommandNode;
         }else {
-            throw new SyntaxError("Can not parse Region command");
+            throw new SyntaxError("Can not parse RegionCommand");
         }
     }
 
@@ -217,7 +215,7 @@ public class GrammarParser implements Parser{
                     term = new BinaryArithExprNode(term, "%", factor);
                 }
             }else {
-                throw new SyntaxError("parseTerm mai dai");
+                throw new SyntaxError("Can not parseTerm");
             }
         }
         return  term;
@@ -247,7 +245,7 @@ public class GrammarParser implements Parser{
             tkz.consume("[(]");
             Node ExprNode = parseExpression();
             if (!tkz.peek("[)]")){
-                throw new SyntaxError("unmatch -> ) ");
+                throw new SyntaxError("unMatch -> ) ");
             }
             tkz.consume("[)]");
             return ExprNode;
@@ -266,7 +264,7 @@ public class GrammarParser implements Parser{
             Node infoNode = new InfoExprNode(info, direction, player);
             return infoNode;
         }else{
-            throw new SyntaxError("unParseAble");
+            throw new SyntaxError("Can not parseInfoExpression");
         }
     }
 
@@ -278,6 +276,11 @@ public class GrammarParser implements Parser{
     }
     public IdentifierNode parseIdentifier() throws SyntaxError {
         String identifier = tkz.peek();
+        if (identifier.matches(Regex.Random)){
+            tkz.consume(Regex.Random);
+            IdentifierNode randomNode = new IdentifierNode(identifier, player.getVariable());
+            return randomNode;
+        }
         tkz.consume(Regex.Variable);
 
         IdentifierNode identifierNode = new IdentifierNode(identifier, player.getVariable());
