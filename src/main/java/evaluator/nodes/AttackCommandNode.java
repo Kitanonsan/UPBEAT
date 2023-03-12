@@ -13,11 +13,9 @@ public class AttackCommandNode implements Node{ //shoot
 
     }
     @Override
-    public long evaluate() { //Todo implement evaluate Shoot command
-        throw new NotImplementYet();
-//        player.move(direction);
-//        player.shoot(direction);
-//        return 0;
+    public long evaluate() {
+        player.shoot(direction,expression.evaluate());
+        return 0;
     }
 
     @Override
