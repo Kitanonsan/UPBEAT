@@ -19,7 +19,7 @@ public class Region {
     public void setOwner(Player player){
         this.owner = player;
     }
-    public void setCenterCityDeposit(int amount){this.deposit = amount;}
+    public void setDeposit(double amount){this.deposit = amount;}
     public void setCenterCity(boolean b){
         this.isCenterCity = b;
     }
@@ -59,7 +59,7 @@ public class Region {
             return amount;
         }
     }
-    public void gotShot(int amount){
+    public void gotShot(long amount){
         if(this.owner != null){
             if(this.deposit - amount <= 0){
                 this.deposit = 0;
@@ -90,9 +90,12 @@ public class Region {
     public double getInterestRate(){
         return this.r;
     }
-
     public boolean isCenterCity() {
         return this.isCenterCity;
+    }
+    public int[] getPosition(){
+        int[] regionPosition = position;
+        return regionPosition;
     }
 
 }
