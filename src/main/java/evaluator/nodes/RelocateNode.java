@@ -9,8 +9,8 @@ public class RelocateNode implements Node{
         this.player = player;
     }
     @Override
-    public long evaluate() { //Todo implement relocate
-//        throw new NotImplementYet();
+    public long evaluate() {
+        player.relocate();
         return 0;
     }
 
