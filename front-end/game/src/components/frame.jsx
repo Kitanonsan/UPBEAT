@@ -1,4 +1,5 @@
 import React from "react";
+import Hexgrid from "./Hex";
 
 const Frame = ({ children }) => {
   const frameStyle = {
@@ -10,7 +11,12 @@ const Frame = ({ children }) => {
     backgroundColor: "#BBBFCA",
   };
 
-  return <div style={frameStyle}>{children}</div>;
+  return (
+    <div style={frameStyle}>
+      {children}
+      <Hexgrid />
+    </div>
+  );
 };
 
 export default Frame;

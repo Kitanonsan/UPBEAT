@@ -2,18 +2,16 @@ import { useState } from "react";
 import axios from "axios";
 import Link from "next/link";
 
-export default function Start() {
+export default function Setting() {
   const [inputValue, setInputValue] = useState("");
   const [constructionPlan, setConstructionPlan] = useState("");
 
   const handleClick = async () => {
     try {
-      await axios.post("/api/write-file", { inputValue });
+      await axios.post("/api/write-file-IP", { inputValue });
       console.log("Input saved!");
-      alert("Construction plan saved!");
     } catch (error) {
       console.error(error);
-      alert("Failed to save construction plan.");
     }
   };
 
@@ -24,18 +22,17 @@ export default function Start() {
   return (
     <div className="ConstructionPlan_Container">
       <div>
-        <h1 className="Text_ConstructionPLan">Construction Plan</h1>
+        <h1 className="Text_IP"> ENTER IP ADDRESS</h1>
       </div>
-      <div className="ConstructionPlanHelp">{/* <img src="/U.png" /> */}</div>
+
       <div style={{ position: "relative" }}>
-        <textarea
-          className="TextAreaConstructionPlan"
-          placeholder="Enter your construction plan here..."
+        <input
+          className="InputIP"
           value={inputValue}
           onChange={handleInputChange}
-        ></textarea>
+        />
         <button
-          className="Done_button_Con"
+          className="Done_button_IP"
           style={{ position: "absolute", bottom: 5, right: 5 }}
           onClick={handleClick}
         >
@@ -43,10 +40,10 @@ export default function Start() {
         </button>
       </div>
       <div className="ButtonGroup">
-        <Link href="Player">
+        <Link href="/">
           <button className="Back_button_Con">BACK</button>
         </Link>
-        <Link href="/Game">
+        <Link href="/Player">
           <button className="Go_button_Con">GO</button>
         </Link>
       </div>

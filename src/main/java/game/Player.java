@@ -1,8 +1,5 @@
 package game;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.Random;
+import java.util.*;
 
 public class Player {
     private final String name;
@@ -12,7 +9,6 @@ public class Player {
     private int[] city_position = new int[2];
     private Set<Region> possessRegion = new HashSet<>();
     private boolean isPlayerDone = false;
-    private boolean isLose = false;
     private final Territory territory ;
     public Player(String name , Territory territory){
         this.name = name;
@@ -32,7 +28,7 @@ public class Player {
         city_position[1] = position[1];
         territory.region(city_position).setCenterCity(true);
         territory.region(city_position).setOwner(this);
-        territory.region(city_position).setCenterCityDeposit(Configuration.instance().init_center_dep);
+        territory.region(city_position).setDeposit(Configuration.instance().init_center_dep);
         possessRegion.add(territory.region(city_position));
         //initial start budget
         this.budget = Configuration.instance().init_budget;
@@ -48,7 +44,7 @@ public class Player {
         city_position[1] = column;
         territory.region(city_position).setCenterCity(true);
         territory.region(city_position).setOwner(this);
-        territory.region(city_position).setCenterCityDeposit(Configuration.instance().init_center_dep);
+        territory.region(city_position).setDeposit(Configuration.instance().init_center_dep);
         possessRegion.add(territory.region(city_position));
         this.budget = budget;
     }
@@ -99,7 +95,66 @@ public class Player {
     }
     public void relocate(){
         if(!isPlayerDone){
+            int[] currentPosition = city_position;
+            int distance = 0;
+            System.out.print(city_position[0] + "," + city_position[1]);
+            while((currentPosition[0] != position[0] && currentPosition[1] != position[1]) || (currentPosition[1] != position[1]) || (currentPosition[0] != position[0]) ){
+                if(currentPosition[0] == position[0]){
+                    if(currentPosition[1] < position[1]){
+                        currentPosition = compareDirection(currentPosition,"upright","downright");
+                    }
+                    else{
+                        currentPosition = compareDirection(currentPosition,"upleft","downleft");
+                    }
+                }
+                else if(currentPosition[0] > position[0]){
+                    if(currentPosition[1] == position[1]){
+                        currentPosition = nextPosition(currentPosition,"up");
+                    }
+                    else if(currentPosition[1] < position[1]){
+                        currentPosition = compareDirection(currentPosition,"up","upright");
+                    }
+                    else{
+                        currentPosition = compareDirection(currentPosition,"up","upleft");
+                    }
+                }
+                else {
+                   if(currentPosition[1] == position[1]){
+                       currentPosition = nextPosition(currentPosition,"down");
+                   }
+                   else if(currentPosition[1] < position[1]){
+                       currentPosition = compareDirection(currentPosition,"down","downright");
+                   }
+                   else{
+                       currentPosition = compareDirection(currentPosition,"down","downleft");
+                   }
+               }
+               distance++;
+               System.out.print("->"+currentPosition[0] + "," + currentPosition[1]);
+           }
+            System.out.println(" Distance: " + distance);
+            if(pay(1)){
+                if(pay(5*distance +10)){
+                    if(territory.region(position).getOwner() == null){
+                        double positionRegionDeposit = territory.region(position).getDeposit();
+                        double deposit = territory.region(city_position).getDeposit();
+                        territory.region(city_position).setDeposit(positionRegionDeposit);
+                        territory.region(position).setDeposit(deposit);
 
+                        this.removeRegion(territory.region(city_position));
+                        territory.region(city_position).setCenterCity(false);
+                        territory.region(city_position).setOwner(null);
+
+                        city_position = position;
+                        territory.region(city_position).setOwner(this);
+                        territory.region(city_position).setCenterCity(true);
+                        this.addRegion(territory.region(city_position));
+                    }
+                    else
+                        System.out.println("This region already has an owner.");
+                }
+            }
+            this.done();
         }
     }
     public void invest(int amount){
@@ -114,7 +169,6 @@ public class Player {
                 else{
                     System.out.println(name+" can't invest on this region because it was occupied by opponent.");
                 }
-                this.done();
             }
         }
     }
@@ -127,33 +181,26 @@ public class Player {
                 else{
                     System.out.println(name + " can't collect because not owned this region.");
                 }
-                this.done();
             }
         }
     }
-    public void shoot(String direction , int amount){
+    public void shoot(String direction , long amount){
         if(!isPlayerDone){
             if(pay(1)){
                 if(pay(amount)){
-                    int[] shootDirection = nextPosition(position,direction);
-                    if(onTerritory(shootDirection)){
-                        if(territory.region(shootDirection).getOwner() != null){
-                            territory.region(shootDirection).gotShot(amount);
-                            if(territory.region(shootDirection).getDeposit() == 0 && territory.region(shootDirection).isCenterCity()){
-                                territory.region(shootDirection).getOwner().lose();
-                                Set<Region> Set = territory.region(shootDirection).getOwner().getPossessRegion();
-                                for(Region region : Set){
-                                    region.setOwner(null);
-                                    region.setCenterCity(false);
-                                }
-                                Set.clear();
+                    if(territory.region(position).getOwner() == this){
+                        int[] shootDirection = nextPosition(position,direction);
+                        if(onTerritory(shootDirection)){
+                            if(territory.region(shootDirection).getOwner() != null){
+                                territory.region(shootDirection).gotShot(amount);
+                            }
+                            else{
+                                System.out.println(name + " can't shoot no owner region.");
                             }
                         }
-                        else{
-                            System.out.println(name + " can't shoot no owner region.");
-                        }
                     }
-                    this.done();
+                    else
+                        System.out.println("this region you not the owner.");
                 }
             }
         }
@@ -201,9 +248,10 @@ public class Player {
     }
     public void done(){
         System.out.println(this.name + " is done.");
+        position = city_position;
         isPlayerDone = true;
     }
-    private boolean pay(int cost){
+    private boolean pay(long cost){
         if (budget - cost >= 0) {
             budget -= cost;
             return true;
@@ -214,9 +262,17 @@ public class Player {
             return false;
         }
     }
-
-    public boolean isLose() {
-        return isLose;
+    public boolean lose(){
+        if(territory.region(city_position).getDeposit() == 0 || this.budget == 0){
+            for(Region region : possessRegion){
+                region.setOwner(null);
+                region.setCenterCity(false);
+            }
+            possessRegion.clear();
+            return true;
+        }
+        else
+            return false;
     }
     private boolean onTerritory(int[] position){
         return (position[0] >= 0) && (position[1] >=0) && (position[0] < territory.row()) && (position[1] < territory.column());
@@ -234,10 +290,16 @@ public class Player {
         possessRegion.remove(r);
     }
     public void addRegion(Region r){possessRegion.add(r);}
-
     public void printInfo(){
-        System.out.println("Name: " + this.name + " |  Budget: " + this.budget + " |  Number of possess regions: " + possessRegion.size());
+        System.out.println("Name: " + this.name + " |  Budget: " + this.budget);
         System.out.println("Position: (" + position[0] +"," + position[1] + ")");
+        System.out.print("Number of possess regions: " + possessRegion.size() +" Posses regions :");
+        Iterator<Region> iterator = possessRegion.iterator();
+        while(iterator.hasNext()){
+            int[] regionPosition = iterator.next().getPosition();
+            System.out.print(" "+regionPosition[0] + "," + regionPosition[1]);
+        }
+        System.out.println(" ");
     }
     public int[] getPosition(){
         int[] Position = this.position;
@@ -247,16 +309,13 @@ public class Player {
         int[] cityPosition= this.city_position;
         return cityPosition;
     }
-    public void lose(){
-        isLose = true;
-    }
     public void newTurn(){
         isPlayerDone = false;
     }
     public Set<Region> getPossessRegion(){
         return possessRegion;
     }
-    public int[] nextPosition(int[] currentPosition,String direction){
+    private int[] nextPosition(int[] currentPosition,String direction){
         int[] nextPosition = new int[2];
         if(direction.equals("up")){
             nextPosition[0] = currentPosition[0]-1;
@@ -302,6 +361,21 @@ public class Player {
             nextPosition[1] = currentPosition[1]-1;
         }
         return nextPosition;
+    }
+
+    private int[] compareDirection(int[] currentPosition,String direction1 , String direction2){
+        int direction1Diff = Integer.MAX_VALUE;
+        int direction2Diff = Integer.MAX_VALUE;
+        if(onTerritory(nextPosition(currentPosition,direction1))){
+            direction1Diff = Math.abs(position[1] - nextPosition(currentPosition,direction1)[1]) + Math.abs(position[0] - nextPosition(currentPosition,direction1)[0]);
+        }
+        if(onTerritory(nextPosition(currentPosition,direction2))){
+            direction2Diff =Math.abs(position[1] - nextPosition(currentPosition,direction2)[1]) + Math.abs(position[0] - nextPosition(currentPosition,direction2)[0]);
+        }
+        if(direction1Diff < direction2Diff)
+            return nextPosition(currentPosition,direction1);
+        else
+            return nextPosition(currentPosition,direction2);
     }
 
 }
