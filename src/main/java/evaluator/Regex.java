@@ -41,6 +41,8 @@ public class Regex {
     public static String UpLeft = "upleft";
     public static String UpRight = "upright";
 
+    public static String Random = "random";
+
 
 
     public static Pattern p_Regex = Pattern.compile(Regex);
@@ -79,5 +81,6 @@ public class Regex {
     public static Pattern p_UpLeft = Pattern.compile(UpLeft);
     public static Pattern p_UpRight = Pattern.compile(UpRight);
 
+    public static Pattern p_Random = Pattern.compile(Random);
 
 }
