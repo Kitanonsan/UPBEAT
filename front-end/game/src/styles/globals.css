@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #5276ac;
+  background-color: #f0d3b1;
   font-family: "Kanit", sans-serif;
   color: rgb(253, 253, 253);
 }
@@ -358,7 +358,7 @@ body {
   padding: 40px 180px;
   font-family: "Kanit", sans-serif;
   font-weight: bold;
-  background-color: #ffc961;
+  background-color: #90bcd7;
   color: rgb(0, 0, 0);
   font-size: 60px;
   border: none;
@@ -381,6 +381,7 @@ body {
 
 .Text_ConstructionPLan {
   font-size: 80px;
+  color: #080808;
 }
 .ConstructionPlanHelp {
   width: 1000px;

@@ -13,8 +13,8 @@ const Frame = ({ children }) => {
 
   return (
     <div style={frameStyle}>
-      <Hexgrid />
       {children}
+      <Hexgrid />
     </div>
   );
 };

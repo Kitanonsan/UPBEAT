@@ -3,8 +3,8 @@ import { useState } from "react";
 
 export default function Hexgrid() {
   //-------------------------------------------------
-  const rows = 12;
-  const columns = 9;
+  const rows = 14;
+  const columns = 10;
   const H = 82;
   const W = (246 / 212) * H;
   //H=212   W=246
