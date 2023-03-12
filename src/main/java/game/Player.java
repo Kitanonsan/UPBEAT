@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Player {
     private final String name;
-    private int budget;
+    private long budget;
     protected Map<String, Long> variable;
     private int[] position = new int[2] ; //row: position[0] , column: position[1]
     private int[] city_position = new int[2];
@@ -158,7 +158,7 @@ public class Player {
             this.done();
         }
     }
-    public void invest(int amount){
+    public void invest(long amount){
         if(!isPlayerDone && !lose()){
             if(pay(1)){
                 if(territory.region(position).getOwner() == null || territory.region(position).getOwner() == this){
@@ -173,7 +173,7 @@ public class Player {
             }
         }
     }
-    public void collect(int amount){
+    public void collect(long amount){
         if(!isPlayerDone && !lose()){
             if(pay(1)){
                 if(territory.region(position).getOwner()  == this){

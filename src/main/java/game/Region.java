@@ -6,7 +6,6 @@ public class Region {
     private double r;
     private Player owner;
     private boolean isCenterCity;
-
     public Region(int row_position , int column_position){
         this.position = new int[2];
         position[0] = row_position;
@@ -34,7 +33,7 @@ public class Region {
     public void updateDeposit(){
         this.deposit = deposit+(deposit*r/100);
     }
-    public void updateAfterInvest(int amount, Player player){
+    public void updateAfterInvest(long amount, Player player){
         if(this.deposit + amount <= Configuration.instance().max_dep)
             this.deposit = this.deposit + amount;
         else
@@ -44,7 +43,7 @@ public class Region {
             this.owner.addRegion(this);
         }
     }
-    public int updateAfterCollect(int amount){
+    public long updateAfterCollect(long amount){
         if( this.deposit - amount< 0)
             return 0;
         else if(this.deposit - amount == 0){
