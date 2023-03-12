@@ -14,8 +14,13 @@ public class RegionCommandNode implements Node{ // invest, collect
     }
     @Override
     public long evaluate() { //todo implement RegionCommand
-        throw new NotImplementYet();
-//        return 0;
+//        throw new NotImplementYet();
+        if (financeMode.equals("invest")){
+            player.invest(Expression.evaluate());
+        }else if (financeMode.equals("collect")){
+            player.collect(Expression.evaluate());
+        }
+        return 0;
     }
 
     @Override

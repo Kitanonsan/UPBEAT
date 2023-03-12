@@ -7,14 +7,14 @@ public class InfoExprNode implements Node{ // opponent | nearby
     protected String direction;
     protected Player player;
 
-    public InfoExprNode(String info, String direction,Player player){
+    public InfoExprNode(String info, String direction,Player player){ //nearby opponent
         this.info = info;
         this.direction = direction;
         this.player = player;
     }
     @Override
-    public long evaluate() { //Todo implement info expression node
-//        player.checkRegion(info, direction, player);
+    public long evaluate() {
+        player.infoMode(info, direction);
         return 0;
     }
 
