@@ -318,9 +318,6 @@ public class Player {
     public void newTurn(){
         isPlayerDone = false;
     }
-    public Set<Region> getPossessRegion(){
-        return possessRegion;
-    }
     private int[] nextPosition(int[] currentPosition,String direction){
         int[] nextPosition = new int[2];
         if(direction.equals("up")){
@@ -382,6 +379,39 @@ public class Player {
             return nextPosition(currentPosition,direction1);
         else
             return nextPosition(currentPosition,direction2);
+    }
+    public int Rows(){
+        return territory.row();
+    }
+    public int Cols(){
+        return territory.column();
+    }
+    public int CurRow(){
+        return position[0];
+    }
+    public int CurCol(){
+        return position[1];
+    }
+    public long Budget(){
+        return this.budget;
+    }
+    public int Deposit(){
+        if(territory.region(position).getOwner() == this){
+            return (int) territory.region(position).getDeposit();
+        }
+       else
+           return (int) (-1)*territory.region(position).getDeposit();
+    }
+    public int Int(){
+        if(territory.region(position).getOwner() == this){
+            return (int) territory.region(position).getInterestRate();
+        }
+        else
+           return (int) ((int) (-1)*territory.region(position).getInterestRate());
+    }
+
+    public int MaxDeposit(){
+        return Configuration.instance().max_dep;
     }
 
 }
