@@ -3,7 +3,7 @@ package evaluator.nodes;
 import game.Player;
 
 public class MoveCommandNode implements Node {
-    protected String direction;
+    private String direction;
     Player player;
     public MoveCommandNode(String direction, Player player){
         this.direction = direction;
