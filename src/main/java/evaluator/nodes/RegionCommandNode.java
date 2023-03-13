@@ -3,9 +3,9 @@ package evaluator.nodes;
 import game.Player;
 
 public class RegionCommandNode implements Node{ // invest, collect
-    private String financeMode;
-    private Player player;
-    private Node Expression;
+    protected String financeMode;
+    protected Player player;
+    protected Node Expression;
 
     public RegionCommandNode(String financeMode,Node Expression, Player player){
         this.financeMode = financeMode;

@@ -3,9 +3,6 @@ import Link from "next/link";
 export default function Start() {
   return (
     <div className="StartGame_Container">
-      {/* <div className="Center_startGame">
-        <img src="/images/Upbeat.png" />
-      </div> */}
       <Link href="Player">
         <h1 className="StartGame_button">UPbeat</h1>
       </Link>

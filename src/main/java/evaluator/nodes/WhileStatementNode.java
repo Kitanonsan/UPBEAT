@@ -1,8 +1,8 @@
 package evaluator.nodes;
 
 public class WhileStatementNode implements Node {
-    private Node ExprNode;
-    private Node StatementNode;
+    protected Node ExprNode;
+    protected Node StatementNode;
     public WhileStatementNode(Node ExprNode, Node StatementNode){
         this.ExprNode = ExprNode;
         this.StatementNode = StatementNode;

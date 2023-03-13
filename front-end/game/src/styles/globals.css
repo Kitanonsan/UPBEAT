@@ -107,7 +107,7 @@ body {
   display: none;
 }
 
-/*Game--------------------------------------------------------------------------*/
+/*-----------Grid-------------*/
 
 .even {
   top: 0;
@@ -115,7 +115,6 @@ body {
   display: inline-block;
   width: fit-content;
   margin-right: 0;
-  /* left: -5px; */
 }
 
 .odd {
@@ -135,47 +134,7 @@ body {
   color: black;
   position: fixed;
 }
-/*Done--------------------------------------------------------------------------*/
-.done-button {
-  position: fixed;
-  width: 120px;
-  height: 120px;
-  bottom: 20px;
-  right: 20px;
-  background-color: #ffffff;
-  color: #4caf50;
-  padding: none;
-  border: 5px solid #4caf50;
-  border-radius: 40px;
-  font-size: 25px;
 
-  font-weight: bold;
-  cursor: pointer;
-}
-.done-button:hover {
-  background-color: #292929;
-}
-/*Construction--------------------------------------------------------------------------*/
-.Construction-button {
-  position: fixed;
-  width: 120px;
-  height: 120px;
-  bottom: 150px; /* change the bottom position to move the button up */
-  right: 20px;
-  background-color: #ffffff;
-  color: #af904c;
-  padding: none;
-  border: 5px solid #af904c;
-  border-radius: 40px;
-  font-size: 15px;
-
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.Construction-button:hover {
-  background-color: #292929;
-}
 /*Setting Page--------------------------------------------------------------------------*/
 
 .Text_IP {
@@ -213,11 +172,9 @@ body {
   text-align: center;
   transform: translate(-50%, -50%);
   font-size: 120px;
-  color: #000000;
+  color: #ffffff;
   -webkit-text-stroke-width: 3px;
-  -webkit-text-stroke-color: #fdfdfd;
-  text-stroke-width: 3px;
-  text-stroke-color: #ffffff;
+  -webkit-text-stroke-color: #000000;
 }
 
 .Player_container {
@@ -239,6 +196,7 @@ body {
 .PlayerSelect_button_left {
   height: 200px;
   width: 600px;
+  margin-top: 200px;
   flex-grow: 1;
   margin-left: 200px;
   margin-right: 20px;
@@ -260,6 +218,7 @@ body {
   width: 600px;
   margin-left: 20px;
   margin-right: 200px;
+  margin-top: 200px;
   flex-grow: 1;
   border: 20px;
   background-color: #ff5e58;
@@ -273,7 +232,7 @@ body {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
 }
 
-.BacktoIPpage {
+.Backtoindexpage {
   position: fixed;
   width: 120px;
   height: 120px;
@@ -289,7 +248,7 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
-.BacktoIPpage:hover {
+.Backtoindexpage:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
 }
 
@@ -312,6 +271,11 @@ body {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
 }
 
+/* .Player1 {
+  width: 200px;
+  height: 200px;
+} */
+
 /*ConstructionPlan Input in game--------------------------------------------------------------------------*/
 .input {
   font-size: 16px;
@@ -326,13 +290,14 @@ body {
 /*Zoom--------------------------------------------------------------------------*/
 .Zoomin {
   background-color: #7c94d7; /* green background color */
-  color: white; /* white text color */
+  color: rgb(0, 0, 0); /* white text color */
   border: none;
   border-radius: 4px;
   cursor: pointer;
   padding: 10px 16px;
   font-size: 16px;
   font-weight: bold;
+  font-family: "Press Start 2P", cursive;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease;
   margin-right: 10px;
@@ -347,18 +312,19 @@ body {
 
 .Zoomout {
   background-color: #eeb85b; /* red background color */
-  color: white; /* white text color */
+  color: rgb(0, 0, 0); /* white text color */
   border: none;
   border-radius: 4px;
   cursor: pointer;
   padding: 10px 16px;
   font-size: 16px;
   font-weight: bold;
+  font-family: "Press Start 2P", cursive;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease;
   position: fixed;
   bottom: 20px;
-  right: 140px;
+  right: 200px;
 }
 
 .Zoomout:hover {
@@ -369,7 +335,7 @@ body {
 .StartGame_Container {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  text-decoration: none;
   align-items: center;
   height: 100vh;
 }
@@ -386,7 +352,7 @@ body {
 }
 .StartGame_button {
   margin-top: 150px;
-
+  text-decoration: none;
   font-family: "Press Start 2P", cursive;
   color: rgb(0, 0, 0);
   font-size: 180px;
@@ -491,25 +457,6 @@ body {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
 }
 
-/*Change Construction Plan Button--------------------------------------------------------------------------*/
-
-.form {
-  margin-top: 80px;
-}
-.submit-button {
-  margin-top: 5px;
-  background-color: #4caf50;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.submit-button:hover {
-  background-color: #3e8e41;
-}
-
 /*Input in game--------------------------------------------------------------------------*/
 
 .textplan {
@@ -538,6 +485,7 @@ body {
   background-color: #55e284;
   color: #080808;
   border: none;
+  font-family: "Press Start 2P", cursive;
   border-radius: 4px;
   cursor: pointer;
   margin-left: 30px;
@@ -546,24 +494,35 @@ body {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
 }
 
-/*Hex Pattern--------------------------------------------------------------------------*/
-img {
-  /* display: block; */
-  margin: 0 auto;
-  padding: 0 auto;
+/* gif----------------------------------- */
+.lizard {
+  position: fixed;
+  right: 420px;
+  bottom: 500px;
+  width: 150px;
+  height: 150px;
+}
+.dwarf {
+  /* position: fixed;
+  right: 420px;
+  bottom: 500px; */
+  width: 150px;
+  height: 150px;
+}
+.Elf {
+  /* position: fixed;
+  left: 420px;
+  bottom: 500px; */
+  width: 160px;
+  height: 160px;
 }
 
-/*Frame--------------------------------------------------------------------------*/
-.frame {
-  width: 1200px;
-  height: 1800px;
-  border: 1px solid black;
+.elfgame {
+  width: 260px;
+  height: 260px;
 }
 
-.draggable {
-  position: absolute;
-  cursor: move;
-  background-color: blue;
-  color: white;
-  padding: 8px;
+.dwarfgame {
+  width: 260px;
+  height: 260px;
 }

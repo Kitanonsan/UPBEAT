@@ -1,7 +1,7 @@
 package evaluator.nodes;
 
 public class NumberNode implements Node{
-    private int number;
+    protected int number;
 
     public NumberNode(int number){
         this.number = number;

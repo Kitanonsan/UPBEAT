@@ -61,7 +61,7 @@ export default function Sidebar() {
       <aside className="sidebar" data-collapse={iscollapsedSidebar}>
         <div className="sidebar_top">
           <img
-            src="/U.png"
+            src="/images/U.png"
             width={80}
             height={80}
             className="sidebar_logo"
