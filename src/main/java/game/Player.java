@@ -34,7 +34,6 @@ public class Player {
         this.budget = Configuration.instance().init_budget;
     }
 
-    //For testing only (you can assign spawn position on territory)
     public Player(String name , Territory territory , int row , int column , int budget){
         this.name = name;
         this.territory = territory;
