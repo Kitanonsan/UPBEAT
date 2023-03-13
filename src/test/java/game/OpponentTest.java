@@ -39,14 +39,4 @@ public class OpponentTest {
         }
     }
 
-    @Test
-    void UpRightOpponentTest(){
-            Territory territory = new Territory();
-            Player p1 = new Player("P1",territory,9,0,0);
-            Player p2 = new Player("P2",territory,9,2,0);
-            System.out.println(Arrays.toString(p1.getPosition()));
-            System.out.println(Arrays.toString(p2.getPosition()));
-            System.out.println(p1.opponent());
-    }
-
 }
