@@ -3,8 +3,8 @@ package evaluator.nodes;
 import java.util.Map;
 
 public class IdentifierNode implements Node{
-    private Map<String, Long> variables;
-    private  String identifier;
+    protected Map<String, Long> variables;
+    protected  String identifier;
 
     public IdentifierNode(String identifier, Map<String, Long> variables){
         this.identifier = identifier;

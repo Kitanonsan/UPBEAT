@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.Random;
 
 public class RandomNode extends IdentifierNode{
-    private Random random = null;
+    protected Random random = null;
 
 
     public RandomNode(String identifier, Map<String, Long> variables) {
