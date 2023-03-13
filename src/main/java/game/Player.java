@@ -52,35 +52,8 @@ public class Player {
     public void move(String direction){
         if(!isPlayerDone && !lose()){
             if(pay(1)){
-                if(direction.equals("up")) {
-                    if(onTerritory(nextPosition(position,"up"))){
-                        position = nextPosition(position,"up");
-                    }
-                }
-                if (direction.equals("down")){
-                    if(onTerritory(nextPosition(position,"down"))){
-                        position = nextPosition(position,"down");
-                    }
-                }
-                if(direction.equals("upright")){
-                    if(onTerritory(nextPosition(position,"upright"))){
-                        position = nextPosition(position,"upright");
-                    }
-                }
-                if(direction.equals("upleft")){
-                    if(onTerritory(nextPosition(position,"upleft"))){
-                        position = nextPosition(position,"upleft");
-                    }
-                }
-                if(direction.equals("downleft")) {
-                    if(onTerritory(nextPosition(position,"downleft"))){
-                        position = nextPosition(position,"downleft");
-                    }
-                }
-                if (direction.equals("downright")){
-                    if(onTerritory(nextPosition(position,"downright"))){
-                        position = nextPosition(position,"downright");
-                    }
+                if(onTerritory(nextPosition(position,direction))){
+                    position = nextPosition(position,direction);
                 }
             }
         }
@@ -371,9 +344,12 @@ public class Player {
             }
             nextPosition[1] = currentPosition[1]-1;
         }
+        else{
+            nextPosition[0] = -1;
+            nextPosition[1] = -1;
+        }
         return nextPosition;
     }
-
     private int[] compareDirection(int[] currentPosition,String direction1 , String direction2){
         int direction1Diff = Integer.MAX_VALUE;
         int direction2Diff = Integer.MAX_VALUE;

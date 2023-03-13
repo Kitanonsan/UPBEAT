@@ -1,8 +1,8 @@
 package evaluator.nodes;
 
 public class AssignmentStatementNode implements Node {
-    protected IdentifierNode variable;
-    protected Node ExprNode;
+    private IdentifierNode variable;
+    private Node ExprNode;
 
     public AssignmentStatementNode(IdentifierNode variable, Node ExprNode){
         this.variable = variable;

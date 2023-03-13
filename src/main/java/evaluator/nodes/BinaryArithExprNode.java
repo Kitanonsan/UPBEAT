@@ -1,8 +1,8 @@
 package evaluator.nodes;
 
 public class BinaryArithExprNode implements Node{
-    protected Node left, right;
-    protected String op;
+    private Node left, right;
+    private String op;
 
     public BinaryArithExprNode(Node left, String op, Node right){
         this.left = left;
