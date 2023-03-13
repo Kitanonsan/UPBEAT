@@ -1,8 +1,8 @@
 package evaluator.nodes;
 
 public class IfStatementNode implements Node {
-    protected Node ExprNode;
-    protected Node trueStatement, falseStatement;
+    private Node ExprNode;
+    private Node trueStatement, falseStatement;
 
     public IfStatementNode(Node ExprNode, Node trueStatement, Node falseStatement){
         this.ExprNode = ExprNode;

@@ -3,9 +3,9 @@ package evaluator.nodes;
 import game.Player;
 
 public class InfoExprNode implements Node{ // opponent | nearby
-    protected String info;
-    protected String direction;
-    protected Player player;
+    private String info;
+    private String direction;
+    private Player player;
 
     public InfoExprNode(String info, String direction,Player player){ //nearby opponent
         this.info = info;
