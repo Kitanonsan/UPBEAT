@@ -12,6 +12,7 @@ export default function Home() {
         <Hexgrid />
         <InputPlan />
       </BaseLayout>
+
       <style jsx>{`
         .backofgame {
           background-image: url("/images/flower.png");
