@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BlockStatementNode implements Node {
-    private List<Node> statements;
+    protected List<Node> statements;
     public BlockStatementNode(){
         statements = new ArrayList<>();
     }

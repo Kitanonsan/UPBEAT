@@ -6,9 +6,11 @@ public class RegionTest {
     @Test
     void updateInterestRateTest(){
         Region r = new Region(0,0);
-        for (int t = 1 ; t < 20 ; t++){
+        for (int t = 2 ; t < 20 ; t++){
+            double deposit = r.getDeposit();
             r.updateInterestRate(t);
             System.out.println("Turn : " + t +" Interest percent rate :" +r.getInterestRate());
+            assertEquals(r.getInterestRate(),Configuration.instance().interest_pct*Math.log10(deposit)*Math.log(t));
         }
     }
 
@@ -16,12 +18,10 @@ public class RegionTest {
     void updateDepositTest(){
         Region r = new Region(0,0);
         r.printInfo();
-        System.out.println(r.getDeposit());
-        System.out.println(r.getInterestRate());
-        for(int i = 1 ; i < 10 ; i++){
+        for(int i = 2 ; i < 10 ; i++){
+            double deposit = r.getDeposit();
             r.updateDeposit();
             System.out.println(r.getDeposit());
-
         }
     }
 }

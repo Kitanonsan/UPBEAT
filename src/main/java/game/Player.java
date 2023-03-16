@@ -1,6 +1,5 @@
 package game;
 import java.util.*;
-
 public class Player {
     private final String name;
     private long budget;
@@ -35,7 +34,6 @@ public class Player {
         this.budget = Configuration.instance().init_budget;
     }
 
-    //For testing only (you can assign spawn position on territory)
     public Player(String name , Territory territory , int row , int column , int budget){
         this.name = name;
         this.territory = territory;
@@ -167,7 +165,6 @@ public class Player {
                         if(onTerritory(shootDirection)){
                             if(territory.region(shootDirection).getOwner() != null){
                                 territory.region(shootDirection).gotShot(amount);
-                                territory.region(shootDirection).getOwner().lose();
                             }
                             else{
                                 System.out.println(name + " can't shoot no owner region.");
@@ -234,17 +231,7 @@ public class Player {
         position = city_position;
         isPlayerDone = true;
     }
-    private boolean pay(long cost){
-        if (budget - cost >= 0) {
-            budget -= cost;
-            return true;
-        }
-        else {
-            System.out.println(this.name + " don't have enough budget to execute this command.");
-            done();
-            return false;
-        }
-    }
+
     public boolean lose(){
         if(isPlayerLost){
             return true;
@@ -261,6 +248,21 @@ public class Player {
         else
             return false;
     }
+    public void removeRegion(Region r){
+        possessRegion.remove(r);
+    }
+    public void addRegion(Region r){possessRegion.add(r);}
+    private boolean pay(long cost){
+        if (budget - cost >= 0) {
+            budget -= cost;
+            return true;
+        }
+        else {
+            System.out.println(this.name + " don't have enough budget to execute this command.");
+            done();
+            return false;
+        }
+    }
     private boolean onTerritory(int[] position){
         return (position[0] >= 0) && (position[1] >=0) && (position[0] < territory.row()) && (position[1] < territory.column());
     }
@@ -269,32 +271,6 @@ public class Player {
             return  territory.region(position).getOwner() != null && territory.region(position).getOwner() != this;
         else
             return false;
-    }
-    public Map<String, Long> getVariable(){
-        return variable;
-    }
-    public void removeRegion(Region r){
-        possessRegion.remove(r);
-    }
-    public void addRegion(Region r){possessRegion.add(r);}
-    public void printInfo(){
-        System.out.println("Name: " + this.name + " |  Budget: " + this.budget);
-        System.out.println("Position: (" + position[0] +"," + position[1] + ")");
-        System.out.print("Number of possess regions: " + possessRegion.size() +" Posses regions :");
-        Iterator<Region> iterator = possessRegion.iterator();
-        while(iterator.hasNext()){
-            int[] regionPosition = iterator.next().getPosition();
-            System.out.print(" "+regionPosition[0] + "," + regionPosition[1]);
-        }
-        System.out.println(" ");
-    }
-    public int[] getPosition(){
-        int[] Position = this.position;
-        return Position;
-    }
-    public int[] getCityPosition(){
-        int[] cityPosition= this.city_position;
-        return cityPosition;
     }
     public void newTurn(){
         isPlayerDone = false;
@@ -396,6 +372,29 @@ public class Player {
 
     public int MaxDeposit(){
         return Configuration.instance().max_dep;
+    }
+
+    public Map<String, Long> getVariable(){
+        return variable;
+    }
+    public void printInfo(){
+        System.out.println("Name: " + this.name + " |  Budget: " + this.budget);
+        System.out.println("Position: (" + position[0] +"," + position[1] + ")");
+        System.out.print("Number of possess regions: " + possessRegion.size() +" Posses regions :");
+        Iterator<Region> iterator = possessRegion.iterator();
+        while(iterator.hasNext()){
+            int[] regionPosition = iterator.next().getPosition();
+            System.out.print(" "+regionPosition[0] + "," + regionPosition[1]);
+        }
+        System.out.println(" ");
+    }
+    public int[] getPosition(){
+        int[] Position = this.position;
+        return Position;
+    }
+    public int[] getCityPosition(){
+        int[] cityPosition= this.city_position;
+        return cityPosition;
     }
 
 }

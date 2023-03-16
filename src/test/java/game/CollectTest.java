@@ -1,6 +1,6 @@
 package game;
-
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CollectTest {
     @Test
@@ -11,8 +11,10 @@ public class CollectTest {
         p1.move("upright");
         p1.invest(200);
         p1.printInfo();
+        long beforeCollectBudget = p1.Budget();
         p1.collect(100);
         p1.printInfo();
+        assertEquals(p1.Budget(),beforeCollectBudget-1+100); //for execute command -1
     }
     @Test
     void collectOpponentRegion(){
@@ -22,8 +24,10 @@ public class CollectTest {
         p1.printInfo();
         p1.move("downright");
         p1.printInfo();
+        long beforeCollectBudget = p1.Budget();
         p1.collect(100);
         p1.printInfo();
+        assertEquals(p1.Budget(),beforeCollectBudget-1); //for execute command -1
     }
     @Test
     void collectNoOwnerRegion(){
@@ -32,7 +36,10 @@ public class CollectTest {
         p1.printInfo();
         p1.move("downright");
         p1.printInfo();
+        long beforeCollectBudget = p1.Budget();
         p1.collect(100);
         p1.printInfo();
+        assertEquals(p1.Budget(),beforeCollectBudget-1); //for execute command -1
+
     }
 }
