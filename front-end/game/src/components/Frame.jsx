@@ -3,9 +3,10 @@ import Hexgrid from "./Hex";
 
 function Frame() {
   const frameStyle = {
-    width: "95%",
+    width: "80%",
     height: "95%",
-    border: "2px solid #000",
+    border: "5px solid #000",
+    borderRadius: "20px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
