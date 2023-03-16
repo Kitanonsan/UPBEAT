@@ -17,7 +17,7 @@ export default function Player() {
             {/* <img src="/images/Demon1.gif" className="Player1"></img> */}
             <div />
             <div>
-              <img src="/images/dwarf.gif" className="dwarf"></img>
+              <img src="/images/dwarfscale.gif" className="dwarf"></img>
             </div>
 
             <Link href="ConstructionPlanPage?player=2">
