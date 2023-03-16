@@ -197,7 +197,7 @@ body {
   height: 200px;
   width: 600px;
   margin-top: 200px;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   margin-left: 200px;
   margin-right: 20px;
   font-family: "Press Start 2P", cursive;
@@ -219,7 +219,7 @@ body {
   margin-left: 20px;
   margin-right: 200px;
   margin-top: 200px;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   border: 20px;
   background-color: #ff5e58;
   border-radius: 20px;
@@ -271,10 +271,20 @@ body {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
 }
 
-/* .Player1 {
-  width: 200px;
-  height: 200px;
-} */
+.dwarf {
+  position: absolute;
+  right: 420px;
+  bottom: 500px;
+  width: 150px;
+  height: 150px;
+}
+.Elf {
+  position: absolute;
+  left: 480px;
+  bottom: 500px;
+  width: 160px;
+  height: 160px;
+}
 
 /*ConstructionPlan Input in game--------------------------------------------------------------------------*/
 .input {
@@ -501,20 +511,6 @@ body {
   bottom: 500px;
   width: 150px;
   height: 150px;
-}
-.dwarf {
-  /* position: fixed;
-  right: 420px;
-  bottom: 500px; */
-  width: 150px;
-  height: 150px;
-}
-.Elf {
-  /* position: fixed;
-  left: 420px;
-  bottom: 500px; */
-  width: 160px;
-  height: 160px;
 }
 
 .elfgame {
