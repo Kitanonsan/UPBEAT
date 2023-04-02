@@ -25,7 +25,7 @@
     "**/*.tsx",
     "src/components/HexagonGrid.tsx",
     "src/components/Hex.jsx",
-    "src/components/frame.jsx",
+    "src/components/Frame.jsx",
     "src/components/CodeInput.jsx",
     "src/pages/_app.jsx",
     "src/components/ConstructionplanButton.jsx",

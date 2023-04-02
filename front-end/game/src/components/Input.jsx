@@ -35,7 +35,7 @@ export default function InputPlan() {
       </button>
       <div>
         <img src="/images/Elfscale.gif" className="elfgame"></img>
-        <img src="/images/dwarf.gif" className="dwarfgame"></img>
+        {/* <img src="/images/dwarfscale.gif" className="dwarfgame"></img> */}
       </div>
     </div>
   );

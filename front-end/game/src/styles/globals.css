@@ -110,18 +110,18 @@ body {
 /*-----------Grid-------------*/
 
 .even {
-  top: 0;
-  position: relative;
+  /* top: 0; */
+  /* position: relative; */
   display: inline-block;
   width: fit-content;
-  margin-right: 0;
+  /* margin-right: 0; */
 }
 
 .odd {
   top: 42px;
   display: inline-block;
-  width: fit-content;
-  margin-right: 0;
+  /* width: fit-content; */
+  /* margin-right: 0; */
   position: relative;
 }
 /*Timer--------------------------------------------------------------------------*/
@@ -197,7 +197,7 @@ body {
   height: 200px;
   width: 600px;
   margin-top: 200px;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   margin-left: 200px;
   margin-right: 20px;
   font-family: "Press Start 2P", cursive;
@@ -219,7 +219,7 @@ body {
   margin-left: 20px;
   margin-right: 200px;
   margin-top: 200px;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   border: 20px;
   background-color: #ff5e58;
   border-radius: 20px;
@@ -271,10 +271,20 @@ body {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
 }
 
-/* .Player1 {
-  width: 200px;
-  height: 200px;
-} */
+.dwarf {
+  position: absolute;
+  right: 420px;
+  bottom: 500px;
+  width: 150px;
+  height: 150px;
+}
+.Elf {
+  position: absolute;
+  left: 480px;
+  bottom: 500px;
+  width: 160px;
+  height: 160px;
+}
 
 /*ConstructionPlan Input in game--------------------------------------------------------------------------*/
 .input {
@@ -289,8 +299,8 @@ body {
 
 /*Zoom--------------------------------------------------------------------------*/
 .Zoomin {
-  background-color: #7c94d7; /* green background color */
-  color: rgb(0, 0, 0); /* white text color */
+  background-color: #7c94d7;
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -311,8 +321,8 @@ body {
 }
 
 .Zoomout {
-  background-color: #eeb85b; /* red background color */
-  color: rgb(0, 0, 0); /* white text color */
+  background-color: #eeb85b;
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -460,7 +470,7 @@ body {
 /*Input in game--------------------------------------------------------------------------*/
 
 .textplan {
-  margin-top: 20px;
+  margin-top: 80px;
 }
 
 .inputplan {
@@ -501,20 +511,6 @@ body {
   bottom: 500px;
   width: 150px;
   height: 150px;
-}
-.dwarf {
-  /* position: fixed;
-  right: 420px;
-  bottom: 500px; */
-  width: 150px;
-  height: 150px;
-}
-.Elf {
-  /* position: fixed;
-  left: 420px;
-  bottom: 500px; */
-  width: 160px;
-  height: 160px;
 }
 
 .elfgame {
