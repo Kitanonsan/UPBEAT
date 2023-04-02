@@ -55,7 +55,7 @@ public class GameController {
             try(FileWriter writer = new FileWriter("src/Construction_Plan/P1_Plan.txt");
                 BufferedWriter bw = new BufferedWriter(writer)){
                 bw.write(playerBody.getPlan());
-
+                bw.close();
             }catch (IOException e){
                 System.out.println("An error occurred");
                 e.printStackTrace();
@@ -64,6 +64,7 @@ public class GameController {
             try(FileWriter writer = new FileWriter("src/Construction_Plan/P2_Plan.txt");
                 BufferedWriter bw = new BufferedWriter(writer)){
                 bw.write(playerBody.getPlan());
+                bw.close();
             }catch (IOException e){
                 System.out.println("An error occurred");
                 e.printStackTrace();
@@ -79,6 +80,7 @@ public class GameController {
                     try(FileWriter writer = new FileWriter("src/Construction_Plan/P1_Plan.txt");
                         BufferedWriter bw = new BufferedWriter(writer)){
                         bw.write(playerBody.getPlan());
+                        bw.close();
                     }catch (IOException e){
                         System.out.println("An error occurred");
                         e.printStackTrace();
@@ -87,6 +89,7 @@ public class GameController {
                     try (FileWriter writer = new FileWriter("src/Construction_Plan/P2_Plan.txt");
                          BufferedWriter bw = new BufferedWriter(writer)){
                         bw.write(playerBody.getPlan());
+                        bw.close();
                     }catch (IOException e){
                         System.out.println("An error occurred");
                         e.printStackTrace();
