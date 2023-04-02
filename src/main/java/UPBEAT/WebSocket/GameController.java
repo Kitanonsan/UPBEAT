@@ -50,8 +50,9 @@ public class GameController {
 
     @PutMapping("/game/set")
     public void setPlan(@RequestBody PlayerBody playerBody){
+        System.out.println(playerBody.getName() + " set plan.");
         if (playerBody.getName().equals("Player1")){
-            try(FileWriter writer = new FileWriter("./P1_Plan.txt");
+            try(FileWriter writer = new FileWriter("src/Construction_Plan/P1_Plan.txt");
                 BufferedWriter bw = new BufferedWriter(writer)){
                 bw.write(playerBody.getPlan());
             }catch (IOException e){
@@ -59,7 +60,7 @@ public class GameController {
                 e.printStackTrace();
             }
         } else if (playerBody.getName().equals("Player2")) {
-            try(FileWriter writer = new FileWriter("./P2_Plan.txt");
+            try(FileWriter writer = new FileWriter("src/Construction_Plan/P2_Plan.txt");
                 BufferedWriter bw = new BufferedWriter(writer)){
                 bw.write(playerBody.getPlan());
             }catch (IOException e){
@@ -72,22 +73,28 @@ public class GameController {
     @PutMapping("/game/edit")
     public void editPlan(@RequestBody PlayerBody playerBody){ //Write file
         if (playerBody.getName() == currentPlayer.getName()){
-            if (playerBody.getName().equals("Player1")){
-                try(FileWriter writer = new FileWriter("./P1_Plan.txt");
-                    BufferedWriter bw = new BufferedWriter(writer)){
+            if(currentPlayer.pay(Configuration.instance().getRev_cost())){
+                if (playerBody.getName().equals("Player1")){
+                    try(FileWriter writer = new FileWriter("src/Construction_Plan/P1_Plan.txt");
+                        BufferedWriter bw = new BufferedWriter(writer)){
                         bw.write(playerBody.getPlan());
-                }catch (IOException e){
-                    System.out.println("An error occurred");
-                    e.printStackTrace();
+                    }catch (IOException e){
+                        System.out.println("An error occurred");
+                        e.printStackTrace();
+                    }
+                }else if (playerBody.getName().equals("Player2")){
+                    try (FileWriter writer = new FileWriter("src/Construction_Plan/P2_Plan.txt");
+                         BufferedWriter bw = new BufferedWriter(writer)){
+                        bw.write(playerBody.getPlan());
+                    }catch (IOException e){
+                        System.out.println("An error occurred");
+                        e.printStackTrace();
+                    }
                 }
-            }else if (playerBody.getName().equals("Player2")){
-                try (FileWriter writer = new FileWriter("./P2_Plan.txt");
-                    BufferedWriter bw = new BufferedWriter(writer)){
-                    bw.write(playerBody.getPlan());
-                }catch (IOException e){
-                    System.out.println("An error occurred");
-                    e.printStackTrace();
-                }
+                System.out.println(currentPlayer.getName() + " edit construction plan.");
+            }
+            else{
+                System.out.println(currentPlayer.getName() + ": not enough budget to edit construction plan. ");
             }
         }
     }
@@ -97,7 +104,7 @@ public class GameController {
         if(body.getName() == currentPlayer.getName()){
             if(currentPlayer.pay(Configuration.instance().getRev_cost())){
                 if (currentPlayer.getName().equals("Player1")){
-                    Path file = Paths.get("./P1_plan.txt");
+                    Path file = Paths.get("src/Construction_Plan/P1_plan.txt");
                     Charset charset = Charset.forName("UTF-8");
                     try (BufferedReader reader = Files.newBufferedReader(file, charset)){
                         String line = null;
@@ -109,7 +116,7 @@ public class GameController {
                         e.printStackTrace();
                     }
                 } else if (currentPlayer.getName().equals("Player2")){
-                    Path file = Paths.get("./P2_plan.txt");
+                    Path file = Paths.get("src/Construction_Plan/P2_plan.txt");
                     Charset charset = Charset.forName("UTF-8");
                     try (BufferedReader reader = Files.newBufferedReader(file, charset)){
                         String line = null;
