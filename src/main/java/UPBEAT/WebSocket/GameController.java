@@ -56,6 +56,7 @@ public class GameController {
                 BufferedWriter bw = new BufferedWriter(writer)){
                 bw.write(playerBody.getPlan());
                 bw.close();
+                System.out.println("Finish");
             }catch (IOException e){
                 System.out.println("An error occurred");
                 e.printStackTrace();

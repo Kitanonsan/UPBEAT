@@ -1,5 +1,5 @@
 m=10
-n=15
+n=12
 init_plan_min=5
 init_plan_sec=0
 init_budget=10000
