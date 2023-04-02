@@ -6,6 +6,8 @@ import org.springframework.messaging.simp.annotation.SubscribeMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 @RestController
@@ -42,14 +44,32 @@ public class GameController {
 
     @PutMapping("/game/edit")
     public void editConstructionPlan(@RequestBody PlayerBody playerBody){
+        if (playerBody.getName() == currentPlayer.getName()){
+            if(currentPlayer.getName().equals("Player1")){
+                try{
+                    FileWriter Write = new FileWriter("P1_Plan.txt");
+                }catch (IOException e){
+                    System.out.println("An error occurred.");
+                    e.printStackTrace();
+                }
+            } else if (currentPlayer.getName().equals("Player2")) {
+                try{
+                    FileWriter Write = new FileWriter("P2_Plan.txt");
+                }catch (IOException e){
+                    System.out.println("An error occurred.");
+                    e.printStackTrace();
+                }
 
+            }
+        }
     }
+
 
     @PutMapping("/game/parse")
     @SendTo("/topic/territory")
     public  TerritoryMessage parsePlan(@RequestBody PlayerBody body){
         if(body.getName() == currentPlayer.getName()){
-
+            parsePlan(body);
         }
         return new TerritoryMessage(this.territory);
     }
