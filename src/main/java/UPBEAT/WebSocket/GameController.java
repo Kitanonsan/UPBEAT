@@ -150,6 +150,11 @@ public class GameController {
         int index = rand.nextInt(2);
         territory.region(new int[]{row,column}).setOwner(players[index]);
     }
+
+    @PostMapping("/game/configuration")
+    public void writeConfiguration(@RequestBody ConfigurationMessage configurationMessage){
+        Configuration.writeConfiguration(configurationMessage);
+    }
     @GetMapping("/game/message")
     public GameMessage getGameMessage(){
         return new GameMessage(players[0], players[1],territory);

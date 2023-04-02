@@ -1,7 +1,9 @@
 package game;
+import UPBEAT.WebSocket.ConfigurationMessage;
 import lombok.Getter;
 
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -58,7 +60,29 @@ public class Configuration{
             this.start_deposit = Integer.parseInt(props.getProperty("start_deposit"));
         } catch (NumberFormatException e) {
             System.err.println("Invalid number format: " + e.getMessage());
-            return;
         }
+    }
+
+    public static void writeConfiguration(ConfigurationMessage message){
+        try {
+            FileWriter writer = new FileWriter("src/configuration/config.txt");
+            writer.write("m=" +message.getM() + "\n");
+            writer.write("n=" + message.getN()+ "\n");
+            writer.write("init_plan_min="+ message.getInit_plan_min()+ "\n");
+            writer.write("init_plan_sec="+ message.getInit_plan_sec()+ "\n");
+            writer.write("init_budget="+ message.getInit_budget()+ "\n");
+            writer.write("init_center_dep="+ message.getInit_center_dep()+ "\n");
+            writer.write("plan_rev_min="+ message.getPlan_rev_min()+ "\n");
+            writer.write("plan_rev_sec="+ message.getPlan_rev_sec()+ "\n");
+            writer.write("rev_cost="+ message.getRev_cost()+ "\n");
+            writer.write("max_dep="+ message.getMax_dep()+ "\n");
+            writer.write("interest_pct="+ message.getInterest_pct()+ "\n");
+            writer.write("start_deposit="+ message.getStart_deposit()+ "\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        Configuration.instance().readConfiguration();
     }
 }
