@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87fd7e6c-9a8d-4379-a47e-1281e7e7f424" name="Changes" comment="add : infoMode for use in InfoExpressionNode">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="87fd7e6c-9a8d-4379-a47e-1281e7e7f424" name="Changes" comment="Add more Region Test case">
+      <change afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/WebsocketConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Region.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Region.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Territory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Territory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +33,13 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -40,39 +52,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;ToolWindowRun.ShowToolbar&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Object-Oriented Programming/Project&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ToolWindowRun.ShowToolbar": "false",
+    "last_opened_file_path": "D:/Object-Oriented Programming/demo"
   }
-}</component>
-  <component name="RunManager" selected="Gradle.GrammarParserTest">
-    <configuration name="GrammarParserTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;evaluator.GrammarParserTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
+}]]></component>
+  <component name="RunManager" selected="Application.WebSocketApplication">
+    <configuration name="WebSocketApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="UPBEAT.WebSocket.WebSocketApplication" />
+      <module name="WebSocket.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="UPBEAT.WebSocket.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="GrammarParserTest.ExpressionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="OpponentTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -85,7 +87,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;evaluator.GrammarParserTest.ExpressionTest&quot;" />
+            <option value="&quot;game.OpponentTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -141,7 +143,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="RelocateTest.RelocateOpponentRegion" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="RelocateTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -154,7 +156,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;game.RelocateTest.RelocateOpponentRegion&quot;" />
+            <option value="&quot;game.RelocateTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -179,11 +181,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.GrammarParserTest" />
-        <item itemvalue="Gradle.GrammarParserTest.ExpressionTest" />
-        <item itemvalue="Gradle.RelocateTest.RelocateOpponentRegion" />
+        <item itemvalue="Application.WebSocketApplication" />
         <item itemvalue="Gradle.RegionTest.updateDepositTest" />
         <item itemvalue="Gradle.RegionTest.updateInterestRateTest" />
+        <item itemvalue="Gradle.RelocateTest" />
+        <item itemvalue="Gradle.OpponentTest" />
       </list>
     </recent_temporary>
   </component>
@@ -196,6 +198,84 @@
       <option name="presentableId" value="Default" />
       <updated>1678614177480</updated>
     </task>
+    <task id="LOCAL-00001" summary="Add Test for Move Function">
+      <created>1678716267040</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1678716267040</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add Test case for function Collect in Class Player">
+      <created>1678716535120</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1678716535120</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Delete ConstructorTest">
+      <created>1678716583034</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1678716583034</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add more Invest Test case">
+      <created>1678717024526</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1678717024526</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add more Nearby Test case">
+      <created>1678717551226</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1678717551226</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add Opponent Test">
+      <created>1678717680519</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1678717680519</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Fixed getOwner Bug in function shoot">
+      <created>1678720144609</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1678720144609</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add Shoot test case">
+      <created>1678720395093</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1678720395093</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Add more Relocate test case">
+      <created>1678722386197</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1678722386197</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Add More Opponent Test case">
+      <created>1678723156168</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1678723156168</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add more Region Test case">
+      <created>1678723461977</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1678723461977</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -208,5 +288,19 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add Test for Move Function" />
+    <MESSAGE value="Add Test case for function Collect in Class Player" />
+    <MESSAGE value="Delete ConstructorTest" />
+    <MESSAGE value="Add more Invest Test case" />
+    <MESSAGE value="Add more Nearby Test case" />
+    <MESSAGE value="Add Opponent Test" />
+    <MESSAGE value="Fixed getOwner Bug in function shoot" />
+    <MESSAGE value="Add Shoot test case" />
+    <MESSAGE value="Add more Relocate test case" />
+    <MESSAGE value="Add More Opponent Test case" />
+    <MESSAGE value="Add more Region Test case" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add more Region Test case" />
   </component>
 </project>

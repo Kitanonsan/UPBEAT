@@ -1,8 +1,13 @@
 package game;
+import lombok.Getter;
+import org.springframework.stereotype.Component;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+@Getter
+@Component
 public class Configuration{
     public int m;
     public int n;
@@ -19,7 +24,18 @@ public class Configuration{
 
     private static Configuration instance;
 
-    public Configuration(){
+    private Configuration(){
+        readConfiguration();
+    }
+
+    public static Configuration instance(){
+        if(instance == null){
+            instance = new Configuration();
+        }
+        return instance;
+    }
+
+    public void readConfiguration(){
         Properties props = new Properties();
         try {
             FileInputStream fis = new FileInputStream("src/configuration/config.txt");
@@ -30,28 +46,21 @@ public class Configuration{
             return;
         }
         try {
-            m = Integer.parseInt(props.getProperty("m"));
-            n = Integer.parseInt(props.getProperty("n"));
-            init_plan_min = Integer.parseInt(props.getProperty("init_plan_min"));
-            init_plan_sec = Integer.parseInt(props.getProperty("init_plan_sec"));
-            init_budget = Integer.parseInt(props.getProperty("init_budget"));
-            init_center_dep = Integer.parseInt(props.getProperty("init_center_dep"));
-            plan_rev_min = Integer.parseInt(props.getProperty("plan_rev_min"));
-            plan_rev_sec = Integer.parseInt(props.getProperty("plan_rev_sec"));
-            rev_cost = Integer.parseInt(props.getProperty("rev_cost"));
-            max_dep = Integer.parseInt(props.getProperty("max_dep"));
-            interest_pct = Integer.parseInt(props.getProperty("interest_pct"));
-            start_deposit = Integer.parseInt(props.getProperty("start_deposit"));
+            this.m = Integer.parseInt(props.getProperty("m"));
+            this.n = Integer.parseInt(props.getProperty("n"));
+            this.init_plan_min = Integer.parseInt(props.getProperty("init_plan_min"));
+            this.init_plan_sec = Integer.parseInt(props.getProperty("init_plan_sec"));
+            this.init_budget = Integer.parseInt(props.getProperty("init_budget"));
+            this.init_center_dep = Integer.parseInt(props.getProperty("init_center_dep"));
+            this.plan_rev_min = Integer.parseInt(props.getProperty("plan_rev_min"));
+            this.plan_rev_sec = Integer.parseInt(props.getProperty("plan_rev_sec"));
+            this.rev_cost = Integer.parseInt(props.getProperty("rev_cost"));
+            this.max_dep = Integer.parseInt(props.getProperty("max_dep"));
+            this.interest_pct = Integer.parseInt(props.getProperty("interest_pct"));
+            this.start_deposit = Integer.parseInt(props.getProperty("start_deposit"));
         } catch (NumberFormatException e) {
             System.err.println("Invalid number format: " + e.getMessage());
             return;
         }
-    }
-
-    public static Configuration instance(){
-        if(instance == null){
-            instance = new Configuration();
-        }
-        return instance;
     }
 }

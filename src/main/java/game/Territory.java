@@ -1,5 +1,10 @@
 package game;
 
+import lombok.Getter;
+import org.springframework.stereotype.Component;
+
+@Getter
+@Component
 public class Territory {
     private final int m ;
     private final int n;
@@ -32,6 +37,10 @@ public class Territory {
     }
     public int column(){
         return n;
+    }
+
+    public Region[][] regions(){
+        return this.Regions;
     }
 
 }

@@ -1,5 +1,10 @@
 package game;
+import lombok.Getter;
+import org.springframework.stereotype.Component;
+
 import java.util.*;
+@Getter
+@Component
 public class Player {
     private final String name;
     private long budget;
@@ -47,6 +52,7 @@ public class Player {
         possessRegion.add(territory.region(city_position));
         this.budget = budget;
     }
+
     public void move(String direction){
         if(!isPlayerDone && !lose()){
             if(pay(1)){
@@ -226,6 +232,14 @@ public class Player {
         }
         return 0;
     }
+
+    public void updateRegions(int turn){
+        for (Region r : possessRegion){
+            r.updateInterestRate(turn);
+            r.updateDeposit();
+        }
+    }
+
     public void done(){
         System.out.println(this.name + " is done.");
         position = city_position;
