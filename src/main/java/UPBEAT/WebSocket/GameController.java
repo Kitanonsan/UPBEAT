@@ -14,6 +14,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Random;
 
 @RestController
 @Controller
@@ -136,6 +137,18 @@ public class GameController {
             }
         }
         return new GameMessage(players[0], players[1],territory);
+    }
+    @PostMapping("/game/randomregion")
+    public void setRandomRegion(){
+        Random rand = new Random();
+        int row = rand.nextInt(territory.row());
+        int column = rand.nextInt(territory.column());
+        while(territory.region(new int[]{row,column}).getOwner() != null){
+            row = rand.nextInt(territory.row());
+            column = rand.nextInt(territory.column());
+        }
+        int index = rand.nextInt(2);
+        territory.region(new int[]{row,column}).setOwner(players[index]);
     }
     @GetMapping("/game/message")
     public GameMessage getGameMessage(){
