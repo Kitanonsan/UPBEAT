@@ -7,6 +7,7 @@ import org.springframework.messaging.simp.annotation.SubscribeMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -50,50 +51,43 @@ public class GameController {
     @PutMapping("/game/set")
     public void setPlan(@RequestBody PlayerBody playerBody){
         if (playerBody.getName().equals("Player1")){
-            try{
-                FileWriter Write = new FileWriter("P1_Plan.txt");
-                Write.write(playerBody.getPlan());
-                Write.close();
+            try(FileWriter writer = new FileWriter("./P1_Plan.txt");
+                BufferedWriter bw = new BufferedWriter(writer)){
+                bw.write(playerBody.getPlan());
             }catch (IOException e){
-                System.out.println("An error occurred.");
+                System.out.println("An error occurred");
                 e.printStackTrace();
             }
         } else if (playerBody.getName().equals("Player2")) {
-            try{
-                FileWriter Write = new FileWriter("P2_Plan.txt");
-                Write.write(playerBody.getPlan());
-                Write.close();
+            try(FileWriter writer = new FileWriter("./P2_Plan.txt");
+                BufferedWriter bw = new BufferedWriter(writer)){
+                bw.write(playerBody.getPlan());
             }catch (IOException e){
-                System.out.println("An error occurred.");
+                System.out.println("An error occurred");
                 e.printStackTrace();
             }
         }
     }
 
     @PutMapping("/game/edit")
-    public void editPlan(@RequestBody PlayerBody playerBody){
+    public void editPlan(@RequestBody PlayerBody playerBody){ //Write file
         if (playerBody.getName() == currentPlayer.getName()){
-            if(currentPlayer.getName().equals("Player1")){
-                System.out.println("Player 1 Edit Plan.");
-                try{
-                    FileWriter Write = new FileWriter("P1_Plan.txt");
-                    Write.write(playerBody.getPlan());
-                    Write.close();
+            if (playerBody.getName().equals("Player1")){
+                try(FileWriter writer = new FileWriter("./P1_Plan.txt");
+                    BufferedWriter bw = new BufferedWriter(writer)){
+                        bw.write(playerBody.getPlan());
                 }catch (IOException e){
-                    System.out.println("An error occurred.");
+                    System.out.println("An error occurred");
                     e.printStackTrace();
                 }
-            } else if (currentPlayer.getName().equals("Player2")) {
-                System.out.println("Player 2 Edit Plan.");
-                try{
-                    FileWriter Write = new FileWriter("P2_Plan.txt");
-                    Write.write(playerBody.getPlan());
-                    Write.close();
+            }else if (playerBody.getName().equals("Player2")){
+                try (FileWriter writer = new FileWriter("./P2_Plan.txt");
+                    BufferedWriter bw = new BufferedWriter(writer)){
+                    bw.write(playerBody.getPlan());
                 }catch (IOException e){
-                    System.out.println("An error occurred.");
+                    System.out.println("An error occurred");
                     e.printStackTrace();
                 }
-
             }
         }
     }
