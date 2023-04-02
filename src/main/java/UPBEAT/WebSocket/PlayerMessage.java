@@ -9,7 +9,6 @@ public class PlayerMessage {
     private long budget;
     private int[] position;
     private int[] city_position;
-    private boolean isPlayerDone;
     private boolean isPlayerLost;
 
     public PlayerMessage(Player p){
@@ -18,6 +17,5 @@ public class PlayerMessage {
         position = p.getPosition();
         city_position = p.getCityPosition();
         isPlayerLost = p.lose();
-        isPlayerDone = p.isPlayerDone();
     }
 }
