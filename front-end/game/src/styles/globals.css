@@ -112,13 +112,14 @@ body {
 .even {
   /* top: 0; */
   /* position: relative; */
+  margin-bottom: 40px;
   display: inline-block;
   width: fit-content;
   /* margin-right: 0; */
 }
 
 .odd {
-  top: 42px;
+  top: 41.5px;
   display: inline-block;
   /* width: fit-content; */
   /* margin-right: 0; */
@@ -280,7 +281,7 @@ body {
 }
 .Elf {
   position: absolute;
-  left: 480px;
+  left: 420px;
   bottom: 500px;
   width: 160px;
   height: 160px;

@@ -3,9 +3,11 @@ import axios from "axios";
 
 export default function InputPlan() {
   const [inputValue, setInputValue] = useState("");
+  const [CP, setCP] = useState(false);
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
+    setCP(true);
   };
 
   const handleClick = async () => {
@@ -13,6 +15,7 @@ export default function InputPlan() {
       await axios.post("/api/write-file", { inputValue });
       console.log("Input saved!");
       alert("Construction plan saved!");
+      setCP(false);
     } catch (error) {
       console.error(error);
       alert("Failed to save construction plan.");
@@ -34,7 +37,7 @@ export default function InputPlan() {
         Save
       </button>
       <div>
-        <img src="/images/Elfscale.gif" className="elfgame"></img>
+        {/* <img src="/images/Elfscale.gif" className="elfgame"></img> */}
         {/* <img src="/images/dwarfscale.gif" className="dwarfgame"></img> */}
       </div>
     </div>

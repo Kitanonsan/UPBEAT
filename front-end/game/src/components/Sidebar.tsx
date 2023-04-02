@@ -18,29 +18,29 @@ import { useContext, useState, useEffect } from "react";
 import { SidebarContext } from "./SidebarContext";
 
 const sidebarItem = [
-  {
-    name: "Gold",
-    href: "/",
-    icon: BiCoinStack,
-  },
+  // {
+  //   name: "Gold",
+  //   href: "/",
+  //   icon: BiCoinStack,
+  // },
 
-  {
-    name: "Center City",
-    href: "/",
-    icon: GrHomeRounded,
-  },
+  // {
+  //   name: "Center City",
+  //   href: "/",
+  //   icon: GrHomeRounded,
+  // },
 
-  {
-    name: "Zoom In",
-    href: "/",
-    icon: AiOutlineZoomIn,
-  },
-  {
-    name: "Zoom Out",
-    href: "/",
-    icon: AiOutlineZoomOut,
-    time: 60,
-  },
+  // {
+  //   name: "Zoom In",
+  //   href: "/",
+  //   icon: AiOutlineZoomIn,
+  // },
+  // {
+  //   name: "Zoom Out",
+  //   href: "/",
+  //   icon: AiOutlineZoomOut,
+  //   time: 60,
+  // },
   {
     name: "Logout",
     href: "/ConstructionPlanPage",

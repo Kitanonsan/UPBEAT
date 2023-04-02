@@ -18,6 +18,7 @@ export default function Hexgrid() {
   // Define an array of image names
   const imageNames = Array.from({ length: rows * columns }, (_, i) => {
     const imageNumber = (i % 17) + 1;
+    // return "l1.png";
     return `l${imageNumber}.png`;
   });
 
