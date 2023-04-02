@@ -5,8 +5,18 @@ import InputPlan from "../components/Input";
 import Timer from "../components/Timer";
 import Frame from "../components/Frame";
 import CodeEditor from "../components/editor";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
+  const [player, setPlayer] = useState(null);
+
+  useEffect(() => {
+    if (router.query.player) {
+      setPlayer(router.query.player);
+    }
+  }, [router.query.player]);
+
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
@@ -32,6 +42,7 @@ export default function Home() {
   return (
     <div className="backofgame">
       <BaseLayout>
+        {/* {player && <h1>Game for Player {player}</h1>} */}
         <Frame />
         <Timer />
         {/* <Hexgrid /> */}

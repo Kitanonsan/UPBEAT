@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Start() {
+  const router = useRouter();
+  const { player } = router.query;
+
   const [inputValue, setInputValue] = useState("");
   const [constructionPlan, setConstructionPlan] = useState("");
 
@@ -38,7 +42,9 @@ export default function Start() {
     <div className="background-image">
       <div className="ConstructionPlan_Container">
         <div>
-          <h1 className="Text_ConstructionPLan">Construction Plan</h1>
+          <h1 className="Text_ConstructionPLan">
+            Construction Plan for Player {player}
+          </h1>
         </div>
         <div className="ConstructionPlanHelp">{/* <img src="/U.png" /> */}</div>
         <div style={{ position: "relative" }}>
@@ -60,7 +66,7 @@ export default function Start() {
           <Link href="Player">
             <button className="Back_button_Con">BACK</button>
           </Link>
-          <Link href="/Game">
+          <Link href={`/Game?player=${player}`}>
             <button className="Go_button_Con">GO</button>
           </Link>
         </div>

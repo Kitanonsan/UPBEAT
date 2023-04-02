@@ -3,40 +3,18 @@ import { useEffect } from "react";
 import { Client } from "@stomp/stompjs";
 
 let client;
-let a = 0;
 export default function Start() {
-  useEffect(() => {
-    if (!client) {
-      client = new Client({
-        brokerURL: "ws://localhost:8080/group19",
-        onConnect: () => {
-          client.subscribe("/app/text", (message) => {
-            const body = JSON.parse(message.body);
-            console.log(body);
-            // do something with the message body
-          });
-          client.subscribe("/topic/text", (message) => {
-            const body = JSON.parse(message.body);
-            // do something with the message body
-            console.log(body);
-          });
-        },
+  const start = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/game/start", {
+        method: "POST",
       });
 
-      client.activate();
-    }
-  }, [a]);
-
-  const start = () => {
-    if (client) {
-      console.log("Click");
-      if (client.connected) {
-        client.publish({
-          destination: "/app/text",
-          body: JSON.stringify({ text: "Hello World!" }),
-        });
-        a = a + 1;
+      if (!response.ok) {
+        throw new Error("Failed to start the game");
       }
+    } catch (error) {
+      console.error("Error starting the game:", error);
     }
   };
 
