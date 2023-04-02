@@ -4,21 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87fd7e6c-9a8d-4379-a47e-1281e7e7f424" name="Changes" comment="Add SendTo in functions Start">
-      <change afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/PlayerMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/RegionMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/TerritoryMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/WebSocketConfiguration.java" afterDir="false" />
+    <list default="true" id="87fd7e6c-9a8d-4379-a47e-1281e7e7f424" name="Changes" comment="Add WebSocketConfiguration, PlayerMessage, TerritoryMessage and RegionMessage">
+      <change afterPath="$PROJECT_DIR$/src/Construction_Plan/P1_Plan.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Construction_Plan/P2_Plan.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/PlayerBody.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/game/src/pages/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/game/src/pages/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/WebSocketApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/WebSocketApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/WebsocketConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Configuration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Game.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Region.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Region.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Territory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Territory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/GameController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -303,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680425018886</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Add WebSocketConfiguration, PlayerMessage, TerritoryMessage and RegionMessage">
+      <created>1680437192986</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1680437192986</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -332,6 +330,7 @@
     <MESSAGE value="Add WebsocketConfiguration" />
     <MESSAGE value="Add SubscribeMapping for sendTerritory" />
     <MESSAGE value="Add SendTo in functions Start" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add SendTo in functions Start" />
+    <MESSAGE value="Add WebSocketConfiguration, PlayerMessage, TerritoryMessage and RegionMessage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add WebSocketConfiguration, PlayerMessage, TerritoryMessage and RegionMessage" />
   </component>
 </project>
