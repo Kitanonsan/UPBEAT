@@ -1,15 +1,22 @@
 package UPBEAT.WebSocket;
-
+import game.Territory;
+import game.Player;
 import lombok.Getter;
 
 @Getter
 public class GameMessage {
-    private PlayerMessage Player1;
-    private PlayerMessage Player2;
-    private TerritoryMessage territory;
-    GameMessage(PlayerMessage p1, PlayerMessage p2, TerritoryMessage t){
-        this.Player1 = p1;
-        this.Player2 = p2;
-        this.territory = t;
+    private PlayerMessage[] Player;
+    private RegionMessage[][] Territory;
+    GameMessage(Player player1, Player player2,Territory territory){
+        this.Player = new PlayerMessage[2];
+        this.Territory = new RegionMessage[territory.getM()][territory.getN()];
+        Player[0] = new PlayerMessage(player1);
+        Player[1] = new PlayerMessage(player2);
+        for(int i = 0 ; i < territory.getM() ; i++){
+            for(int j = 0 ; j < territory.getN() ; j++){
+                Territory[i][j] = new RegionMessage(territory.region(new int[]{i,j}));
+            }
+        }
+
     }
 }

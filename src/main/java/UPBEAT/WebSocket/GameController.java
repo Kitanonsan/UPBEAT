@@ -1,4 +1,5 @@
 package UPBEAT.WebSocket;
+import game.Configuration;
 import game.Player;
 import game.Territory;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -6,20 +7,18 @@ import org.springframework.messaging.simp.annotation.SubscribeMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 
 @RestController
 @Controller
 public class GameController {
     Territory territory;
-    Player[] playerArray;
+    Player[] players;
     int[] turn;
     Player currentPlayer;
     int index;
@@ -29,50 +28,81 @@ public class GameController {
         this.territory = new Territory();
         Player p1 = new Player("Player1",territory);
         Player p2 = new Player("Player2",territory);
-        this.playerArray = new Player[2];
-        playerArray[0] = p1;
-        playerArray[1] = p2;
+        this.players = new Player[2];
+        players[0] = p1;
+        players[1] = p2;
         this.turn = new int[2];
         index = 1;
-        currentPlayer = playerArray[index];
+        currentPlayer = players[index];
     }
 
     @PutMapping("/game/turn")
-    public void newTurn(){
+    @SendTo("/topic/player")
+    public PlayerBody newTurn(){
         index = (index+1)%2;
         turn[index]++;
-        currentPlayer = playerArray[index];
+        currentPlayer = players[index];
         currentPlayer.updateRegions(turn[index]);
         System.out.println("CurrentPlayer: " + currentPlayer.getName() + " turnCount: " + turn[index]);
+        return new PlayerBody(currentPlayer.getName(),"");
     }
 
-    @PutMapping("/game/edit")
-    public void editConstructionPlan(@RequestBody PlayerBody playerBody){
-        if (playerBody.getName() == currentPlayer.getName()){
-            if(currentPlayer.getName().equals("Player1")){
-                System.out.println("Player 1 Edit Plan.");
-                try{
-                    FileWriter Write = new FileWriter("P1_Plan.txt");
-                }catch (IOException e){
-                    System.out.println("An error occurred.");
-                    e.printStackTrace();
-                }
-            } else if (currentPlayer.getName().equals("Player2")) {
-                System.out.println("Player 2 Edit Plan.");
-                try{
-                    FileWriter Write = new FileWriter("P2_Plan.txt");
-                }catch (IOException e){
-                    System.out.println("An error occurred.");
-                    e.printStackTrace();
-                }
-
+    @PutMapping("/game/set")
+    public void setPlan(@RequestBody PlayerBody playerBody){
+        if (playerBody.getName().equals("Player1")){
+            System.out.println("Player1 set plan.");
+            try{
+                FileWriter Write = new FileWriter("P1_Plan.txt");
+            }catch (IOException e){
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
+        } else if (playerBody.getName().equals("Player2")) {
+            System.out.println("Player2 set plan.");
+            try{
+                FileWriter Write = new FileWriter("P2_Plan.txt");
+            }catch (IOException e){
+                System.out.println("An error occurred.");
+                e.printStackTrace();
             }
         }
     }
 
+    @PutMapping("/game/edit")
+    public void editPlan(@RequestBody PlayerBody playerBody){
+        if (playerBody.getName() == currentPlayer.getName()){
+            if(currentPlayer.getName().equals("Player1")){
+                if(currentPlayer.pay(Configuration.instance().getRev_cost())){
+                    System.out.println("Player1 edit Plan.");
+                    try{
+                        FileWriter Write = new FileWriter("P1_Plan.txt");
+                    }catch (IOException e){
+                        System.out.println("An error occurred.");
+                        e.printStackTrace();
+                    }
+                }
+                else{
+                    System.out.println("Player1 don't have enough budget to edit the plan.");
+                }
+            } else if (currentPlayer.getName().equals("Player2")) {
+                if(currentPlayer.pay(Configuration.instance().getRev_cost())){
+                    System.out.println("Player2 edit Plan.");
+                    try{
+                        FileWriter Write = new FileWriter("P2_Plan.txt");
+                    }catch (IOException e){
+                        System.out.println("An error occurred.");
+                        e.printStackTrace();
+                    }
+                }
+                else{
+                    System.out.println("Player2 don't have enough budget to edit the plan.");
+                }
+            }
+        }
+    }
     @PutMapping("/game/parse")
-    @SendTo("/topic/territory")
-    public  TerritoryMessage parsePlan(@RequestBody PlayerBody body){
+    @SendTo("/topic/message")
+    public  GameMessage parsePlan(@RequestBody PlayerBody body){
         if(body.getName() == currentPlayer.getName()){
             if (currentPlayer.getName().equals("Player1")){
                 Path file = Paths.get("./P1_plan.txt");
@@ -100,16 +130,23 @@ public class GameController {
                 }
             }
         }
-        return new TerritoryMessage(this.territory);
+        return new GameMessage(players[0], players[1],territory);
     }
-
-    @SubscribeMapping("/territory")
-    public TerritoryMessage sentTerritoryMessage(){
-        return new TerritoryMessage(this.territory);
+    @GetMapping("/game/message")
+    public GameMessage getGameMessage(){
+        return new GameMessage(players[0], players[1],territory);
     }
-
-    @GetMapping("/game/data")
+    @SubscribeMapping("/message")
     public GameMessage sendGameMessage(){
-        return new GameMessage(new PlayerMessage(playerArray[0]),new PlayerMessage(playerArray[1]),new TerritoryMessage(territory));
+        return new GameMessage(players[0], players[1],territory);
     }
+    @GetMapping("/game/player")
+    public PlayerBody getCurrentPlayer(){
+        return new PlayerBody(currentPlayer.getName(),"");
+    }
+    @SubscribeMapping("/player")
+    public PlayerBody sendCurrentPlayer(){
+        return new PlayerBody(currentPlayer.getName(),"");
+    }
+
 }
