@@ -6,7 +6,7 @@ function Grid({ matrix, W, H }) {
       {matrix.map((row, rowIndex) => (
         <span
           className={rowIndex % 2 === 0 ? "odd" : "even"}
-          style={{ width: W - W / 4 + 3 }}
+          style={{ width: W - W / 2 + 24 }}
         >
           <div key={rowIndex}>
             {row.map((cell, cellIndex) => (
