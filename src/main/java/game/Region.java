@@ -1,10 +1,9 @@
 package game;
+
 import lombok.Getter;
-import org.springframework.stereotype.Component;
 
 import java.lang.Math;
 @Getter
-@Component
 public class Region {
     private final int[] position;
     private double deposit;

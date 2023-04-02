@@ -3,30 +3,39 @@ import { useEffect } from "react";
 import { Client } from "@stomp/stompjs";
 
 let client;
+let a = 0;
 export default function Start() {
   useEffect(() => {
     if (!client) {
       client = new Client({
-        brokerURL: "ws://10.10.186.240:8080/group19",
+        brokerURL: "ws://localhost:8080/group19",
         onConnect: () => {
-          client.subscribe("/app/start", (message) => {
+          client.subscribe("/app/text", (message) => {
+            const body = JSON.parse(message.body);
+            console.log(body);
+            // do something with the message body
+          });
+          client.subscribe("/topic/text", (message) => {
             const body = JSON.parse(message.body);
             // do something with the message body
+            console.log(body);
           });
         },
       });
 
       client.activate();
     }
-  }, []);
+  }, [a]);
 
   const start = () => {
     if (client) {
+      console.log("Click");
       if (client.connected) {
         client.publish({
-          destination: "/app/start",
-          body: JSON.stringify({}),
+          destination: "/app/text",
+          body: JSON.stringify({ text: "Hello World!" }),
         });
+        a = a + 1;
       }
     }
   };

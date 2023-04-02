@@ -4,11 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87fd7e6c-9a8d-4379-a47e-1281e7e7f424" name="Changes" comment="Add more Region Test case">
-      <change afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/WebsocketConfiguration.java" afterDir="false" />
+    <list default="true" id="87fd7e6c-9a8d-4379-a47e-1281e7e7f424" name="Changes" comment="Add SendTo in functions Start">
+      <change afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/PlayerMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/RegionMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/TerritoryMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/WebSocketConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/game/src/pages/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/game/src/pages/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/WebSocketApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/WebSocketApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/WebsocketConfiguration.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Configuration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Game.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Region.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Region.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Territory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Territory.java" afterDir="false" />
@@ -52,21 +59,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "ToolWindowRun.ShowToolbar": "false",
-    "last_opened_file_path": "D:/Object-Oriented Programming/demo"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;ToolWindowRun.ShowToolbar&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Object-Oriented Programming/demo&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.WebSocketApplication">
     <configuration name="WebSocketApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="UPBEAT.WebSocket.WebSocketApplication" />
       <module name="WebSocket.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="UPBEAT.WebSocket.*" />
+          <option name="PATTERN" value="Message.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -74,7 +81,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OpponentTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MoveTest.MoveDownTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -87,7 +94,30 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;game.OpponentTest&quot;" />
+            <option value="&quot;game.MoveTest.MoveDownTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="MoveTest.MoveUpTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;game.MoveTest.MoveUpTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -143,29 +173,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="RelocateTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;game.RelocateTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="WebSocket.test" />
       <method v="2">
@@ -181,11 +188,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.MoveTest.MoveDownTest" />
+        <item itemvalue="Gradle.MoveTest.MoveUpTest" />
         <item itemvalue="Application.WebSocketApplication" />
         <item itemvalue="Gradle.RegionTest.updateDepositTest" />
         <item itemvalue="Gradle.RegionTest.updateInterestRateTest" />
-        <item itemvalue="Gradle.RelocateTest" />
-        <item itemvalue="Gradle.OpponentTest" />
       </list>
     </recent_temporary>
   </component>
@@ -275,7 +282,28 @@
       <option name="project" value="LOCAL" />
       <updated>1678723461977</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Add WebsocketConfiguration">
+      <created>1680422322776</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1680422322776</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add SubscribeMapping for sendTerritory">
+      <created>1680424574029</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1680424574029</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Add SendTo in functions Start">
+      <created>1680425018886</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1680425018886</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -301,6 +329,9 @@
     <MESSAGE value="Add more Relocate test case" />
     <MESSAGE value="Add More Opponent Test case" />
     <MESSAGE value="Add more Region Test case" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add more Region Test case" />
+    <MESSAGE value="Add WebsocketConfiguration" />
+    <MESSAGE value="Add SubscribeMapping for sendTerritory" />
+    <MESSAGE value="Add SendTo in functions Start" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add SendTo in functions Start" />
   </component>
 </project>
