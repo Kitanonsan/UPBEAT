@@ -48,7 +48,21 @@ public class GameController {
 
     @PutMapping("/game/set")
     public void setPlan(@RequestBody PlayerBody playerBody){
-
+        if (playerBody.getName().equals("Player1")){
+            try{
+                FileWriter Write = new FileWriter("P1_Plan.txt");
+            }catch (IOException e){
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
+        } else if (playerBody.getName().equals("Player2")) {
+            try{
+                FileWriter Write = new FileWriter("P2_Plan.txt");
+            }catch (IOException e){
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
+        }
     }
 
     @PutMapping("/game/edit")
