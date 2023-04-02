@@ -5,7 +5,6 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.annotation.SubscribeMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
@@ -19,7 +18,6 @@ import java.util.ArrayList;
 @RestController
 @Controller
 public class GameController {
-
     Territory territory;
     Player[] playerArray;
     int[] turn;
@@ -52,6 +50,7 @@ public class GameController {
     public void editConstructionPlan(@RequestBody PlayerBody playerBody){
         if (playerBody.getName() == currentPlayer.getName()){
             if(currentPlayer.getName().equals("Player1")){
+                System.out.println("Player 1 Edit Plan.");
                 try{
                     FileWriter Write = new FileWriter("P1_Plan.txt");
                 }catch (IOException e){
@@ -59,6 +58,7 @@ public class GameController {
                     e.printStackTrace();
                 }
             } else if (currentPlayer.getName().equals("Player2")) {
+                System.out.println("Player 2 Edit Plan.");
                 try{
                     FileWriter Write = new FileWriter("P2_Plan.txt");
                 }catch (IOException e){
@@ -69,7 +69,6 @@ public class GameController {
             }
         }
     }
-
 
     @PutMapping("/game/parse")
     @SendTo("/topic/territory")
@@ -109,5 +108,8 @@ public class GameController {
         return new TerritoryMessage(this.territory);
     }
 
-
+    @GetMapping("/game/data")
+    public GameMessage sendGameMessage(){
+        return new GameMessage(new PlayerMessage(playerArray[0]),new PlayerMessage(playerArray[1]),new TerritoryMessage(territory));
+    }
 }
