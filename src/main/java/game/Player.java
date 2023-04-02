@@ -265,7 +265,7 @@ public class Player {
         possessRegion.remove(r);
     }
     public void addRegion(Region r){possessRegion.add(r);}
-    private boolean pay(long cost){
+    public boolean pay(long cost){
         if (budget - cost >= 0) {
             budget -= cost;
             return true;

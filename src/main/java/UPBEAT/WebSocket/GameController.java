@@ -1,4 +1,5 @@
 package UPBEAT.WebSocket;
+import game.Configuration;
 import game.Player;
 import game.Territory;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -78,35 +79,36 @@ public class GameController {
     @SendTo("/topic/message")
     public  GameMessage parsePlan(@RequestBody PlayerBody body){
         if(body.getName() == currentPlayer.getName()){
-            if (currentPlayer.getName().equals("Player1")){
-                Path file = Paths.get("./P1_plan.txt");
-                Charset charset = Charset.forName("UTF-8");
-                try (BufferedReader reader = Files.newBufferedReader(file, charset)){
-                    String line = null;
-                    while ((line = reader.readLine()) != null){
-                        parsePlan(body);
+            if(currentPlayer.pay(Configuration.instance().getRev_cost())){
+                if (currentPlayer.getName().equals("Player1")){
+                    Path file = Paths.get("./P1_plan.txt");
+                    Charset charset = Charset.forName("UTF-8");
+                    try (BufferedReader reader = Files.newBufferedReader(file, charset)){
+                        String line = null;
+                        while ((line = reader.readLine()) != null){
+                            parsePlan(body);
+                        }
+                    }catch (IOException e){
+                        System.out.println("An error occurred.");
+                        e.printStackTrace();
                     }
-                }catch (IOException e){
-                    System.out.println("An error occurred.");
-                    e.printStackTrace();
-                }
-            } else if (currentPlayer.getName().equals("Player2")){
-                Path file = Paths.get("./P2_plan.txt");
-                Charset charset = Charset.forName("UTF-8");
-                try (BufferedReader reader = Files.newBufferedReader(file, charset)){
-                    String line = null;
-                    while ((line = reader.readLine()) != null){
-                        parsePlan(body);
+                } else if (currentPlayer.getName().equals("Player2")){
+                    Path file = Paths.get("./P2_plan.txt");
+                    Charset charset = Charset.forName("UTF-8");
+                    try (BufferedReader reader = Files.newBufferedReader(file, charset)){
+                        String line = null;
+                        while ((line = reader.readLine()) != null){
+                            parsePlan(body);
+                        }
+                    }catch (IOException e){
+                        System.out.println("An error occurred.");
+                        e.printStackTrace();
                     }
-                }catch (IOException e){
-                    System.out.println("An error occurred.");
-                    e.printStackTrace();
                 }
             }
         }
         return new GameMessage(players[0], players[1],territory);
     }
-
     @GetMapping("/game/message")
     public GameMessage getGameMessage(){
         return new GameMessage(players[0], players[1],territory);
@@ -114,6 +116,10 @@ public class GameController {
     @SubscribeMapping("/message")
     public GameMessage sendGameMessage(){
         return new GameMessage(players[0], players[1],territory);
+    }
+    @GetMapping("/game/player")
+    public PlayerBody getCurrentPlayer(){
+        return new PlayerBody(currentPlayer.getName(),"");
     }
     @SubscribeMapping("/player")
     public PlayerBody sendCurrentPlayer(){
