@@ -6,8 +6,14 @@ import org.springframework.messaging.simp.annotation.SubscribeMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 @RestController
@@ -69,7 +75,31 @@ public class GameController {
     @SendTo("/topic/territory")
     public  TerritoryMessage parsePlan(@RequestBody PlayerBody body){
         if(body.getName() == currentPlayer.getName()){
-            parsePlan(body);
+            if (currentPlayer.getName().equals("Player1")){
+                Path file = Paths.get("./P1_plan.txt");
+                Charset charset = Charset.forName("UTF-8");
+                try (BufferedReader reader = Files.newBufferedReader(file, charset)){
+                    String line = null;
+                    while ((line = reader.readLine()) != null){
+                        parsePlan(body);
+                    }
+                }catch (IOException e){
+                    System.out.println("An error occurred.");
+                    e.printStackTrace();
+                }
+            } else if (currentPlayer.getName().equals("Player2")){
+                Path file = Paths.get("./P2_plan.txt");
+                Charset charset = Charset.forName("UTF-8");
+                try (BufferedReader reader = Files.newBufferedReader(file, charset)){
+                    String line = null;
+                    while ((line = reader.readLine()) != null){
+                        parsePlan(body);
+                    }
+                }catch (IOException e){
+                    System.out.println("An error occurred.");
+                    e.printStackTrace();
+                }
+            }
         }
         return new TerritoryMessage(this.territory);
     }
