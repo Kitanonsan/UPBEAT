@@ -1,12 +1,11 @@
 package game;
 
-import evaluator.GrammarParser;
-import evaluator.Parser;
-import evaluator.SyntaxError;
+import lombok.Getter;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.annotation.SubscribeMapping;
 import org.springframework.stereotype.Controller;
-
+@Getter
 @Controller
 public class Game {
 
@@ -18,6 +17,7 @@ public class Game {
 
     @MessageMapping("/start")
     public void start(){
+        System.out.println("Start Game!");
         this.territory = new Territory();
         players[0] = new Player("Player1",this.territory);
         players[1] = new Player("Player2",this.territory);
@@ -27,9 +27,8 @@ public class Game {
         currentPlayer = players[index];
     }
 
-    @MessageMapping("/territory")
-    @SendTo("/topic/territory")
-    public Region[][] territory(){
+    @SubscribeMapping("/territory")
+    public Region[][] sendTerritory(){
         return this.territory.regions();
     }
 
