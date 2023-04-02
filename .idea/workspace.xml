@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87fd7e6c-9a8d-4379-a47e-1281e7e7f424" name="Changes" comment="Fixed  : function write file in setPlan and editPlan">
+    <list default="true" id="87fd7e6c-9a8d-4379-a47e-1281e7e7f424" name="Changes" comment="Fixed  : write file with BufferWriter">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/GameController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -313,7 +312,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680448937577</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Fixed  : write file with BufferWriter">
+      <created>1680453379067</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1680453379067</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -347,6 +353,7 @@
     <MESSAGE value="Add Class GameMessage" />
     <MESSAGE value="Add function setPlan in Class Game" />
     <MESSAGE value="Add Pay cost after Player edit Construction Plan" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Pay cost after Player edit Construction Plan" />
+    <MESSAGE value="Fixed  : write file with BufferWriter" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed  : write file with BufferWriter" />
   </component>
 </project>
