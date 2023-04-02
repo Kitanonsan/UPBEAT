@@ -1,6 +1,17 @@
 import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Player() {
+  const [selectedPlayer, setSelectedPlayer] = useState(null);
+
+  const handlePlayerSelection = (player) => {
+    setSelectedPlayer(player);
+    router.push(`/ConstructionPlanPage?player=${player}`);
+  };
+
+  const router = useRouter();
+
   return (
     <div className="background-image">
       <div>
@@ -9,13 +20,23 @@ export default function Player() {
           <div className="PlayerSelect_buttons">
             <img src="/images/Elfscale.gif" className="Elf"></img>
             <Link href="ConstructionPlanPage?player=1">
-              <button className="PlayerSelect_button_left">Player 1</button>
+              <button
+                className="PlayerSelect_button_left"
+                onClick={() => handlePlayerSelection(1)}
+              >
+                Player 1
+              </button>
             </Link>
             {/* <img src="/images/Demon1.gif" className="Player1"></img> */}
             <div />
             <img src="/images/draftscale.gif" className="dwarf"></img>
             <Link href="ConstructionPlanPage?player=2">
-              <button className="PlayerSelect_button_right">Player 2</button>
+              <button
+                className="PlayerSelect_button_right"
+                onClick={() => handlePlayerSelection(2)}
+              >
+                Player 2
+              </button>
             </Link>
           </div>
           <Link href="/">
