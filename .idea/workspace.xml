@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87fd7e6c-9a8d-4379-a47e-1281e7e7f424" name="Changes" comment="Add WebSocketConfiguration, PlayerMessage, TerritoryMessage and RegionMessage">
-      <change afterPath="$PROJECT_DIR$/src/Construction_Plan/P1_Plan.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Construction_Plan/P2_Plan.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/PlayerBody.java" afterDir="false" />
+    <list default="true" id="87fd7e6c-9a8d-4379-a47e-1281e7e7f424" name="Changes" comment="Implemented  : setPlan">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/GameController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,14 +46,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;ToolWindowRun.ShowToolbar&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Object-Oriented Programming/demo&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ToolWindowRun.ShowToolbar": "false",
+    "last_opened_file_path": "C:/Semester 2_65/Object Oriented Programming Lab/lab09"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Application.WebSocketApplication">
     <configuration name="WebSocketApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="UPBEAT.WebSocket.WebSocketApplication" />
@@ -163,19 +159,6 @@
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="WebSocket.test" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="WebSocket.test" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <recent_temporary>
       <list>
@@ -301,7 +284,28 @@
       <option name="project" value="LOCAL" />
       <updated>1680437192986</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Implemented : editConstructionPlan and TerritoryMessage.">
+      <created>1680442973787</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1680442973787</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Edited  : TerritoryMessage read file for parser.">
+      <created>1680443711450</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1680443711450</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Implemented  : setPlan">
+      <created>1680448961855</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1680448961855</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -331,6 +335,9 @@
     <MESSAGE value="Add SubscribeMapping for sendTerritory" />
     <MESSAGE value="Add SendTo in functions Start" />
     <MESSAGE value="Add WebSocketConfiguration, PlayerMessage, TerritoryMessage and RegionMessage" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add WebSocketConfiguration, PlayerMessage, TerritoryMessage and RegionMessage" />
+    <MESSAGE value="Implemented : editConstructionPlan and TerritoryMessage." />
+    <MESSAGE value="Edited  : TerritoryMessage read file for parser." />
+    <MESSAGE value="Implemented  : setPlan" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented  : setPlan" />
   </component>
 </project>

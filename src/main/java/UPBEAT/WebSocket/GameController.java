@@ -52,6 +52,8 @@ public class GameController {
         if (playerBody.getName().equals("Player1")){
             try{
                 FileWriter Write = new FileWriter("P1_Plan.txt");
+                Write.write(playerBody.getPlan());
+                Write.close();
             }catch (IOException e){
                 System.out.println("An error occurred.");
                 e.printStackTrace();
@@ -59,6 +61,8 @@ public class GameController {
         } else if (playerBody.getName().equals("Player2")) {
             try{
                 FileWriter Write = new FileWriter("P2_Plan.txt");
+                Write.write(playerBody.getPlan());
+                Write.close();
             }catch (IOException e){
                 System.out.println("An error occurred.");
                 e.printStackTrace();
@@ -73,6 +77,8 @@ public class GameController {
                 System.out.println("Player 1 Edit Plan.");
                 try{
                     FileWriter Write = new FileWriter("P1_Plan.txt");
+                    Write.write(playerBody.getPlan());
+                    Write.close();
                 }catch (IOException e){
                     System.out.println("An error occurred.");
                     e.printStackTrace();
@@ -81,6 +87,8 @@ public class GameController {
                 System.out.println("Player 2 Edit Plan.");
                 try{
                     FileWriter Write = new FileWriter("P2_Plan.txt");
+                    Write.write(playerBody.getPlan());
+                    Write.close();
                 }catch (IOException e){
                     System.out.println("An error occurred.");
                     e.printStackTrace();
