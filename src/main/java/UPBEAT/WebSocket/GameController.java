@@ -37,7 +37,7 @@ public class GameController {
         currentPlayer = players[index];
     }
 
-    @PutMapping("/game/turn")
+    @PostMapping("/game/turn")
     @SendTo("/topic/player")
     public PlayerBody newTurn(){
         index = (index+1)%2;
@@ -48,13 +48,14 @@ public class GameController {
         return new PlayerBody(currentPlayer.getName(),"");
     }
 
-    @PutMapping("/game/set")
+    @PostMapping("/game/set")
     public void setPlan(@RequestBody PlayerBody playerBody){
         System.out.println(playerBody.getName() + " set plan.");
         if (playerBody.getName().equals("Player1")){
             try(FileWriter writer = new FileWriter("src/Construction_Plan/P1_Plan.txt");
                 BufferedWriter bw = new BufferedWriter(writer)){
                 bw.write(playerBody.getPlan());
+
             }catch (IOException e){
                 System.out.println("An error occurred");
                 e.printStackTrace();
@@ -70,7 +71,7 @@ public class GameController {
         }
     }
 
-    @PutMapping("/game/edit")
+    @PostMapping("/game/edit")
     public void editPlan(@RequestBody PlayerBody playerBody){ //Write file
         if (playerBody.getName() == currentPlayer.getName()){
             if(currentPlayer.pay(Configuration.instance().getRev_cost())){
@@ -98,7 +99,7 @@ public class GameController {
             }
         }
     }
-    @PutMapping("/game/parse")
+    @PostMapping("/game/parse")
     @SendTo("/topic/message")
     public  GameMessage parsePlan(@RequestBody PlayerBody body){
         if(body.getName() == currentPlayer.getName()){
