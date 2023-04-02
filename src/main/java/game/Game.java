@@ -16,6 +16,7 @@ public class Game {
     int[] turn;
 
     @MessageMapping("/start")
+    @SendTo("topic/start")
     public void start(){
         System.out.println("Start Game!");
         this.territory = new Territory();
