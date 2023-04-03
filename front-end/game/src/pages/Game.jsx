@@ -45,6 +45,7 @@ export default function Home() {
         <Frame />
         <Timer />
         <InputPlan socket={socket} />
+        <h1 className="role">Turn: Player {player}</h1>
       </BaseLayout>
 
       <style jsx>{`

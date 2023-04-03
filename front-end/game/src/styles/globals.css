@@ -539,3 +539,19 @@ body {
   width: 260px;
   height: 260px;
 }
+
+.role {
+  font-size: 16px;
+  position: absolute;
+  font-weight: bold;
+  padding: 10px 20px;
+  /* background-color: #55e284; */
+  color: #080808;
+  /* border: none; */
+  font-family: "Press Start 2P", cursive;
+  border-radius: 4px;
+  /* cursor: pointer; */
+  /* margin-top: 80px; */
+  bottom: 150px;
+  right: 120px;
+}

@@ -8,25 +8,34 @@ import {
   MdOutlineKeyboardArrowLeft,
 } from "react-icons/md";
 import { BsList, BsArrowsMove } from "react-icons/bs";
-import { AiOutlineZoomIn, AiOutlineZoomOut } from "react-icons/ai";
+import {
+  AiOutlineZoomIn,
+  AiOutlineZoomOut,
+  AiOutlineUser,
+} from "react-icons/ai";
 import { GrHomeRounded, GrContactInfo } from "react-icons/gr";
 import { BiTimeFive, BiCoinStack } from "react-icons/bi";
 import { MdLocationPin, MdShareLocation } from "react-icons/md";
-import { RiFindReplaceLine } from "react-icons/ri";
+import { RiFindReplaceLine, RiNumber1 } from "react-icons/ri";
 import { GiAntiAircraftGun, GiReceiveMoney, GiPayMoney } from "react-icons/gi";
 import { useContext, useState, useEffect } from "react";
 import { SidebarContext } from "./SidebarContext";
 
 const sidebarItem = [
+  {
+    name: "Player1",
+    href: "/",
+    icon: AiOutlineUser,
+  },
+  {
+    name: "Gold 10000",
+    href: "/",
+    icon: BiCoinStack,
+  },
   // {
-  //   name: "Gold",
+  //   name: "Player",
   //   href: "/",
-  //   icon: BiCoinStack,
-  // },
-  // {
-  //   name: "Center City",
-  //   href: "/",
-  //   icon: GrHomeRounded,
+  //   icon: RiNumber1,
   // },
   // {
   //   name: "Zoom In",
