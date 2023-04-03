@@ -1,8 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function InputPlan() {
-  const [inputValue, setInputValue] = useState("");
+  const router = useRouter();
+  const { constructionPlan } = router.query;
+  const decodedConstructionPlan = decodeURIComponent(constructionPlan || "");
+
+  const [inputValue, setInputValue] = useState(decodedConstructionPlan);
   const [CP, setCP] = useState(false);
 
   const handleInputChange = (event) => {
