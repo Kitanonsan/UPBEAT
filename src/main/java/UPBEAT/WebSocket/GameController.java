@@ -1,4 +1,7 @@
 package UPBEAT.WebSocket;
+import evaluator.GrammarParser;
+import evaluator.Parser;
+import evaluator.SyntaxError;
 import game.Configuration;
 import game.Player;
 import game.Territory;
@@ -107,7 +110,8 @@ public class GameController {
     @PostMapping("/game/parse")
     @SendTo("/topic/message")
     public  GameMessage parsePlan(@RequestBody PlayerBody body){
-        if(body.getName() == currentPlayer.getName()){
+        StringBuilder resultStringBuilder = new StringBuilder();
+        if(body.getName().equals(currentPlayer.getName())){
             if(currentPlayer.pay(Configuration.instance().getRev_cost())){
                 if (currentPlayer.getName().equals("Player1")){
                     Path file = Paths.get("src/Construction_Plan/P1_plan.txt");
@@ -115,11 +119,16 @@ public class GameController {
                     try (BufferedReader reader = Files.newBufferedReader(file, charset)){
                         String line = null;
                         while ((line = reader.readLine()) != null){
-                            parsePlan(body);
+//                            parsePlan(body);
+                            resultStringBuilder.append(line).append("\n");
                         }
+                        Parser parser = new GrammarParser(resultStringBuilder.toString(), currentPlayer);
+                        parser.parse().evaluate();
                     }catch (IOException e){
                         System.out.println("An error occurred.");
                         e.printStackTrace();
+                    } catch (SyntaxError e) {
+                        throw new RuntimeException(e);
                     }
                 } else if (currentPlayer.getName().equals("Player2")){
                     Path file = Paths.get("src/Construction_Plan/P2_plan.txt");
@@ -127,11 +136,16 @@ public class GameController {
                     try (BufferedReader reader = Files.newBufferedReader(file, charset)){
                         String line = null;
                         while ((line = reader.readLine()) != null){
-                            parsePlan(body);
+//                            parsePlan(body);
+                            resultStringBuilder.append(line).append("\n");
                         }
+                        Parser parser = new GrammarParser(resultStringBuilder.toString(), currentPlayer);
+                        parser.parse().evaluate();
                     }catch (IOException e){
                         System.out.println("An error occurred.");
                         e.printStackTrace();
+                    } catch (SyntaxError e) {
+                        throw new RuntimeException(e);
                     }
                 }
             }

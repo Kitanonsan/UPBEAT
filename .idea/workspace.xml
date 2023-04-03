@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="87fd7e6c-9a8d-4379-a47e-1281e7e7f424" name="Changes" comment="Add sendConfiguration in GameController">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -49,6 +50,9 @@
       <change beforePath="$PROJECT_DIR$/src/Construction_Plan/P2_Plan.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Construction_Plan/P2_Plan.txt" afterDir="false" />
 =======
     <list default="true" id="87fd7e6c-9a8d-4379-a47e-1281e7e7f424" name="Changes" comment="Fixed  : Close Buffer">
+=======
+    <list default="true" id="87fd7e6c-9a8d-4379-a47e-1281e7e7f424" name="Changes" comment="Implemented : getConstructionPlan read file">
+>>>>>>> 4d1d7be236264717d45272f5c8ab0d5d8934cd6d
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 >>>>>>> cbbdac32fe0186b96e4197529c4e87eb10e74e52
       <change beforePath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/GameController.java" afterDir="false" />
@@ -406,8 +410,19 @@
       <option name="project" value="LOCAL" />
       <updated>1680454840958</updated>
     </task>
+<<<<<<< HEAD
     <option name="localTasksCounter" value="23" />
 >>>>>>> cbbdac32fe0186b96e4197529c4e87eb10e74e52
+=======
+    <task id="LOCAL-00023" summary="Implemented : getConstructionPlan read file">
+      <created>1680499920426</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1680499920426</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
+>>>>>>> 4d1d7be236264717d45272f5c8ab0d5d8934cd6d
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -450,7 +465,12 @@
     <option name="LAST_COMMIT_MESSAGE" value="Add sendConfiguration in GameController" />
 =======
     <MESSAGE value="Fixed  : Close Buffer" />
+<<<<<<< HEAD
     <option name="LAST_COMMIT_MESSAGE" value="Fixed  : Close Buffer" />
 >>>>>>> cbbdac32fe0186b96e4197529c4e87eb10e74e52
+=======
+    <MESSAGE value="Implemented : getConstructionPlan read file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented : getConstructionPlan read file" />
+>>>>>>> 4d1d7be236264717d45272f5c8ab0d5d8934cd6d
   </component>
 </project>
