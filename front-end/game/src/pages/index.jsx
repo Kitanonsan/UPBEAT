@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Client } from "@stomp/stompjs";
 
 let client;
@@ -21,7 +21,11 @@ export default function Start() {
   return (
     <div className="StartGame_Container">
       <Link href="/Player">
-        <button className="StartGame_button" onClick={start}>
+        <button
+          style={{ backgroundColor: "transparent", border: "none" }}
+          className="StartGame_button"
+          onClick={start}
+        >
           UPbeat
         </button>
       </Link>

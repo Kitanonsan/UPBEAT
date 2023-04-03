@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import BaseLayout from "@/components/BaseLayout";
-import Hexgrid from "@/components/Hex";
 import InputPlan from "../components/Input";
 import Timer from "../components/Timer";
 import Frame from "../components/Frame";
 import CodeEditor from "../components/editor";
 import { useRouter } from "next/router";
+import TerritoryComponent from "../components/getdata";
 
 export default function Home() {
   const router = useRouter();
@@ -42,12 +42,12 @@ export default function Home() {
   return (
     <div className="backofgame">
       <BaseLayout>
-        {/* {player && <h1>Game for Player {player}</h1>} */}
         <Frame />
         <Timer />
-        {/* <Hexgrid /> */}
         <InputPlan socket={socket} />
         {/* <CodeEditor /> */}
+        {/* {player && <h1>Game for Player {player}</h1>} */}
+        {/* <TerritoryComponent /> */}
       </BaseLayout>
 
       <style jsx>{`

@@ -8,12 +8,13 @@ export default function Start() {
   const { player } = router.query;
 
   const [inputValue, setInputValue] = useState("");
-  const [constructionPlan, setConstructionPlan] = useState("");
 
   useEffect(() => {
     const fetchConstructionPlan = async () => {
       try {
-        const response = await axios.get("/api/construction-plan");
+        const response = await axios.get(
+          "http://localhost:8080/api/construction-plan"
+        );
         setInputValue(response.data.plan);
       } catch (error) {
         console.error(error);
@@ -25,8 +26,19 @@ export default function Start() {
 
   const handleClick = async () => {
     try {
-      await axios.post("/api/write-file", { inputValue });
-      console.log("Input saved!");
+      const payload = {
+        name: `Player${player}`,
+        plan: inputValue,
+      };
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      await axios.post("http://localhost:8080/game/set", payload, config);
+      console.log("Construction plan saved!");
       alert("Construction plan saved!");
     } catch (error) {
       console.error(error);
@@ -66,7 +78,15 @@ export default function Start() {
           <Link href="Player">
             <button className="Back_button_Con">BACK</button>
           </Link>
-          <Link href={`/Game?player=${player}`}>
+          <Link
+            href={{
+              pathname: "/Game",
+              query: { player, constructionPlan: inputValue },
+            }}
+            as={`/Game?player=${player}&constructionPlan=${encodeURIComponent(
+              inputValue
+            )}`}
+          >
             <button className="Go_button_Con">GO</button>
           </Link>
         </div>
