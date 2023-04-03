@@ -45,9 +45,6 @@ export default function Home() {
         <Frame />
         <Timer />
         <InputPlan socket={socket} />
-        {/* <CodeEditor /> */}
-        {/* {player && <h1>Game for Player {player}</h1>} */}
-        {/* <TerritoryComponent /> */}
       </BaseLayout>
 
       <style jsx>{`
