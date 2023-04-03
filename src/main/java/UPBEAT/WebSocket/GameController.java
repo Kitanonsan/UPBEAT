@@ -76,7 +76,7 @@ public class GameController {
 
     @PostMapping("/game/edit")
     public void editPlan(@RequestBody PlayerBody playerBody){ //Write file
-        if (playerBody.getName() == currentPlayer.getName()){
+        if (playerBody.getName().equals(currentPlayer.getName())){
             if(currentPlayer.pay(Configuration.instance().getRev_cost())){
                 if (playerBody.getName().equals("Player1")){
                     try(FileWriter writer = new FileWriter("src/Construction_Plan/P1_Plan.txt");
