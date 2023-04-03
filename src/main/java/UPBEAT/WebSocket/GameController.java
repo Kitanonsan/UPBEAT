@@ -159,6 +159,11 @@ public class GameController {
     public GameMessage getGameMessage(){
         return new GameMessage(players[0], players[1],territory);
     }
+
+    @GetMapping("/game/plan")
+    public PlayerBody getConstructionPlan(PlayerBody playerBody){
+
+    }
     @SubscribeMapping("/message")
     public GameMessage sendGameMessage(){
         return new GameMessage(players[0], players[1],territory);
