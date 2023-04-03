@@ -13,7 +13,7 @@ export default function Start() {
     const fetchConstructionPlan = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/construction-plan"
+          "http://10.10.186.240:8080/api/construction-plan"
         );
         setInputValue(response.data.plan);
       } catch (error) {
@@ -37,7 +37,7 @@ export default function Start() {
         },
       };
 
-      await axios.post("http://localhost:8080/game/set", payload, config);
+      await axios.post("http://10.10.186.240:8080/game/set", payload, config);
       console.log("Construction plan saved!");
       alert("Construction plan saved!");
     } catch (error) {

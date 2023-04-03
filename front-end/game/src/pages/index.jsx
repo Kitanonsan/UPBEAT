@@ -6,7 +6,7 @@ let client;
 export default function Start() {
   const start = async () => {
     try {
-      const response = await fetch("http://localhost:8080/game/start", {
+      const response = await fetch("http://10.10.186.240:8080/game/start", {
         method: "POST",
       });
 
