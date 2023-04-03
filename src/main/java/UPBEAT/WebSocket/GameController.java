@@ -175,7 +175,8 @@ public class GameController {
     }
 
     @GetMapping("/game/plan")
-    public PlayerBody getConstructionPlan(PlayerBody playerBody){
+    public PlayerBody getConstructionPlan(@RequestBody PlayerBody playerBody){
+        System.out.println(playerBody.getName());
         StringBuilder resultStringBuilder = new StringBuilder();
             if (playerBody.getName().equals("Player1")){
                 Path file = Paths.get("src/Construction_Plan/P1_plan.txt");
