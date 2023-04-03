@@ -155,6 +155,10 @@ public class GameController {
     public void writeConfiguration(@RequestBody ConfigurationMessage configurationMessage){
         Configuration.writeConfiguration(configurationMessage);
     }
+    @GetMapping("/game/configuration")
+    public ConfigurationMessage sendConfiguration(){
+        return new ConfigurationMessage();
+    }
     @GetMapping("/game/message")
     public GameMessage getGameMessage(){
         return new GameMessage(players[0], players[1],territory);
