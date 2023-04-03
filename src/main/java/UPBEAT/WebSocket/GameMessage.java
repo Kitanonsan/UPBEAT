@@ -2,7 +2,6 @@ package UPBEAT.WebSocket;
 import game.Territory;
 import game.Player;
 import lombok.Getter;
-
 import java.util.ArrayList;
 
 @Getter

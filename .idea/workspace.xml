@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="87fd7e6c-9a8d-4379-a47e-1281e7e7f424" name="Changes" comment="Add sendConfiguration in GameController">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -46,6 +47,10 @@
       <change beforePath="$PROJECT_DIR$/front-end/game/src/pages/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/game/src/pages/index.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Construction_Plan/P1_Plan.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Construction_Plan/P1_Plan.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Construction_Plan/P2_Plan.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Construction_Plan/P2_Plan.txt" afterDir="false" />
+=======
+    <list default="true" id="87fd7e6c-9a8d-4379-a47e-1281e7e7f424" name="Changes" comment="Fixed  : Close Buffer">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> cbbdac32fe0186b96e4197529c4e87eb10e74e52
       <change beforePath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/GameController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -87,6 +92,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -100,8 +106,16 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "spring.configuration.checksum": "7e522b5fd94b6812f5386730ef1cc8d7",
     "vue.rearranger.settings.migration": "true"
+=======
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;ToolWindowRun.ShowToolbar&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Semester 2_65/Object Oriented Programming Lab/lab09&quot;
+>>>>>>> cbbdac32fe0186b96e4197529c4e87eb10e74e52
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.WebSocketApplication">
     <configuration name="WebSocketApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="UPBEAT.WebSocket.WebSocketApplication" />
@@ -368,6 +382,7 @@
       <option name="project" value="LOCAL" />
       <updated>1680453379067</updated>
     </task>
+<<<<<<< HEAD
     <task id="LOCAL-00021" summary="Add sendConfiguration in GameController">
       <created>1680476362104</created>
       <option name="number" value="00021" />
@@ -376,6 +391,23 @@
       <updated>1680476362104</updated>
     </task>
     <option name="localTasksCounter" value="22" />
+=======
+    <task id="LOCAL-00021" summary="Fixed  : Close Buffer">
+      <created>1680454733780</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1680454733780</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Fixed  : Close Buffer">
+      <created>1680454840958</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1680454840958</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
+>>>>>>> cbbdac32fe0186b96e4197529c4e87eb10e74e52
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,7 +445,12 @@
     <MESSAGE value="Add function setPlan in Class Game" />
     <MESSAGE value="Add Pay cost after Player edit Construction Plan" />
     <MESSAGE value="Fixed  : write file with BufferWriter" />
+<<<<<<< HEAD
     <MESSAGE value="Add sendConfiguration in GameController" />
     <option name="LAST_COMMIT_MESSAGE" value="Add sendConfiguration in GameController" />
+=======
+    <MESSAGE value="Fixed  : Close Buffer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed  : Close Buffer" />
+>>>>>>> cbbdac32fe0186b96e4197529c4e87eb10e74e52
   </component>
 </project>

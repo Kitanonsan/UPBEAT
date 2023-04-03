@@ -76,7 +76,7 @@ public class GameController {
 
     @PostMapping("/game/edit")
     public void editPlan(@RequestBody PlayerBody playerBody){ //Write file
-        if (playerBody.getName() == currentPlayer.getName()){
+        if (playerBody.getName().equals(currentPlayer.getName())){
             if(currentPlayer.pay(Configuration.instance().getRev_cost())){
                 if (playerBody.getName().equals("Player1")){
                     try(FileWriter writer = new FileWriter("src/Construction_Plan/P1_Plan.txt");
@@ -162,6 +162,40 @@ public class GameController {
     @GetMapping("/game/message")
     public GameMessage getGameMessage(){
         return new GameMessage(players[0], players[1],territory);
+    }
+
+    @GetMapping("/game/plan")
+    public PlayerBody getConstructionPlan(@RequestBody PlayerBody playerBody){
+        System.out.println(playerBody.getName());
+        StringBuilder resultStringBuilder = new StringBuilder();
+            if (playerBody.getName().equals("Player1")){
+                Path file = Paths.get("src/Construction_Plan/P1_plan.txt");
+                Charset charset = Charset.forName("UTF-8");
+                try (BufferedReader reader = Files.newBufferedReader(file, charset)){
+                    String line = null;
+                    while ((line = reader.readLine()) != null){
+                        resultStringBuilder.append(line).append("\n");
+                    }
+                }catch (IOException e){
+                    System.out.println("An error occurred.");
+                    e.printStackTrace();
+                }
+            }else if (playerBody.getName().equals("Player2")){
+                Path file = Paths.get("src/Construction_Plan/P2_plan.txt");
+                Charset charset = Charset.forName("UTF-8");
+                try (BufferedReader reader = Files.newBufferedReader(file, charset)){
+                    String line = null;
+                    while ((line = reader.readLine()) != null){
+                        resultStringBuilder.append(line).append("\n");
+                    }
+                }catch (IOException e){
+                    System.out.println("An error occurred.");
+                    e.printStackTrace();
+                }
+
+            }
+        return new PlayerBody(playerBody.getName(),resultStringBuilder.toString());
+
     }
     @SubscribeMapping("/message")
     public GameMessage sendGameMessage(){
