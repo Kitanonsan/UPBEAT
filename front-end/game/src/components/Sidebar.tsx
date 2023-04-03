@@ -23,13 +23,11 @@ const sidebarItem = [
   //   href: "/",
   //   icon: BiCoinStack,
   // },
-
   // {
   //   name: "Center City",
   //   href: "/",
   //   icon: GrHomeRounded,
   // },
-
   // {
   //   name: "Zoom In",
   //   href: "/",
@@ -41,12 +39,12 @@ const sidebarItem = [
   //   icon: AiOutlineZoomOut,
   //   time: 60,
   // },
-  {
-    name: "Logout",
-    href: "/ConstructionPlanPage",
-    icon: MdOutlineKeyboardArrowLeft,
-    className: "logout-button",
-  },
+  // {
+  //   name: "Logout",
+  //   href: "/",
+  //   icon: MdOutlineKeyboardArrowLeft,
+  //   className: "logout-button",
+  // },
 ];
 
 export default function Sidebar() {

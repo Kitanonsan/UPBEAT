@@ -27,6 +27,10 @@ export default function InputPlan() {
     }
   };
 
+  const handleEndTurnClick = () => {
+    alert("End turn");
+  };
+
   return (
     <div>
       <h1 style={{ color: "black" }} className="textplan">
@@ -41,7 +45,7 @@ export default function InputPlan() {
       <button onClick={handleClick} className="saveplan">
         Save
       </button>
-      <button onClick={handleClick} className="endturn">
+      <button onClick={handleEndTurnClick} className="endturn">
         End turn
       </button>
       <div>
