@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87fd7e6c-9a8d-4379-a47e-1281e7e7f424" name="Changes" comment="Fixed  : Close Buffer">
+    <list default="true" id="87fd7e6c-9a8d-4379-a47e-1281e7e7f424" name="Changes" comment="Implemented : getConstructionPlan read file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UPBEAT/WebSocket/GameController.java" afterDir="false" />
     </list>
@@ -334,7 +334,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680454840958</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Implemented : getConstructionPlan read file">
+      <created>1680499920426</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1680499920426</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -370,6 +377,7 @@
     <MESSAGE value="Add Pay cost after Player edit Construction Plan" />
     <MESSAGE value="Fixed  : write file with BufferWriter" />
     <MESSAGE value="Fixed  : Close Buffer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed  : Close Buffer" />
+    <MESSAGE value="Implemented : getConstructionPlan read file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented : getConstructionPlan read file" />
   </component>
 </project>
