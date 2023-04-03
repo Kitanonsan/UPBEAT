@@ -162,6 +162,34 @@ public class GameController {
 
     @GetMapping("/game/plan")
     public PlayerBody getConstructionPlan(PlayerBody playerBody){
+        StringBuilder resultStringBuilder = new StringBuilder();
+            if (playerBody.getName().equals("Player1")){
+                Path file = Paths.get("src/Construction_Plan/P1_plan.txt");
+                Charset charset = Charset.forName("UTF-8");
+                try (BufferedReader reader = Files.newBufferedReader(file, charset)){
+                    String line = null;
+                    while ((line = reader.readLine()) != null){
+                        resultStringBuilder.append(line).append("\n");
+                    }
+                }catch (IOException e){
+                    System.out.println("An error occurred.");
+                    e.printStackTrace();
+                }
+            }else if (playerBody.getName().equals("Player2")){
+                Path file = Paths.get("src/Construction_Plan/P2_plan.txt");
+                Charset charset = Charset.forName("UTF-8");
+                try (BufferedReader reader = Files.newBufferedReader(file, charset)){
+                    String line = null;
+                    while ((line = reader.readLine()) != null){
+                        resultStringBuilder.append(line).append("\n");
+                    }
+                }catch (IOException e){
+                    System.out.println("An error occurred.");
+                    e.printStackTrace();
+                }
+
+            }
+        return new PlayerBody(playerBody.getName(),resultStringBuilder.toString());
 
     }
     @SubscribeMapping("/message")
