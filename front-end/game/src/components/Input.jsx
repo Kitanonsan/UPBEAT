@@ -41,6 +41,9 @@ export default function InputPlan() {
       <button onClick={handleClick} className="saveplan">
         Save
       </button>
+      <button onClick={handleClick} className="endturn">
+        End turn
+      </button>
       <div>
         {/* <img src="/images/Elfscale.gif" className="elfgame"></img> */}
         {/* <img src="/images/dwarfscale.gif" className="dwarfgame"></img> */}

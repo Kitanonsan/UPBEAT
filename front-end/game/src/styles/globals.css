@@ -505,6 +505,22 @@ body {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
 }
 
+.endturn {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #f1dd43;
+  color: #080808;
+  border: none;
+  font-family: "Press Start 2P", cursive;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 30px;
+}
+.endturn:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+}
+
 /* gif----------------------------------- */
 .lizard {
   position: fixed;
