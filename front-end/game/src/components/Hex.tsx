@@ -17,9 +17,12 @@ export default function Hexgrid() {
 
   // Define an array of image names
   const imageNames = Array.from({ length: rows * columns }, (_, i) => {
-    const imageNumber = (i % 17) + 1;
+    const imageNumber = (i % 4) + 1;
+    // const imageNumber = 3;
+
+    // const imageNumber = 4;
     // return "l1.png";
-    return `l${imageNumber}.png`;
+    return `t${imageNumber}.png`;
   });
 
   // Shuffle the array to get a random order
@@ -35,16 +38,16 @@ export default function Hexgrid() {
     }
   }
 
-  matrix[6][6] = "CT.png";
-  matrix[0][1] = "GM4.png";
-  matrix[1][1] = "GM2.png";
-  matrix[5][1] = "GM4.png";
-  matrix[3][1] = "GM7.png";
-  matrix[3][2] = "GM1.png";
-  matrix[3][7] = "GM8.png";
-  matrix[3][6] = "GM5.png";
-  matrix[3][5] = "GM5.png";
-  matrix[3][4] = "GM5.png";
+  matrix[6][6] = "hq1.png";
+  matrix[6][5] = "hq2.png";
+  matrix[1][0] = "H1.png";
+  matrix[5][1] = "H2.png";
+  matrix[3][1] = "H1.png";
+  matrix[3][2] = "H2.png";
+  matrix[3][7] = "H1.png";
+  matrix[3][6] = "H2.png";
+  matrix[3][5] = "H1.png";
+  matrix[3][4] = "H2.png";
 
   const [zoomLevel, setZoomLevel] = useState(1);
 
